@@ -157,8 +157,9 @@ export function Hero() {
               variants={fadeUp}
               className="text-base sm:text-lg text-white/35 leading-relaxed max-w-xl"
             >
-              Diseñamos y desarrollamos aplicaciones, sistemas y plataformas
-              digitales enfocadas en resolver problemas reales.
+              Diseñamos y desarrollamos herramientas digitales para empresarios
+              que necesitan gestionar turnos, clientes, pedidos y productos
+              de forma simple y eficiente.
             </motion.p>
 
             <motion.div

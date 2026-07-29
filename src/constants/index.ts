@@ -7,46 +7,46 @@ export const NAV_LINKS = [
 
 export const SERVICES = [
   {
+    title: "Gestión de Turnos",
+    description:
+      "Sistemas de reservas y agenda online. Tus clientes agendan solos, vos ganás tiempo y evitás confusiones.",
+    gradient: "from-violet-500/20 to-purple-600/20",
+    icon: "Calendar",
+  },
+  {
+    title: "Catálogo Digital",
+    description:
+      "Mostrá todos tus productos en una plataforma moderna. Sincronizado, actualizado y optimizado para vender.",
+    gradient: "from-purple-500/20 to-pink-600/20",
+    icon: "ShoppingBag",
+  },
+  {
+    title: "Gestión de Clientes",
+    description:
+      "Centralizá la información de tus clientes: historial, preferencias y comunicaciones en un solo lugar.",
+    gradient: "from-indigo-500/20 to-violet-600/20",
+    icon: "Users",
+  },
+  {
+    title: "Gestión de Pedidos",
+    description:
+      "Recibí, gestioná y despachá pedidos desde un panel simple. Sin planillas, sin errores.",
+    gradient: "from-cyan-500/20 to-blue-600/20",
+    icon: "Package",
+  },
+  {
     title: "Aplicaciones Mobile",
     description:
-      "Apps nativas con React Native y Expo. Performance, UX impecable y despliegue en App Store y Google Play.",
-    gradient: "from-violet-500/20 to-purple-600/20",
+      "Apps nativas con React Native y Expo. Llevá la solución al bolsillo de tus clientes y empleados.",
+    gradient: "from-emerald-500/20 to-teal-600/20",
     icon: "Smartphone",
   },
   {
-    title: "Sistemas SaaS",
+    title: "Automatización",
     description:
-      "Plataformas web escalables con dashboards, suscripciones, roles y analíticas. Arquitectura serverless.",
-    gradient: "from-indigo-500/20 to-violet-600/20",
-    icon: "Cloud",
-  },
-  {
-    title: "Sitios Web",
-    description:
-      "Experiencias web de alto impacto con Next.js. Performance, SEO y diseño que convierte visitantes en clientes.",
-    gradient: "from-purple-500/20 to-pink-600/20",
-    icon: "Globe",
-  },
-  {
-    title: "IA & Automatización",
-    description:
-      "Integración de modelos de lenguaje, agentes autónomos y flujos automáticos que potencian tu operación.",
-    gradient: "from-emerald-500/20 to-violet-600/20",
-    icon: "Brain",
-  },
-  {
-    title: "Paneles de Control",
-    description:
-      "Dashboards y back-offices a medida. Visualización de datos, gestión de usuarios y monitoreo en tiempo real.",
-    gradient: "from-cyan-500/20 to-blue-600/20",
-    icon: "LayoutDashboard",
-  },
-  {
-    title: "Consultoría Técnica",
-    description:
-      "Auditoría de arquitectura, optimización de infraestructura y estrategia técnica para productos digitales.",
+      "Eliminá tareas repetitivas. Integraciones inteligentes para que tu negocio opere solo mientras vos crecés.",
     gradient: "from-amber-500/20 to-orange-600/20",
-    icon: "Lightbulb",
+    icon: "Zap",
   },
 ] as const
 
@@ -116,6 +116,6 @@ export const SITE = {
   name: "Estudio Nómade",
   tagline: "Diseño y código en movimiento",
   description:
-    "Estudio de software premium. Construimos productos digitales que resuelven problemas de negocio con diseño y tecnología de vanguardia.",
+    "Estudio de software. Ayudamos a empresarios y emprendedores a digitalizar la gestión de turnos, clientes, productos y pedidos con herramientas a medida.",
   url: "https://estudionomade.com",
 }

@@ -3,11 +3,11 @@
 import { motion, type Variants } from "framer-motion"
 import {
   Smartphone,
-  Cloud,
-  Globe,
-  Brain,
-  LayoutDashboard,
-  Lightbulb,
+  Calendar,
+  ShoppingBag,
+  Users,
+  Package,
+  Zap,
   type LucideIcon,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -16,11 +16,11 @@ import { SectionReveal } from "@/components/effects/section-reveal"
 
 const iconMap: Record<string, LucideIcon> = {
   Smartphone,
-  Cloud,
-  Globe,
-  Brain,
-  LayoutDashboard,
-  Lightbulb,
+  Calendar,
+  ShoppingBag,
+  Users,
+  Package,
+  Zap,
 }
 
 const container: Variants = {
@@ -53,7 +53,7 @@ export function Services() {
               <span className="text-gradient">Lo que construimos</span>
             </h2>
             <p className="text-[var(--color-text-secondary)] text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
-              Soluciones de software diseñadas para resolver problemas de negocio
+              Herramientas digitales para resolver los problemas operativos de tu negocio
             </p>
           </div>
         </SectionReveal>
