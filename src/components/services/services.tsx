@@ -53,7 +53,7 @@ export function Services() {
               <span className="text-gradient">Lo que construimos</span>
             </h2>
             <p className="text-[var(--color-text-secondary)] text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
-              Herramientas digitales para resolver los problemas operativos de tu negocio
+              Soluciones digitales para que tu negocio venda más, opere mejor y crezca sin fricción
             </p>
           </div>
         </SectionReveal>

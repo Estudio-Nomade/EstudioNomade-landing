@@ -116,6 +116,6 @@ export const SITE = {
   name: "Estudio Nómade",
   tagline: "Diseño y código en movimiento",
   description:
-    "Estudio de software. Ayudamos a empresarios y emprendedores a digitalizar la gestión de turnos, clientes, productos y pedidos con herramientas a medida.",
+    "Ayudamos a emprendedores y PyMEs a vender más, ahorrar tiempo y fidelizar clientes mediante soluciones digitales a medida.",
   url: "https://estudionomade.com",
 }

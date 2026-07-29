@@ -157,9 +157,11 @@ export function Hero() {
               variants={fadeUp}
               className="text-base sm:text-lg text-white/35 leading-relaxed max-w-xl"
             >
-              Diseñamos y desarrollamos herramientas digitales para empresarios
-              que necesitan gestionar turnos, clientes, pedidos y productos
-              de forma simple y eficiente.
+              Ayudamos a emprendedores y PyMEs a{" "}
+              <span className="text-white/55">vender más</span>,{" "}
+              <span className="text-white/55">ahorrar tiempo</span> y{" "}
+              <span className="text-white/55">fidelizar clientes</span>{" "}
+              mediante soluciones digitales a medida.
             </motion.p>
 
             <motion.div
