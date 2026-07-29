@@ -1,7 +1,6 @@
 import { Navbar } from "@/components/navbar/navbar"
 import { Hero } from "@/components/hero/hero"
 import { Services } from "@/components/services/services"
-import { Tech } from "@/components/tech/tech"
 import { Process } from "@/components/process/process"
 import Projects from "@/components/projects/projects"
 import { CTA } from "@/components/cta/cta"
@@ -17,7 +16,6 @@ export default function Home() {
         <Hero />
         <Services />
         <Projects />
-        <Tech />
         <Process />
         <CTA />
       </main>
