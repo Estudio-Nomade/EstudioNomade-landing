@@ -148,20 +148,18 @@ export function Hero() {
               variants={fadeUp}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.08] tracking-tight"
             >
-              Construimos{" "}
-              <span className="text-gradient">productos digitales</span>{" "}
-              que hacen crecer negocios.
+              No hacemos apps.
+              <br />
+              Resolvemos{" "}
+              <span className="text-gradient">procesos de negocio</span>.
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
               className="text-base sm:text-lg text-white/35 leading-relaxed max-w-xl"
             >
-              Ayudamos a emprendedores y PyMEs a{" "}
-              <span className="text-white/55">vender más</span>,{" "}
-              <span className="text-white/55">ahorrar tiempo</span> y{" "}
-              <span className="text-white/55">fidelizar clientes</span>{" "}
-              mediante soluciones digitales a medida.
+              Construimos una plataforma de soluciones reutilizables. Cada cliente
+              hereda lo mejor de los anteriores: más rápido, más sólido, más barato.
             </motion.p>
 
             <motion.div

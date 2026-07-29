@@ -77,7 +77,7 @@ export function Process() {
               <span className="text-gradient">Nuestro proceso</span>
             </h2>
             <p className="text-[var(--color-text-secondary)] text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
-              De la idea al producto en 7 pasos. Ágil, transparente, colaborativo.
+              Cada proyecto alimenta nuestra plataforma. El proceso es ágil, pero el producto final se apoya en cientos de horas de desarrollo ya validadas.
             </p>
           </div>
         </SectionReveal>

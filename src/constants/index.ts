@@ -1,5 +1,5 @@
 export const NAV_LINKS = [
-  { label: "Lo que construimos", href: "#servicios" },
+  { label: "Procesos que resolvemos", href: "#servicios" },
   { label: "Productos", href: "#proyectos" },
   { label: "Proceso", href: "#proceso" },
   { label: "Contacto", href: "#cta" },
@@ -9,42 +9,42 @@ export const SERVICES = [
   {
     title: "Gestión de Turnos",
     description:
-      "Sistemas de reservas y agenda online. Tus clientes agendan solos, vos ganás tiempo y evitás confusiones.",
+      "Sistema de reservas y agenda que ya probamos con otros clientes. Tus clientes agendan solos desde una interfaz pulida y probada.",
     gradient: "from-violet-500/20 to-purple-600/20",
     icon: "Calendar",
   },
   {
     title: "Catálogo Digital",
     description:
-      "Mostrá todos tus productos en una plataforma moderna. Sincronizado, actualizado y optimizado para vender.",
+      "Plataforma de productos sincronizada. Cada negocio la personaliza a su marca, pero el motor ya está construido y testeado.",
     gradient: "from-purple-500/20 to-pink-600/20",
     icon: "ShoppingBag",
   },
   {
     title: "Gestión de Clientes",
     description:
-      "Centralizá la información de tus clientes: historial, preferencias y comunicaciones en un solo lugar.",
+      "CRM con historial, preferencias y comunicación. Reutilizamos la arquitectura para que cada cliente nuevo no empiece de cero.",
     gradient: "from-indigo-500/20 to-violet-600/20",
     icon: "Users",
   },
   {
     title: "Gestión de Pedidos",
     description:
-      "Recibí, gestioná y despachá pedidos desde un panel simple. Sin planillas, sin errores.",
+      "Panel para recibir, gestionar y despachar. Construido sobre nuestra base de procesos, no desde un proyecto aislado.",
     gradient: "from-cyan-500/20 to-blue-600/20",
     icon: "Package",
   },
   {
     title: "Aplicaciones Mobile",
     description:
-      "Apps nativas con React Native y Expo. Llevá la solución al bolsillo de tus clientes y empleados.",
+      "Apps nativas que heredan componentes de proyectos anteriores. React Native + Expo sobre arquitectura que ya funciona.",
     gradient: "from-emerald-500/20 to-teal-600/20",
     icon: "Smartphone",
   },
   {
     title: "Automatización",
     description:
-      "Eliminá tareas repetitivas. Integraciones inteligentes para que tu negocio opere solo mientras vos crecés.",
+      "Flujos inteligentes que conectan tus sistemas. Integraciones pre-armadas que adaptamos, no reinventamos.",
     gradient: "from-amber-500/20 to-orange-600/20",
     icon: "Zap",
   },
@@ -116,6 +116,6 @@ export const SITE = {
   name: "Estudio Nómade",
   tagline: "Diseño y código en movimiento",
   description:
-    "Ayudamos a emprendedores y PyMEs a vender más, ahorrar tiempo y fidelizar clientes mediante soluciones digitales a medida.",
+    "Plataforma de soluciones digitales para PyMEs. Ayudamos a vender más, ahorrar tiempo y fidelizar clientes con software reutilizable y sólido.",
   url: "https://estudionomade.com",
 }

@@ -30,7 +30,7 @@ export function CTA() {
               <span className="text-gradient">¿Tenés una idea?</span>
             </h2>
             <p className="text-[var(--color-text-secondary)] text-xl md:text-2xl mb-12 leading-relaxed font-[family-name:var(--font-sans)]">
-              Vendé más, ahorrá tiempo y fidelizá clientes con software a tu medida.
+              No hacemos software genérico. Construimos soluciones que se vuelven más sólidas con cada cliente.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-5">

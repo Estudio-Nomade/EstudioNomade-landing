@@ -50,10 +50,10 @@ export function Services() {
         <SectionReveal>
           <div className="text-center mb-16 md:mb-20">
             <h2 className="font-[family-name:var(--font-space-grotesk)] text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
-              <span className="text-gradient">Lo que construimos</span>
+              <span className="text-gradient">Procesos que resolvemos</span>
             </h2>
             <p className="text-[var(--color-text-secondary)] text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
-              Soluciones digitales para que tu negocio venda más, opere mejor y crezca sin fricción
+              Soluciones modulares que se integran entre sí. Cada cliente recibe un sistema probado, no un experimento.
             </p>
           </div>
         </SectionReveal>
