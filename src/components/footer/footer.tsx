@@ -1,0 +1,132 @@
+"use client"
+
+import { motion } from "framer-motion"
+import Image from "next/image"
+import { NAV_LINKS, SITE, CONTACT } from "@/constants"
+import { MessageCircle, Mail, ExternalLink } from "lucide-react"
+
+const contactItems = [
+  {
+    label: CONTACT.whatsapp.replace(/(\d{2})(\d{4})(\d{2})(\d{4})/, "+$1 $2 $3-$4"),
+    href: `https://wa.me/${CONTACT.whatsapp}`,
+    icon: MessageCircle,
+  },
+  {
+    label: CONTACT.email,
+    href: `mailto:${CONTACT.email}`,
+    icon: Mail,
+  },
+  {
+    label: "GitHub",
+    href: CONTACT.github,
+    icon: ExternalLink,
+  },
+  {
+    label: "LinkedIn",
+    href: CONTACT.linkedin,
+    icon: ExternalLink,
+  },
+] as const
+
+export function Footer() {
+  const handleNavClick = (href: string) => {
+    const el = document.querySelector(href)
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
+  return (
+    <footer className="relative border-t border-white/[0.04] bg-[#050508]">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-violet-500/[0.01] to-violet-500/[0.02] pointer-events-none" />
+
+      <div className="section-container py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+          <div className="flex flex-col gap-4">
+            <motion.a
+              href="#"
+              className="flex items-center gap-2.5 group w-fit"
+              whileHover={{ scale: 1.02 }}
+              onClick={(e) => {
+                e.preventDefault()
+                window.scrollTo({ top: 0, behavior: "smooth" })
+              }}
+            >
+              <Image
+                src="/logo-estudionomade.svg"
+                alt={SITE.name}
+                width={28}
+                height={28}
+                className="opacity-80"
+              />
+              <span className="font-display text-sm font-semibold tracking-wider text-white/70">
+                ESTUDIO NÓMADE
+              </span>
+            </motion.a>
+            <p className="text-sm text-white/30 leading-relaxed max-w-xs">
+              {SITE.tagline}. Diseñamos y construimos productos digitales que hacen
+              crecer negocios.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <h4 className="text-xs font-semibold tracking-[0.2em] text-white/20 uppercase mb-2">
+              Navegación
+            </h4>
+            <nav>
+              <ul className="flex flex-col gap-2">
+                {NAV_LINKS.map((link) => (
+                  <li key={link.href}>
+                    <button
+                      onClick={() => handleNavClick(link.href)}
+                      className="text-sm text-white/35 hover:text-white/70 transition-colors duration-300"
+                    >
+                      {link.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <h4 className="text-xs font-semibold tracking-[0.2em] text-white/20 uppercase mb-2">
+              Contacto
+            </h4>
+            <div className="flex flex-col gap-2.5">
+              {contactItems.map((item) => (
+                <motion.a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 text-sm text-white/35 hover:text-white/70 transition-colors duration-300 group"
+                  whileHover={{ x: 3 }}
+                >
+                  <item.icon
+                    size={14}
+                    className="text-white/20 group-hover:text-violet-400/60 transition-colors duration-300"
+                  />
+                  <span>{item.label}</span>
+                  <ExternalLink
+                    size={10}
+                    className="text-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300"
+                  />
+                </motion.a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16 pt-8 border-t border-white/[0.03] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-white/15">
+            &copy; 2026 {SITE.name}. Todos los derechos reservados.
+          </p>
+          <p className="text-xs text-white/10">
+            Diseño y c&oacute;digo en movimiento
+          </p>
+        </div>
+      </div>
+    </footer>
+  )
+}
