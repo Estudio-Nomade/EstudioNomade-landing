@@ -160,23 +160,12 @@ export function Hero() {
             </motion.p>
           </motion.div>
 
-          {/* Columna vacía en desktop: la mascota fija ocupa este espacio en el hero */}
+          {/* Columna vacía en desktop: la mascota parked ocupa este hueco visual */}
           <div
-            className="pointer-events-none hidden min-h-[280px] lg:block"
+            className="pointer-events-none hidden min-h-[120px] lg:block"
             aria-hidden
           />
         </div>
-
-        {/* Descripción bajo la mascota en mobile (la fija también la muestra y se desvanece) */}
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.55 }}
-          className="mx-auto mt-6 max-w-sm text-center text-sm leading-relaxed text-violet-100/55 lg:hidden"
-        >
-          Ordenamos el día a día del negocio: turnos, pedidos y clientes, sin
-          tanto lío.
-        </motion.p>
       </div>
 
       <motion.div
