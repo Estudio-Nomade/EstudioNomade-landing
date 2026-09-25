@@ -22,7 +22,7 @@ function ProcessStep({
   const { ref, isInView } = useInView(0.2)
 
   return (
-    <div ref={ref} className="relative flex gap-8 pb-14 last:pb-0 md:gap-12">
+    <div ref={ref} className="relative flex gap-6 pb-8 last:pb-0 md:gap-10 md:pb-10">
       <div className="relative flex flex-col items-center">
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
@@ -79,10 +79,10 @@ export function Process() {
   })
 
   return (
-    <section id="proceso" className="relative overflow-hidden py-24 md:py-32">
+    <section id="proceso" className="relative overflow-hidden py-12 md:py-16">
       <div className="section-container relative z-10" ref={sectionRef}>
         <SectionReveal>
-          <div className="mb-14 max-w-2xl md:mb-16">
+          <div className="mb-8 max-w-2xl md:mb-10">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-violet-300/70">
               Cómo trabajamos
             </p>

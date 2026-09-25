@@ -57,7 +57,7 @@ export function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative flex min-h-screen items-center overflow-hidden"
+      className="relative flex min-h-[min(100svh,820px)] items-center overflow-hidden md:min-h-[min(100svh,900px)]"
     >
       {/* Nebulas del concepto */}
       <div className="pointer-events-none absolute top-[-25%] left-[-12%] h-[640px] w-[640px] rounded-full bg-violet-600/[0.12] blur-[130px] animate-pulse-glow" />
@@ -80,11 +80,11 @@ export function Hero() {
         />
       ))}
 
-      <div className="section-container w-full pt-10 pb-24 sm:pt-14 md:pt-16 md:pb-28">
+      <div className="section-container w-full pt-8 pb-10 sm:pt-12 sm:pb-12 md:pt-14 md:pb-14">
         {/* Espacio a la derecha en desktop para la mascota parked grande */}
-        <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
+        <div className="mx-auto grid max-w-5xl items-center gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-6">
           <motion.div
-            className="relative z-[1] flex flex-col gap-6 sm:gap-7"
+            className="relative z-[1] flex flex-col gap-5 sm:gap-6"
             variants={stagger}
             initial="initial"
             animate="animate"
@@ -165,14 +165,14 @@ export function Hero() {
 
           {/* Columna vacía desktop: hueco visual para mascota grande parked */}
           <div
-            className="pointer-events-none hidden min-h-[260px] lg:block"
+            className="pointer-events-none hidden min-h-[180px] lg:block"
             aria-hidden
           />
         </div>
       </div>
 
       <motion.div
-        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
+        className="absolute bottom-4 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5 sm:bottom-6"
         style={{ opacity: hintOpacity }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

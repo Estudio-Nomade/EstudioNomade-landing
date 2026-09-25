@@ -37,7 +37,7 @@ export default function Projects() {
     <section
       ref={sectionRef}
       id="proyectos"
-      className="relative overflow-hidden py-24 md:py-32"
+      className="relative overflow-hidden py-12 md:py-16"
     >
       <div className="pointer-events-none absolute top-1/3 left-1/2 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-500/[0.03] blur-[150px]" />
 
@@ -47,7 +47,7 @@ export default function Projects() {
           initial={{ opacity: 0, y: 24 }}
           animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
           transition={{ duration: 0.55, ease: [0.25, 0.1, 0, 1] }}
-          className="mb-14 max-w-2xl md:mb-16"
+          className="mb-8 max-w-2xl md:mb-10"
         >
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-violet-300/70">
             Proyectos

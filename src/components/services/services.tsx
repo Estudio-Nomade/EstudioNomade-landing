@@ -33,11 +33,11 @@ export function Services() {
   return (
     <section
       id="servicios"
-      className="relative overflow-hidden py-24 md:py-32"
+      className="relative overflow-hidden py-12 md:py-16"
     >
       <div className="section-container relative z-10">
         <SectionReveal>
-          <div className="mb-14 max-w-2xl md:mb-16">
+          <div className="mb-8 max-w-2xl md:mb-10">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-violet-300/70">
               Qué hacemos
             </p>
