@@ -80,11 +80,11 @@ export function Hero() {
         />
       ))}
 
-      <div className="section-container w-full pt-[7.5rem] pb-24 md:pt-36 md:pb-28">
-        {/* Espacio a la derecha en desktop para la mascota fija */}
-        <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10">
+      <div className="section-container w-full pt-[8.75rem] pb-24 sm:pt-36 md:pt-40 md:pb-28">
+        {/* Espacio a la derecha en desktop para la mascota parked grande */}
+        <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
           <motion.div
-            className="flex flex-col gap-7"
+            className="relative z-[1] flex flex-col gap-7"
             variants={stagger}
             initial="initial"
             animate="animate"
@@ -160,9 +160,9 @@ export function Hero() {
             </motion.p>
           </motion.div>
 
-          {/* Columna vacía en desktop: la mascota parked ocupa este hueco visual */}
+          {/* Columna vacía desktop: hueco visual para mascota grande parked */}
           <div
-            className="pointer-events-none hidden min-h-[120px] lg:block"
+            className="pointer-events-none hidden min-h-[260px] lg:block"
             aria-hidden
           />
         </div>
