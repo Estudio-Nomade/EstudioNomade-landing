@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import {
   motion,
   useMotionValue,
@@ -13,52 +13,48 @@ import Image from "next/image"
 
 export const NAV_MENU_EVENT = "en-nav-menu"
 
+const DETACH_SCROLL_PX = 90
+
 /**
- * Mascota que sigue el cursor / dedo.
- * Se esconde cuando el menú hamburguesa está abierto.
+ * Mascota chica, sin texto debajo.
+ * Arriba quieta en el hero → al scrollear se despega / cae y sigue el cursor.
+ * Se esconde con el menú hamburguesa.
  */
 export function CompanionMascot() {
   const reduceMotion = useReducedMotion()
   const [ready, setReady] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [detached, setDetached] = useState(false)
   const [vw, setVw] = useState(1280)
   const [vh, setVh] = useState(800)
+  const detachedRef = useRef(false)
 
   const rawX = useMotionValue(0)
   const rawY = useMotionValue(0)
 
   const springCfg = reduceMotion
-    ? { stiffness: 500, damping: 40, mass: 0.4 }
-    : { stiffness: 140, damping: 22, mass: 0.55 }
+    ? { stiffness: 500, damping: 42, mass: 0.35 }
+    : { stiffness: 160, damping: 20, mass: 0.5 }
 
   const x = useSpring(rawX, springCfg)
   const y = useSpring(rawY, springCfg)
 
-  const { scrollYProgress } = useScroll()
-  const t = useSpring(scrollYProgress, {
-    stiffness: reduceMotion ? 400 : 100,
-    damping: 28,
-    mass: 0.5,
-  })
+  const { scrollY } = useScroll()
 
   const isNarrow = vw < 640
-  const isMobile = vw < 1024
+  // Más chica para no tapar el copy
+  const size = isNarrow ? 72 : vw < 1024 ? 84 : 96
+  const half = size / 2
 
-  // Grande en hero → más chico al bajar (sigue al cursor en ambos casos)
-  const size = useTransform(
-    t,
-    [0, 0.15, 0.35],
-    isNarrow ? [150, 110, 78] : isMobile ? [180, 130, 88] : [260, 160, 100]
-  )
+  const left = useTransform(x, (px) => px - half)
+  const top = useTransform(y, (py) => py - half)
 
-  const half = useTransform(size, (s) => s / 2)
-  const left = useTransform([x, half], ([px, h]) => (px as number) - (h as number))
-  const top = useTransform([y, half], ([py, h]) => (py as number) - (h as number))
-
-  const descOpacity = useTransform(t, [0, 0.12, 0.22], [1, 0.35, 0])
-  const glow = useTransform(t, [0, 0.3], [0.45, 0.25])
-
-  const bob = useMotionValue(0)
+  const park = (w: number, h: number) => {
+    // Arriba a la derecha, debajo del navbar — quieta en el hero
+    const px = w < 1024 ? w * 0.82 : Math.min(w - 72, w * 0.78)
+    const py = w < 1024 ? 118 : 132
+    return { px, py }
+  }
 
   useEffect(() => {
     const measure = () => {
@@ -66,9 +62,11 @@ export function CompanionMascot() {
       const h = window.innerHeight
       setVw(w)
       setVh(h)
-      // posición inicial: derecha del hero
-      rawX.set(w * (w < 1024 ? 0.72 : 0.78))
-      rawY.set(h * (w < 1024 ? 0.62 : 0.48))
+      if (!detachedRef.current) {
+        const { px, py } = park(w, h)
+        rawX.set(px)
+        rawY.set(py)
+      }
     }
     measure()
     setReady(true)
@@ -85,23 +83,45 @@ export function CompanionMascot() {
     return () => window.removeEventListener(NAV_MENU_EVENT, onMenu)
   }, [])
 
+  // Detach al scrollear un poco: “se cae” y empieza a seguir
   useEffect(() => {
-    if (menuOpen) return
+    const unsub = scrollY.on("change", (v) => {
+      if (v >= DETACH_SCROLL_PX && !detachedRef.current) {
+        detachedRef.current = true
+        setDetached(true)
+        // caída inicial hacia el centro-bajo de la pantalla
+        const dropX = window.innerWidth * (window.innerWidth < 1024 ? 0.7 : 0.75)
+        const dropY = Math.min(window.innerHeight * 0.55, 420)
+        rawX.set(dropX)
+        rawY.set(dropY)
+      }
+      if (v < 24 && detachedRef.current) {
+        // volver al park si el user vuelve al tope
+        detachedRef.current = false
+        setDetached(false)
+        const { px, py } = park(window.innerWidth, window.innerHeight)
+        rawX.set(px)
+        rawY.set(py)
+      }
+    })
+    return () => unsub()
+  }, [scrollY, rawX, rawY])
+
+  // Seguir cursor solo cuando ya se despegó
+  useEffect(() => {
+    if (menuOpen || !detached) return
 
     const clamp = (v: number, min: number, max: number) =>
       Math.min(max, Math.max(min, v))
 
     const follow = (clientX: number, clientY: number) => {
-      const pad = 40
+      const pad = 28
       rawX.set(clamp(clientX, pad, window.innerWidth - pad))
-      rawY.set(clamp(clientY, pad + 56, window.innerHeight - pad))
+      rawY.set(clamp(clientY, pad + 64, window.innerHeight - pad))
     }
 
     const onPointer = (e: PointerEvent) => {
-      // no pelear con el scroll de barra / drag de UI
-      if (e.pointerType === "mouse" || e.buttons === 0 || e.pointerType === "touch") {
-        follow(e.clientX, e.clientY)
-      }
+      follow(e.clientX, e.clientY)
     }
 
     const onTouch = (e: TouchEvent) => {
@@ -112,7 +132,6 @@ export function CompanionMascot() {
 
     window.addEventListener("pointermove", onPointer, { passive: true })
     window.addEventListener("touchmove", onTouch, { passive: true })
-    // primer toque también mueve
     window.addEventListener("pointerdown", onPointer, { passive: true })
 
     return () => {
@@ -120,93 +139,50 @@ export function CompanionMascot() {
       window.removeEventListener("touchmove", onTouch)
       window.removeEventListener("pointerdown", onPointer)
     }
-  }, [menuOpen, rawX, rawY])
-
-  useEffect(() => {
-    if (reduceMotion || menuOpen) {
-      bob.set(0)
-      return
-    }
-    let frame = 0
-    let raf = 0
-    const loop = () => {
-      frame += 0.04
-      bob.set(Math.sin(frame) * 5)
-      raf = requestAnimationFrame(loop)
-    }
-    raf = requestAnimationFrame(loop)
-    return () => cancelAnimationFrame(raf)
-  }, [bob, reduceMotion, menuOpen])
+  }, [menuOpen, detached, rawX, rawY])
 
   if (!ready) return null
 
   return (
     <motion.div
-      className="pointer-events-none fixed z-[60] flex flex-col items-center"
+      className="pointer-events-none fixed z-[60]"
       style={{
         left,
         top,
         width: size,
+        height: size,
       }}
-      initial={{ opacity: 0, scale: 0.85 }}
+      initial={{ opacity: 0, scale: 0.8, rotate: -8 }}
       animate={{
         opacity: menuOpen ? 0 : 1,
-        scale: menuOpen ? 0.7 : 1,
-        y: menuOpen ? 24 : 0,
+        scale: menuOpen ? 0.65 : detached ? 1 : 1,
+        rotate: menuOpen ? 12 : detached ? 0 : -3,
+        y: menuOpen ? 20 : 0,
       }}
-      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
       aria-hidden
     >
-      <motion.div
-        className="relative shrink-0"
-        style={{
-          y: reduceMotion || menuOpen ? 0 : bob,
-          height: size,
-          width: size,
-        }}
-      >
-        <motion.div
-          className="pointer-events-none absolute inset-0 -m-[18%] rounded-full bg-violet-500/25 blur-[42px]"
-          style={{ opacity: glow }}
-        />
+      <div className="relative h-full w-full">
+        <div className="pointer-events-none absolute inset-0 -m-[20%] rounded-full bg-violet-500/20 blur-[28px]" />
         <Image
           src="/logo-clear.png"
           alt=""
           fill
-          sizes="(max-width: 640px) 160px, (max-width: 1024px) 200px, 280px"
-          className="object-contain drop-shadow-[0_0_36px_rgba(167,139,250,0.55)]"
+          sizes="96px"
+          className="object-contain drop-shadow-[0_0_22px_rgba(167,139,250,0.5)]"
           priority
         />
         <span
           className="sparkle-mark"
           style={{
-            top: "12%",
-            left: "16%",
-            width: 12,
-            height: 12,
+            top: "10%",
+            left: "14%",
+            width: 8,
+            height: 8,
             animationDelay: "0.2s",
           }}
         />
-        <span
-          className="sparkle-mark"
-          style={{
-            top: "20%",
-            right: "12%",
-            left: "auto",
-            width: 16,
-            height: 16,
-            animationDelay: "1.1s",
-          }}
-        />
-      </motion.div>
-
-      <motion.p
-        style={{ opacity: descOpacity }}
-        className="mt-2 max-w-[14rem] text-center text-[11px] leading-snug font-medium tracking-wide text-violet-100/70 sm:max-w-[16rem] sm:text-xs"
-      >
-        Ordenamos el día a día del negocio: turnos, pedidos y clientes, sin
-        tanto lío.
-      </motion.p>
+      </div>
     </motion.div>
   )
 }
