@@ -13,60 +13,60 @@ const buttonHover = {
 }
 
 export function CTA() {
+  const wa = CONTACT.whatsapp.replace(/\D/g, "")
+
   return (
     <section
       id="cta"
-      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-24 md:py-36"
+      className="relative flex min-h-[70vh] items-center justify-center overflow-hidden py-24 md:py-32"
     >
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/10 blur-[180px] animate-pulse-glow" />
+        <div className="absolute top-1/2 left-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 animate-pulse-glow rounded-full bg-primary/10 blur-[180px]" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background/80" />
       </div>
 
       <div className="section-container relative z-10 w-full">
         <SectionReveal>
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="font-[family-name:var(--font-space-grotesk)] text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-              <span className="text-gradient">¿Tenés una idea?</span>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-display mb-5 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+              <span className="text-gradient">¿Querés ordenar tu operación?</span>
             </h2>
-            <p className="text-[var(--color-text-secondary)] text-xl md:text-2xl mb-12 leading-relaxed font-[family-name:var(--font-sans)]">
-              No hacemos software genérico. Construimos soluciones que se vuelven más sólidas con cada cliente.
+            <p className="mb-10 text-lg leading-relaxed text-[var(--color-text-secondary)] md:text-xl">
+              Contanos si te interesa Tumo, un desarrollo a medida o una web
+              clara. Te respondemos con el siguiente paso — sin laberinto.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <motion.a
-                href={`https://wa.me/${CONTACT.whatsapp}`}
+                href={`https://wa.me/${wa}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
-                  "inline-flex items-center gap-3 px-10 py-5 rounded-xl",
-                  "bg-emerald-500/10 border border-emerald-500/25",
-                  "text-emerald-400 font-semibold text-lg",
-                  "hover:bg-emerald-500/15 hover:border-emerald-500/40",
+                  "inline-flex min-h-14 items-center gap-3 rounded-xl px-8 py-4",
+                  "border border-emerald-500/25 bg-emerald-500/10",
+                  "text-lg font-semibold text-emerald-400",
+                  "hover:border-emerald-500/40 hover:bg-emerald-500/15",
                   "hover:shadow-[0_0_40px_rgba(16,185,129,0.15)]",
-                  "transition-all duration-300",
-                  "font-[family-name:var(--font-sans)]"
+                  "transition-all duration-300"
                 )}
                 {...buttonHover}
               >
-                <MessageCircle className="w-5 h-5" />
+                <MessageCircle className="h-5 w-5" />
                 WhatsApp
               </motion.a>
 
               <motion.a
                 href={`mailto:${CONTACT.email}`}
                 className={cn(
-                  "inline-flex items-center gap-3 px-10 py-5 rounded-xl",
-                  "bg-transparent border border-[rgba(255,255,255,0.08)]",
-                  "text-[var(--color-text-primary)] font-semibold text-lg",
+                  "inline-flex min-h-14 items-center gap-3 rounded-xl px-8 py-4",
+                  "border border-[rgba(255,255,255,0.08)] bg-transparent",
+                  "text-lg font-semibold text-[var(--color-text-primary)]",
                   "hover:border-primary/40 hover:bg-[rgba(255,255,255,0.03)]",
-                  "hover:shadow-[0_0_40px_rgba(139,92,246,0.1)]",
-                  "transition-all duration-300",
-                  "font-[family-name:var(--font-sans)]"
+                  "transition-all duration-300"
                 )}
                 {...buttonHover}
               >
-                <Mail className="w-5 h-5" />
+                <Mail className="h-5 w-5" />
                 Email
               </motion.a>
             </div>

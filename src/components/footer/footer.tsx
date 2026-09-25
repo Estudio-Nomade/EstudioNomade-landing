@@ -5,10 +5,12 @@ import Image from "next/image"
 import { NAV_LINKS, SITE, CONTACT } from "@/constants"
 import { MessageCircle, Mail, ExternalLink } from "lucide-react"
 
+const waDigits = CONTACT.whatsapp.replace(/\D/g, "")
+
 const contactItems = [
   {
-    label: CONTACT.whatsapp.replace(/(\d{2})(\d{4})(\d{2})(\d{4})/, "+$1 $2 $3-$4"),
-    href: `https://wa.me/${CONTACT.whatsapp}`,
+    label: "WhatsApp",
+    href: `https://wa.me/${waDigits}`,
     icon: MessageCircle,
   },
   {
@@ -21,31 +23,24 @@ const contactItems = [
     href: CONTACT.github,
     icon: ExternalLink,
   },
-  {
-    label: "LinkedIn",
-    href: CONTACT.linkedin,
-    icon: ExternalLink,
-  },
 ] as const
 
 export function Footer() {
   const handleNavClick = (href: string) => {
     const el = document.querySelector(href)
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" })
-    }
+    if (el) el.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
     <footer className="relative border-t border-white/[0.04] bg-[#050508]">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-violet-500/[0.01] to-violet-500/[0.02] pointer-events-none" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-violet-500/[0.01] to-violet-500/[0.02]" />
 
       <div className="section-container py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8">
           <div className="flex flex-col gap-4">
             <motion.a
               href="#"
-              className="flex items-center gap-2.5 group w-fit"
+              className="group flex w-fit items-center gap-2.5"
               whileHover={{ scale: 1.02 }}
               onClick={(e) => {
                 e.preventDefault()
@@ -63,14 +58,14 @@ export function Footer() {
                 ESTUDIO NÓMADE
               </span>
             </motion.a>
-            <p className="text-sm text-white/30 leading-relaxed max-w-xs">
-              {SITE.tagline}. Diseñamos y construimos productos digitales que hacen
-              crecer negocios.
+            <p className="max-w-xs text-sm leading-relaxed text-white/30">
+              {SITE.tagline}. Tumo, a medida y webs — con los colores del
+              estudio y sin saturar de info.
             </p>
           </div>
 
           <div className="flex flex-col gap-3">
-            <h4 className="text-xs font-semibold tracking-[0.2em] text-white/20 uppercase mb-2">
+            <h4 className="mb-2 text-xs font-semibold tracking-[0.2em] text-white/20 uppercase">
               Navegación
             </h4>
             <nav>
@@ -78,8 +73,9 @@ export function Footer() {
                 {NAV_LINKS.map((link) => (
                   <li key={link.href}>
                     <button
+                      type="button"
                       onClick={() => handleNavClick(link.href)}
-                      className="text-sm text-white/35 hover:text-white/70 transition-colors duration-300"
+                      className="text-sm text-white/35 transition-colors duration-300 hover:text-white/70"
                     >
                       {link.label}
                     </button>
@@ -90,7 +86,7 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col gap-3">
-            <h4 className="text-xs font-semibold tracking-[0.2em] text-white/20 uppercase mb-2">
+            <h4 className="mb-2 text-xs font-semibold tracking-[0.2em] text-white/20 uppercase">
               Contacto
             </h4>
             <div className="flex flex-col gap-2.5">
@@ -100,31 +96,25 @@ export function Footer() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-sm text-white/35 hover:text-white/70 transition-colors duration-300 group"
+                  className="group flex items-center gap-2.5 text-sm text-white/35 transition-colors duration-300 hover:text-white/70"
                   whileHover={{ x: 3 }}
                 >
                   <item.icon
                     size={14}
-                    className="text-white/20 group-hover:text-violet-400/60 transition-colors duration-300"
+                    className="text-white/20 transition-colors duration-300 group-hover:text-violet-400/60"
                   />
                   <span>{item.label}</span>
-                  <ExternalLink
-                    size={10}
-                    className="text-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300"
-                  />
                 </motion.a>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-white/[0.03] flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/[0.03] pt-8 sm:flex-row">
           <p className="text-xs text-white/15">
             &copy; 2026 {SITE.name}. Todos los derechos reservados.
           </p>
-          <p className="text-xs text-white/10">
-            Diseño y c&oacute;digo en movimiento
-          </p>
+          <p className="text-xs text-white/10">{SITE.tagline}</p>
         </div>
       </div>
     </footer>

@@ -1,82 +1,172 @@
 export const NAV_LINKS = [
-  { label: "Procesos que resolvemos", href: "#servicios" },
-  { label: "Productos", href: "#proyectos" },
-  { label: "Proceso", href: "#proceso" },
+  { label: "Problemas", href: "#problemas" },
+  { label: "Cómo trabajamos", href: "#proceso" },
+  { label: "Proyectos", href: "#proyectos" },
+  { label: "Mantenimiento", href: "#mantenimiento" },
   { label: "Contacto", href: "#cta" },
 ] as const
 
-export const SERVICES = [
+/** Síntomas / dolores — una idea por bloque (estilo Maguiceri: claro, poco de golpe). */
+export const PROBLEMS = [
   {
-    title: "Gestión de Turnos",
+    id: "01",
+    tag: "SE PIERDE",
+    title: "Te escriben “hola, info” y desaparecen",
     description:
-      "Sistema de reservas y agenda que ya probamos con otros clientes. Tus clientes agendan solos desde una interfaz pulida y probada.",
-    gradient: "from-violet-500/20 to-purple-600/20",
-    icon: "Calendar",
+      "Llegan sin entender qué ofrecés, cuánto sale ni cómo es el proceso. Preguntan lo básico y no vuelven.",
   },
   {
-    title: "Catálogo Digital",
+    id: "02",
+    tag: "TU TIEMPO",
+    title: "Contestás las mismas preguntas todos los días",
     description:
-      "Plataforma de productos sincronizada. Cada negocio la personaliza a su marca, pero el motor ya está construido y testeado.",
-    gradient: "from-purple-500/20 to-pink-600/20",
-    icon: "ShoppingBag",
+      "Precio, horarios, turnos, pedidos, “¿cómo se empieza?”. Ese tiempo debería estar en el negocio, no en el chat.",
   },
   {
-    title: "Gestión de Clientes",
+    id: "03",
+    tag: "OPERACIÓN",
+    title: "Todo vive en planillas, WhatsApp y la cabeza de alguien",
     description:
-      "CRM con historial, preferencias y comunicación. Reutilizamos la arquitectura para que cada cliente nuevo no empiece de cero.",
-    gradient: "from-indigo-500/20 to-violet-600/20",
-    icon: "Users",
+      "Cuando crece la demanda, se rompe el orden: turnos dobles, pedidos perdidos, clientes que no vuelven.",
   },
   {
-    title: "Gestión de Pedidos",
+    id: "04",
+    tag: "SE PIERDE",
+    title: "La publicidad manda tráfico… a un lugar que no convierte",
     description:
-      "Panel para recibir, gestionar y despachar. Construido sobre nuestra base de procesos, no desde un proyecto aislado.",
-    gradient: "from-cyan-500/20 to-blue-600/20",
-    icon: "Package",
-  },
-  {
-    title: "Aplicaciones Mobile",
-    description:
-      "Apps nativas que heredan componentes de proyectos anteriores. React Native + Expo sobre arquitectura que ya funciona.",
-    gradient: "from-emerald-500/20 to-teal-600/20",
-    icon: "Smartphone",
-  },
-  {
-    title: "Automatización",
-    description:
-      "Flujos inteligentes que conectan tus sistemas. Integraciones pre-armadas que adaptamos, no reinventamos.",
-    gradient: "from-amber-500/20 to-orange-600/20",
-    icon: "Zap",
+      "Instagram o una web genérica no cierran. El que compara elige a quien le muestra claro el producto y el siguiente paso.",
   },
 ] as const
 
+/** Qué hacemos — 3 vías, no 6 cards densas. */
+export const SERVICES = [
+  {
+    title: "Tumo — sistema de módulos",
+    description:
+      "Producto principal a la venta: turnos, pedidos, catálogo, clientes y más. Activás lo que necesitás; no armamos todo de cero cada vez.",
+    gradient: "from-violet-500/20 to-purple-600/20",
+    icon: "Layers",
+  },
+  {
+    title: "Software a medida",
+    description:
+      "Cuando el negocio no entra en un módulo: apps, paneles, automatizaciones y flujos propios. Lo armamos para tu operación.",
+    gradient: "from-indigo-500/20 to-violet-600/20",
+    icon: "Code2",
+  },
+  {
+    title: "Webs y presencia digital",
+    description:
+      "Sitios claros que explican qué hacés y cómo te contactan. Sin ruido, pensados para celular y para cerrar la conversación.",
+    gradient: "from-cyan-500/20 to-blue-600/20",
+    icon: "Globe",
+  },
+] as const
+
+/**
+ * Proyectos EN.
+ * Tumo primero (producto vendible). Resto = productos propios + trabajos a medida.
+ */
 export const PROJECTS = [
+  {
+    id: "tumo",
+    name: "Tumo",
+    category: "Producto · Sistema de módulos",
+    featured: true,
+    description:
+      "Nuestra plataforma multi-tenant: el negocio elige módulos (turnos, pedidos, catálogo, fidelización…) y opera con su marca. Es lo que vendemos como sistema reutilizable — no una app suelta por cliente.",
+    tech: ["Next.js", "PostgreSQL", "Supabase", "TypeScript"],
+    features: ["Módulos activables", "Multi-negocio", "Admin + público", "Billing por módulo"],
+  },
+  {
+    id: "tubi",
+    name: "Tubi",
+    category: "Producto · Movilidad",
+    featured: false,
+    description:
+      "Viajes compartidos Tandil ↔ CABA y corredores cercanos. Producto propio del estudio: matching, reservas y ops de ruta.",
+    tech: ["Next.js", "Supabase", "TypeScript"],
+    features: ["Rutas", "Reservas", "Ops internas"],
+  },
   {
     id: "lifty",
     name: "Lifty",
-    category: "Aplicación de Movilidad",
+    category: "Producto · Movilidad urbana",
+    featured: false,
     description:
-      "Plataforma completa de transporte con app para pasajeros, conductor y panel de administración. Matching en tiempo real, pagos integrados y tracking GPS.",
-    tech: ["Expo", "React Native", "Supabase", "Mercado Pago", "Google Maps"],
-    features: ["Mapa en vivo", "Viajes programados", "Panel Admin", "Pagos integrados"],
+      "Suite de movilidad: app conductor/pasajero, admin y módulos de tránsito municipal. Matching, docs, pagos y paneles de operación.",
+    tech: ["Expo", "React Native", "Railway", "Supabase"],
+    features: ["App mobile", "Admin PWA", "Tránsito", "Push"],
   },
   {
-    id: "saas-fidelizacion",
-    name: "Sistema de Fidelización",
-    category: "SaaS B2B",
+    id: "soleph",
+    name: "Soleph",
+    category: "A medida · Fotografía",
+    featured: false,
     description:
-      "Plataforma SaaS para programas de fidelización. Gestión de clientes, puntos, beneficios, campañas y analíticas avanzadas con segmentación inteligente.",
-    tech: ["Next.js", "Supabase", "TypeScript", "Charts", "PostgreSQL"],
-    features: ["Dashboard Analytics", "Segmentación", "Campañas", "Beneficios"],
+      "Portfolio + tienda de fotos de evento: vitrina con marca de agua, packs, carrito y admin de subida. Hecho a la medida del estudio fotográfico.",
+    tech: ["Astro", "Supabase", "Vercel"],
+    features: ["Álbumes", "Vitrina WM", "Carrito", "Admin"],
   },
   {
-    id: "anastasia",
-    name: "Anastasia Shop",
-    category: "E-commerce Mobile",
+    id: "juanitacocina",
+    name: "Juanitacocina",
+    category: "A medida · Pastelería",
+    featured: false,
     description:
-      "Rediseño completo de experiencia de compra mobile. Checkout optimizado, navegación fluida y performance superior para conversión.",
-    tech: ["Next.js", "React", "TailwindCSS", "Stripe", "Vercel"],
-    features: ["Checkout optimizado", "PWA", "Responsive", "SEO"],
+      "Web de marca + tienda de encargos + admin de productos, horarios y cursos. El pedido llega por WhatsApp con el detalle completo.",
+    tech: ["Next.js", "Postgres", "Supabase Storage"],
+    features: ["Tienda", "Admin", "Cursos", "WhatsApp"],
+  },
+  {
+    id: "makeka",
+    name: "La Makeka",
+    category: "A medida · Agro",
+    featured: false,
+    description:
+      "Gestión ganadera / operación de campo en web app. Datos del día a día sin depender solo de planillas sueltas.",
+    tech: ["Next.js", "Supabase"],
+    features: ["Inventario", "Ops", "Cloud"],
+  },
+  {
+    id: "sierras",
+    name: "Depto. de las Sierras",
+    category: "A medida · Turismo",
+    featured: false,
+    description:
+      "Reservas y ops de un alojamiento: calendario, disponibilidad y flujo de consulta pensado para el dueño y el huésped.",
+    tech: ["Next.js", "Supabase", "PWA"],
+    features: ["Reservas", "Calendario", "Mobile"],
+  },
+  {
+    id: "sol-labaroni",
+    name: "Sol Labaroni",
+    category: "A medida · Salud / bienestar",
+    featured: false,
+    description:
+      "Presencia + turnos para masoterapia: la persona reserva o escribe sin fricción, con la marca del profesional.",
+    tech: ["Web", "Turnos"],
+    features: ["Turnos", "WhatsApp", "Marca"],
+  },
+  {
+    id: "zerrant",
+    name: "Zerrant / Nodo Serrano",
+    category: "Producto · Inventario",
+    featured: false,
+    description:
+      "Inventario con claim y flujo de trabajo para el equipo. Operación interna, no vitrina de marketing.",
+    tech: ["Next.js", "Linear"],
+    features: ["Inventario", "Claim", "Ops"],
+  },
+  {
+    id: "carri",
+    name: "Carri",
+    category: "A medida · Gastronomía",
+    featured: false,
+    description:
+      "Operación gastronómica digital: carta, pedidos y panel alineados al local (familia de productos tipo Tumo / food).",
+    tech: ["Next.js", "Postgres"],
+    features: ["Carta", "Pedidos", "Admin"],
   },
 ] as const
 
@@ -95,27 +185,94 @@ export const TECH_STACK = [
   { name: "Vercel", category: "Deploy" },
 ] as const
 
+/** Proceso corto: el reloj arranca cuando pasa el contenido (como Maguiceri). */
 export const PROCESS = [
-  { step: "01", title: "Descubrimiento", description: "Entendemos tu negocio, objetivos y usuarios.", duration: "Semana 1" },
-  { step: "02", title: "UX/UI Design", description: "Diseñamos la experiencia y la interfaz completa.", duration: "Semana 2-3" },
-  { step: "03", title: "Arquitectura", description: "Definimos la infraestructura y stack técnico.", duration: "Semana 3" },
-  { step: "04", title: "Desarrollo", description: "Construimos el producto con iteraciones semanales.", duration: "Semana 4-12" },
-  { step: "05", title: "Testing", description: "QA integral: funcional, performance y seguridad.", duration: "Semana 12-13" },
-  { step: "06", title: "Deploy", description: "Lanzamiento a producción con monitoreo activo.", duration: "Semana 13" },
-  { step: "07", title: "Soporte", description: "Mantenimiento, mejoras y evolución continua.", duration: "Continuo" },
+  {
+    step: "01",
+    title: "Hablamos",
+    description:
+      "Entendemos el negocio, el dolor y si alcanza un módulo de Tumo, un a medida o una web clara.",
+    duration: "1 charla",
+  },
+  {
+    step: "02",
+    title: "Pasás el contenido",
+    description:
+      "Textos, fotos, precios, horarios, logo. Ahí arranca el reloj de verdad: con eso ya nos ponemos a trabajar.",
+    duration: "Vos",
+  },
+  {
+    step: "03",
+    title: "Diseño + build",
+    description:
+      "Armamos la experiencia y el sistema. Iteramos poco y claro: preferimos algo usable pronto a un deck eterno.",
+    duration: "Nosotros",
+  },
+  {
+    step: "04",
+    title: "Online",
+    description:
+      "Queda en producción, con tu dominio cuando corresponda. Si mañana querés seguir con otra persona, el producto es tuyo.",
+    duration: "Entrega",
+  },
 ] as const
 
+/** Valores de referencia (Propuesta mantenimiento web — Agosto 2026). Modalidad a demanda, sin abono mensual. */
+export const MAINTENANCE = {
+  currency: "USD",
+  rangeLabel: "USD 30 – 70",
+  modeNote:
+    "Mantenimiento a demanda: solo se cobra cuando pedís un trabajo. Sin abono mensual obligatorio. Cada pedido se cotiza antes de arrancar.",
+  excludes: "No incluye SEO avanzado ni desarrollo técnico personalizado a gran escala.",
+  plans: [
+    {
+      id: "simple",
+      name: "Cambios simples",
+      price: 30,
+      priceLabel: "USD 30",
+      tagline: "Ajustes puntuales",
+      description:
+        "Modificación de textos, reemplazo de imágenes, actualización de datos (horarios, precios, etc.) y corrección de enlaces.",
+      icon: "FileText",
+      highlighted: false,
+    },
+    {
+      id: "medio",
+      name: "Cambios medios",
+      price: 45,
+      priceLabel: "USD 45",
+      tagline: "El más pedido",
+      description:
+        "Carga de nuevas secciones, ajustes de diseño, configuración básica de plugins (formularios, seguridad o backups) y optimización básica de contenido.",
+      icon: "Layers",
+      highlighted: true,
+    },
+    {
+      id: "complejo",
+      name: "Cambios complejos",
+      price: 70,
+      priceLabel: "USD 70",
+      tagline: "Funcionalidad nueva",
+      description:
+        "Desarrollo de nuevas funcionalidades, integraciones externas, rediseño de secciones completas y problemas técnicos avanzados.",
+      icon: "Wrench",
+      highlighted: false,
+    },
+  ],
+} as const
+
 export const CONTACT = {
-  whatsapp: "+5492266515776",
+  /** E.164 sin +. Completar número real EN si difiere. */
+  whatsapp: "5492266515776",
   email: "estudionomade2025@gmail.com",
-  github: "https://github.com/martiyaquinta",
+  github: "https://github.com/Estudio-Nomade",
   linkedin: "#",
 } as const
 
 export const SITE = {
   name: "Estudio Nómade",
-  tagline: "Diseño y código en movimiento",
+  tagline: "Software claro para negocios que ya operan",
   description:
-    "Plataforma de soluciones digitales para PyMEs. Ayudamos a vender más, ahorrar tiempo y fidelizar clientes con software reutilizable y sólido.",
+    "Estudio de software en Tandil. Vendemos Tumo (sistema de módulos) y hacemos a medida: apps, webs y automatización. Menos ruido, más operación.",
   url: "https://estudionomade.com",
 }

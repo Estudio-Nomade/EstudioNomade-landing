@@ -91,7 +91,7 @@ export function Navbar() {
           <motion.button
             onClick={() =>
               window.open(
-                `https://wa.me/${CONTACT.whatsapp}`,
+                `https://wa.me/${CONTACT.whatsapp.replace(/\D/g, "")}`,
                 "_blank"
               )
             }
@@ -146,7 +146,7 @@ export function Navbar() {
                 <button
                   onClick={() =>
                     window.open(
-                      `https://wa.me/${CONTACT.whatsapp}`,
+                      `https://wa.me/${CONTACT.whatsapp.replace(/\D/g, "")}`,
                       "_blank"
                     )
                   }
