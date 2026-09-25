@@ -80,16 +80,19 @@ export function Hero() {
         />
       ))}
 
-      <div className="section-container w-full pt-[8.75rem] pb-24 sm:pt-36 md:pt-40 md:pb-28">
+      <div className="section-container w-full pt-[10.5rem] pb-24 sm:pt-40 md:pt-44 md:pb-28">
         {/* Espacio a la derecha en desktop para la mascota parked grande */}
         <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
           <motion.div
-            className="relative z-[1] flex flex-col gap-7"
+            className="relative z-[1] flex flex-col gap-6 sm:gap-7"
             variants={stagger}
             initial="initial"
             animate="animate"
           >
-            <motion.div variants={fadeUp} className="flex items-center gap-3">
+            <motion.div
+              variants={fadeUp}
+              className="mt-1 flex items-center gap-3 sm:mt-0"
+            >
               <span className="inline-flex items-center gap-2 rounded-full border border-violet-400/25 bg-violet-500/10 px-3 py-1.5 text-[11px] font-semibold tracking-[0.18em] text-violet-200/90 uppercase">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-300 shadow-[0_0_8px_rgba(196,181,253,0.9)]" />
                 Estudio · Tandil
