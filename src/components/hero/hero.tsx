@@ -8,7 +8,6 @@ import {
   useReducedMotion,
 } from "framer-motion"
 import { ChevronDown, ArrowRight } from "lucide-react"
-import Image from "next/image"
 import { CONTACT, SITE } from "@/constants"
 
 const stagger = {
@@ -46,31 +45,6 @@ export function Hero() {
     offset: ["start start", "end start"],
   })
 
-  const logoY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    reduceMotion ? [0, 0] : [0, -140]
-  )
-  const logoX = useTransform(
-    scrollYProgress,
-    [0, 1],
-    reduceMotion ? [0, 0] : [0, 48]
-  )
-  const logoRotate = useTransform(
-    scrollYProgress,
-    [0, 1],
-    reduceMotion ? [0, 0] : [0, 14]
-  )
-  const logoScale = useTransform(
-    scrollYProgress,
-    [0, 1],
-    reduceMotion ? [1, 1] : [1, 0.82]
-  )
-  const logoOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.55, 1],
-    reduceMotion ? [1, 1, 1] : [1, 0.75, 0.2]
-  )
   const hintOpacity = useTransform(scrollYProgress, [0, 0.18], [1, 0])
 
   const handleScroll = (href: string) => {
@@ -106,8 +80,9 @@ export function Hero() {
         />
       ))}
 
-      <div className="section-container w-full pt-[7.5rem] pb-16 md:pt-36 md:pb-20">
-        <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
+      <div className="section-container w-full pt-[7.5rem] pb-24 md:pt-36 md:pb-28">
+        {/* Espacio a la derecha en desktop para la mascota fija */}
+        <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10">
           <motion.div
             className="flex flex-col gap-7"
             variants={stagger}
@@ -185,81 +160,23 @@ export function Hero() {
             </motion.p>
           </motion.div>
 
-          {/* Logo flotante sin fondo — se mueve con el scroll */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.86, rotate: -4, filter: "blur(12px)" }}
-            animate={{ opacity: 1, scale: 1, rotate: 0, filter: "blur(0px)" }}
-            transition={{ duration: 1.1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="relative mx-auto flex w-full max-w-[320px] items-center justify-center lg:max-w-none"
-            style={{
-              y: logoY,
-              x: logoX,
-              rotate: logoRotate,
-              scale: logoScale,
-              opacity: logoOpacity,
-            }}
-          >
-            <div className="pointer-events-none absolute inset-0 -m-10 rounded-full bg-violet-600/15 blur-[80px] animate-pulse-glow" />
-            <motion.div
-              className="relative aspect-square w-full max-w-[280px] sm:max-w-[320px]"
-              whileHover={reduceMotion ? undefined : { scale: 1.04, rotate: 2 }}
-              transition={{ type: "spring", stiffness: 220, damping: 18 }}
-            >
-              <Image
-                src="/logo-clear.png"
-                alt="Logo Estudio Nómade"
-                fill
-                sizes="320px"
-                className="object-contain drop-shadow-[0_0_40px_rgba(167,139,250,0.45)]"
-                priority
-              />
-              <span
-                className="sparkle-mark"
-                style={{
-                  top: "14%",
-                  left: "18%",
-                  width: 14,
-                  height: 14,
-                  animationDelay: "0.2s",
-                }}
-                aria-hidden
-              />
-              <span
-                className="sparkle-mark"
-                style={{
-                  top: "22%",
-                  right: "16%",
-                  left: "auto",
-                  width: 18,
-                  height: 18,
-                  animationDelay: "1s",
-                }}
-                aria-hidden
-              />
-              <span
-                className="sparkle-mark"
-                style={{
-                  bottom: "20%",
-                  left: "28%",
-                  top: "auto",
-                  width: 12,
-                  height: 12,
-                  animationDelay: "1.8s",
-                }}
-                aria-hidden
-              />
-            </motion.div>
-
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.1, duration: 0.6 }}
-              className="absolute -bottom-10 left-1/2 w-max -translate-x-1/2 text-center text-[11px] font-medium tracking-[0.28em] text-violet-200/50 uppercase"
-            >
-              concepto estudio nómade
-            </motion.p>
-          </motion.div>
+          {/* Columna vacía en desktop: la mascota fija ocupa este espacio en el hero */}
+          <div
+            className="pointer-events-none hidden min-h-[280px] lg:block"
+            aria-hidden
+          />
         </div>
+
+        {/* Descripción bajo la mascota en mobile (la fija también la muestra y se desvanece) */}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.55 }}
+          className="mx-auto mt-6 max-w-sm text-center text-sm leading-relaxed text-violet-100/55 lg:hidden"
+        >
+          Ordenamos el día a día del negocio: turnos, pedidos y clientes, sin
+          tanto lío.
+        </motion.p>
       </div>
 
       <motion.div

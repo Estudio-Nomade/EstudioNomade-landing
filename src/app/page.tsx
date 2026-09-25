@@ -7,11 +7,13 @@ import Projects from "@/components/projects/projects"
 import { CTA } from "@/components/cta/cta"
 import { Footer } from "@/components/footer/footer"
 import { ScrollProgress } from "@/components/effects/scroll-progress"
+import { CompanionMascot } from "@/components/effects/companion-mascot"
 
 export default function Home() {
   return (
     <>
       <ScrollProgress />
+      <CompanionMascot />
       <Navbar />
       <main>
         <Hero />
