@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react"
 import Image from "next/image"
 import { NAV_LINKS, CONTACT } from "@/constants"
 import { cn } from "@/lib/utils"
+import { NAV_MENU_EVENT } from "@/components/effects/companion-mascot"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -26,8 +27,14 @@ export function Navbar() {
     } else {
       document.body.style.overflow = ""
     }
+    window.dispatchEvent(
+      new CustomEvent(NAV_MENU_EVENT, { detail: { open: isOpen } })
+    )
     return () => {
       document.body.style.overflow = ""
+      window.dispatchEvent(
+        new CustomEvent(NAV_MENU_EVENT, { detail: { open: false } })
+      )
     }
   }, [isOpen])
 
@@ -126,7 +133,7 @@ export function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden border-t border-violet-400/10 bg-[#030308]/98 lg:hidden"
+            className="relative z-[110] overflow-hidden border-t border-violet-400/10 bg-[#030308]/98 lg:hidden"
           >
             <ul className="section-container flex flex-col gap-1 py-4 pb-6">
               {NAV_LINKS.map((link, i) => (
