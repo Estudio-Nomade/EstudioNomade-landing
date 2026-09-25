@@ -4,89 +4,139 @@ import { useEffect, useState } from "react"
 import {
   motion,
   useMotionValue,
-  useScroll,
   useSpring,
+  useScroll,
   useTransform,
   useReducedMotion,
 } from "framer-motion"
 import Image from "next/image"
 
+export const NAV_MENU_EVENT = "en-nav-menu"
+
 /**
- * Mascota del logo: arranca grande en el hero (derecha) y al scrollear
- * se achica y se queda fija abajo a la derecha, acompañando toda la web.
+ * Mascota que sigue el cursor / dedo.
+ * Se esconde cuando el menú hamburguesa está abierto.
  */
 export function CompanionMascot() {
   const reduceMotion = useReducedMotion()
   const [ready, setReady] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const [vw, setVw] = useState(1280)
   const [vh, setVh] = useState(800)
 
+  const rawX = useMotionValue(0)
+  const rawY = useMotionValue(0)
+
+  const springCfg = reduceMotion
+    ? { stiffness: 500, damping: 40, mass: 0.4 }
+    : { stiffness: 140, damping: 22, mass: 0.55 }
+
+  const x = useSpring(rawX, springCfg)
+  const y = useSpring(rawY, springCfg)
+
+  const { scrollYProgress } = useScroll()
+  const t = useSpring(scrollYProgress, {
+    stiffness: reduceMotion ? 400 : 100,
+    damping: 28,
+    mass: 0.5,
+  })
+
+  const isNarrow = vw < 640
+  const isMobile = vw < 1024
+
+  // Grande en hero → más chico al bajar (sigue al cursor en ambos casos)
+  const size = useTransform(
+    t,
+    [0, 0.15, 0.35],
+    isNarrow ? [150, 110, 78] : isMobile ? [180, 130, 88] : [260, 160, 100]
+  )
+
+  const half = useTransform(size, (s) => s / 2)
+  const left = useTransform([x, half], ([px, h]) => (px as number) - (h as number))
+  const top = useTransform([y, half], ([py, h]) => (py as number) - (h as number))
+
+  const descOpacity = useTransform(t, [0, 0.12, 0.22], [1, 0.35, 0])
+  const glow = useTransform(t, [0, 0.3], [0.45, 0.25])
+
+  const bob = useMotionValue(0)
+
   useEffect(() => {
     const measure = () => {
-      setVw(window.innerWidth)
-      setVh(window.innerHeight)
+      const w = window.innerWidth
+      const h = window.innerHeight
+      setVw(w)
+      setVh(h)
+      // posición inicial: derecha del hero
+      rawX.set(w * (w < 1024 ? 0.72 : 0.78))
+      rawY.set(h * (w < 1024 ? 0.62 : 0.48))
     }
     measure()
     setReady(true)
     window.addEventListener("resize", measure, { passive: true })
     return () => window.removeEventListener("resize", measure)
+  }, [rawX, rawY])
+
+  useEffect(() => {
+    const onMenu = (e: Event) => {
+      const open = Boolean((e as CustomEvent<{ open: boolean }>).detail?.open)
+      setMenuOpen(open)
+    }
+    window.addEventListener(NAV_MENU_EVENT, onMenu)
+    return () => window.removeEventListener(NAV_MENU_EVENT, onMenu)
   }, [])
 
-  const { scrollYProgress } = useScroll()
-
-  // 0 → hero pleno; 1 → ya pasó el primer pantallazo
-  const t = useSpring(scrollYProgress, {
-    stiffness: reduceMotion ? 400 : 120,
-    damping: reduceMotion ? 40 : 28,
-    mass: 0.6,
-  })
-
-  const isMobile = vw < 1024
-  const isNarrow = vw < 640
-
-  // Tamaño: grande en hero → chip compañero
-  const size = useTransform(
-    t,
-    [0, 0.12, 0.28],
-    isNarrow ? [168, 120, 72] : isMobile ? [200, 140, 80] : [300, 180, 96]
-  )
-
-  // Posición: derecha del hero → esquina inferior derecha
-  const right = useTransform(
-    t,
-    [0, 0.18, 0.32],
-    isMobile
-      ? [vw * 0.5 - (isNarrow ? 84 : 100), 20, 14]
-      : [Math.max(48, (vw - 1280) / 2 + 40), 28, 22]
-  )
-
-  const bottom = useTransform(
-    t,
-    [0, 0.12, 0.3],
-    isMobile
-      ? [vh * 0.12, 28, 18]
-      : [vh * 0.5 - 160, vh * 0.18, 28]
-  )
-
-  // Idle bob + tilt suave con el scroll
-  const bob = useMotionValue(0)
   useEffect(() => {
-    if (reduceMotion) return
+    if (menuOpen) return
+
+    const clamp = (v: number, min: number, max: number) =>
+      Math.min(max, Math.max(min, v))
+
+    const follow = (clientX: number, clientY: number) => {
+      const pad = 40
+      rawX.set(clamp(clientX, pad, window.innerWidth - pad))
+      rawY.set(clamp(clientY, pad + 56, window.innerHeight - pad))
+    }
+
+    const onPointer = (e: PointerEvent) => {
+      // no pelear con el scroll de barra / drag de UI
+      if (e.pointerType === "mouse" || e.buttons === 0 || e.pointerType === "touch") {
+        follow(e.clientX, e.clientY)
+      }
+    }
+
+    const onTouch = (e: TouchEvent) => {
+      const touch = e.touches[0]
+      if (!touch) return
+      follow(touch.clientX, touch.clientY)
+    }
+
+    window.addEventListener("pointermove", onPointer, { passive: true })
+    window.addEventListener("touchmove", onTouch, { passive: true })
+    // primer toque también mueve
+    window.addEventListener("pointerdown", onPointer, { passive: true })
+
+    return () => {
+      window.removeEventListener("pointermove", onPointer)
+      window.removeEventListener("touchmove", onTouch)
+      window.removeEventListener("pointerdown", onPointer)
+    }
+  }, [menuOpen, rawX, rawY])
+
+  useEffect(() => {
+    if (reduceMotion || menuOpen) {
+      bob.set(0)
+      return
+    }
     let frame = 0
     let raf = 0
     const loop = () => {
-      frame += 0.035
-      bob.set(Math.sin(frame) * 6)
+      frame += 0.04
+      bob.set(Math.sin(frame) * 5)
       raf = requestAnimationFrame(loop)
     }
     raf = requestAnimationFrame(loop)
     return () => cancelAnimationFrame(raf)
-  }, [bob, reduceMotion])
-
-  const rotate = useTransform(t, [0, 0.2, 0.5, 1], [0, -4, 3, -2])
-  const descOpacity = useTransform(t, [0, 0.1, 0.18], [1, 0.4, 0])
-  const descY = useTransform(t, [0, 0.18], [0, 16])
-  const glow = useTransform(t, [0, 0.3], [0.5, 0.28])
+  }, [bob, reduceMotion, menuOpen])
 
   if (!ready) return null
 
@@ -94,20 +144,23 @@ export function CompanionMascot() {
     <motion.div
       className="pointer-events-none fixed z-[60] flex flex-col items-center"
       style={{
-        right,
-        bottom,
+        left,
+        top,
         width: size,
       }}
       initial={{ opacity: 0, scale: 0.85 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+      animate={{
+        opacity: menuOpen ? 0 : 1,
+        scale: menuOpen ? 0.7 : 1,
+        y: menuOpen ? 24 : 0,
+      }}
+      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
       aria-hidden
     >
       <motion.div
-        className="relative w-full shrink-0"
+        className="relative shrink-0"
         style={{
-          y: reduceMotion ? 0 : bob,
-          rotate: reduceMotion ? 0 : rotate,
+          y: reduceMotion || menuOpen ? 0 : bob,
           height: size,
           width: size,
         }}
@@ -120,7 +173,7 @@ export function CompanionMascot() {
           src="/logo-clear.png"
           alt=""
           fill
-          sizes="(max-width: 640px) 180px, (max-width: 1024px) 220px, 320px"
+          sizes="(max-width: 640px) 160px, (max-width: 1024px) 200px, 280px"
           className="object-contain drop-shadow-[0_0_36px_rgba(167,139,250,0.55)]"
           priority
         />
@@ -148,8 +201,8 @@ export function CompanionMascot() {
       </motion.div>
 
       <motion.p
-        style={{ opacity: descOpacity, y: descY }}
-        className="mt-3 max-w-[15rem] text-center text-[11px] leading-snug font-medium tracking-wide text-violet-100/70 sm:max-w-[17rem] sm:text-xs"
+        style={{ opacity: descOpacity }}
+        className="mt-2 max-w-[14rem] text-center text-[11px] leading-snug font-medium tracking-wide text-violet-100/70 sm:max-w-[16rem] sm:text-xs"
       >
         Ordenamos el día a día del negocio: turnos, pedidos y clientes, sin
         tanto lío.
