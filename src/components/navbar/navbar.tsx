@@ -47,18 +47,17 @@ export function Navbar() {
   }
 
   return (
-    <motion.header
-      initial={{ y: -28, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+    <header
       className={cn(
-        "fixed top-0 right-0 left-0 z-[100] border-b transition-all duration-300",
+        /* Sin transform de Framer: si no, al scrollear queda un hueco arriba */
+        "fixed inset-x-0 top-0 z-[100] border-b transition-[background-color,border-color,box-shadow] duration-300",
+        "pt-[env(safe-area-inset-top,0px)]",
         scrolled || isOpen
-          ? "border-violet-400/15 bg-[#030308]/90 shadow-lg shadow-violet-950/40 backdrop-blur-xl"
-          : "border-white/[0.05] bg-[#030308]/70 backdrop-blur-md"
+          ? "border-violet-400/15 bg-[#030308]/95 shadow-lg shadow-violet-950/40 backdrop-blur-xl"
+          : "border-white/[0.05] bg-[#030308]/85 backdrop-blur-md"
       )}
     >
-      <nav className="section-container flex h-16 items-center justify-between gap-3 sm:h-[4.25rem]">
+      <nav className="section-container flex h-14 items-center justify-between gap-3 sm:h-16">
         <a
           href="#"
           className="group relative z-[101] flex min-w-0 shrink-0 items-center gap-2.5 sm:gap-3"
@@ -170,6 +169,6 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   )
 }
