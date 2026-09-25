@@ -179,7 +179,7 @@ export function CompanionMascot() {
 
   return (
     <motion.div
-      className="pointer-events-none fixed z-[60]"
+      className="pointer-events-none fixed z-[90]"
       style={{
         left,
         top,
