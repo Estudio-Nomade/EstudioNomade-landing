@@ -60,13 +60,13 @@ export function Navbar() {
             window.scrollTo({ top: 0, behavior: "smooth" })
           }}
         >
-          <span className="logo-frame animate-logo-breathe relative h-10 w-10 shrink-0 overflow-hidden rounded-xl sm:h-11 sm:w-11">
+          <span className="logo-frame animate-logo-breathe relative h-10 w-10 shrink-0 sm:h-11 sm:w-11">
             <Image
-              src="/logo.png"
+              src="/logo-clear.png"
               alt="Estudio Nómade"
               width={44}
               height={44}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110"
               priority
             />
             <span
