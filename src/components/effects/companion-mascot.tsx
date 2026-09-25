@@ -68,23 +68,23 @@ export function CompanionMascot() {
   const parkPos = (w: number, h: number) => {
     const { park } = sizesFor(w)
     if (w < 1024) {
-      // mobile/tablet: arriba-derecha, no tapa el badge
+      // mobile: derecha, debajo del header sticky (~56px)
       return {
         px: w - park * 0.55 - 12,
-        py: 96 + park * 0.45,
+        py: 72 + park * 0.45,
       }
     }
     // desktop: columna derecha del hero, a la altura del H1
     const contentMax = 1280
     const sidePad = Math.max(32, (w - contentMax) / 2)
-    // centro de la columna derecha del grid ~ 1.2fr | 0.8fr sobre max-w-5xl (1024)
     const gridMax = 1024
-    const gridLeft = sidePad + Math.max(0, (Math.min(w, contentMax) - gridMax) / 2)
+    const gridLeft =
+      sidePad + Math.max(0, (Math.min(w, contentMax) - gridMax) / 2)
     const col1 = gridMax * (1.2 / 2)
     const col2Center = gridLeft + col1 + (gridMax - col1) * 0.5
     return {
       px: Math.min(w - park * 0.5 - 24, col2Center),
-      py: Math.min(h * 0.48, 340),
+      py: Math.min(h * 0.42, 300),
     }
   }
 

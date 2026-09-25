@@ -8,13 +8,16 @@ import { NAV_LINKS, CONTACT } from "@/constants"
 import { cn } from "@/lib/utils"
 import { NAV_MENU_EVENT } from "@/components/effects/companion-mascot"
 
+/**
+ * Barra sticky (no fixed flotante): queda arriba de todo sin hueco al scrollear.
+ */
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 12)
+      setScrolled(window.scrollY > 8)
     }
     handleScroll()
     window.addEventListener("scroll", handleScroll, { passive: true })
@@ -48,16 +51,32 @@ export function Navbar() {
 
   return (
     <header
+      style={{
+        position: "sticky",
+        top: 0,
+        left: 0,
+        right: 0,
+        margin: 0,
+        transform: "none",
+      }}
       className={cn(
-        /* Sin transform de Framer: si no, al scrollear queda un hueco arriba */
-        "fixed inset-x-0 top-0 z-[100] border-b transition-[background-color,border-color,box-shadow] duration-300",
-        "pt-[env(safe-area-inset-top,0px)]",
+        "relative z-[100] w-full border-b",
+        /* Fondo sólido: no se ve contenido/estrellas “en el medio” */
+        "bg-[#030308]",
         scrolled || isOpen
-          ? "border-violet-400/15 bg-[#030308]/95 shadow-lg shadow-violet-950/40 backdrop-blur-xl"
-          : "border-white/[0.05] bg-[#030308]/85 backdrop-blur-md"
+          ? "border-violet-400/20 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.85)]"
+          : "border-white/[0.06]"
       )}
     >
-      <nav className="section-container flex h-14 items-center justify-between gap-3 sm:h-16">
+      {/* raya de progreso integrada al borde superior de la barra */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[2px] overflow-hidden"
+        aria-hidden
+      >
+        <div id="en-scroll-progress-track" className="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-violet-300 via-fuchsia-400 to-purple-500" />
+      </div>
+
+      <nav className="section-container relative flex h-14 items-center justify-between gap-3 sm:h-16">
         <a
           href="#"
           className="group relative z-[101] flex min-w-0 shrink-0 items-center gap-2.5 sm:gap-3"
@@ -66,17 +85,17 @@ export function Navbar() {
             window.scrollTo({ top: 0, behavior: "smooth" })
           }}
         >
-          <span className="logo-frame animate-logo-breathe relative h-10 w-10 shrink-0 sm:h-11 sm:w-11">
+          <span className="logo-frame animate-logo-breathe relative h-9 w-9 shrink-0 sm:h-10 sm:w-10">
             <Image
               src="/logo-clear.png"
               alt="Estudio Nómade"
-              width={44}
-              height={44}
+              width={40}
+              height={40}
               className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110"
               priority
             />
             <span
-              className="pointer-events-none absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-violet-300/90 shadow-[0_0_10px_rgba(196,181,253,0.9)]"
+              className="pointer-events-none absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-violet-300/90 shadow-[0_0_10px_rgba(196,181,253,0.9)]"
               aria-hidden
             />
           </span>
@@ -132,7 +151,7 @@ export function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-[110] overflow-hidden border-t border-violet-400/10 bg-[#030308]/98 lg:hidden"
+            className="relative z-[110] overflow-hidden border-t border-violet-400/10 bg-[#030308] lg:hidden"
           >
             <ul className="section-container flex flex-col gap-1 py-4 pb-6">
               {NAV_LINKS.map((link, i) => (
