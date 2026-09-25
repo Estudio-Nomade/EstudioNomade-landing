@@ -42,7 +42,8 @@ export function Hero() {
       <div className="pointer-events-none absolute top-[-30%] left-[-10%] h-[600px] w-[600px] rounded-full bg-violet-500/[0.06] blur-[120px]" />
       <div className="pointer-events-none absolute right-[-5%] bottom-[-20%] h-[500px] w-[500px] rounded-full bg-purple-600/[0.04] blur-[120px]" />
 
-      <div className="section-container w-full pt-28 pb-16 md:pt-32 md:pb-20">
+      {/* pt extra: navbar fija h-16 / sm h-[4.25rem] — el título no queda debajo de la barra */}
+      <div className="section-container w-full pt-[7.5rem] pb-16 md:pt-36 md:pb-20">
         <div className="mx-auto max-w-3xl">
           <motion.div
             className="flex flex-col gap-7"

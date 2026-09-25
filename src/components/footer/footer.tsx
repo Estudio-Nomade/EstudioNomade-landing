@@ -47,14 +47,16 @@ export function Footer() {
                 window.scrollTo({ top: 0, behavior: "smooth" })
               }}
             >
-              <Image
-                src="/logo-estudionomade.svg"
-                alt={SITE.name}
-                width={28}
-                height={28}
-                className="opacity-80"
-              />
-              <span className="font-display text-sm font-semibold tracking-wider text-white/70">
+              <span className="relative h-8 w-8 overflow-hidden rounded-md border border-white/10 bg-white/[0.04]">
+                <Image
+                  src="/logo-en.png"
+                  alt=""
+                  width={32}
+                  height={32}
+                  className="h-full w-full object-contain p-0.5"
+                />
+              </span>
+              <span className="font-display text-sm font-semibold tracking-wider text-white/80">
                 ESTUDIO NÓMADE
               </span>
             </motion.a>
