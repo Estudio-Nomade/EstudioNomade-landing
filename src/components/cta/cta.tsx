@@ -18,7 +18,7 @@ export function CTA() {
   return (
     <section
       id="cta"
-      className="relative flex min-h-[70vh] items-center justify-center overflow-hidden py-24 md:py-32"
+      className="relative flex items-center justify-center overflow-hidden py-14 md:py-20"
     >
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 animate-pulse-glow rounded-full bg-violet-500/15 blur-[180px]" />

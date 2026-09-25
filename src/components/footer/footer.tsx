@@ -35,7 +35,7 @@ export function Footer() {
     <footer className="relative border-t border-violet-400/10 bg-[#030308]/80 backdrop-blur-sm">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-violet-500/[0.02] to-violet-500/[0.05]" />
 
-      <div className="section-container relative py-16 md:py-20">
+      <div className="section-container relative py-10 md:py-14">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8">
           <div className="flex flex-col gap-4">
             <motion.a
