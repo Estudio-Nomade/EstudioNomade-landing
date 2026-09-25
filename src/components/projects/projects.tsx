@@ -2,6 +2,7 @@
 
 import { useRef } from "react"
 import { motion } from "framer-motion"
+import { ExternalLink } from "lucide-react"
 import { PROJECTS } from "@/constants"
 import { useInView } from "@/hooks"
 
@@ -101,6 +102,17 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
+                {"url" in project && project.url ? (
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 inline-flex items-center gap-2 rounded-full border border-violet-300/25 bg-violet-500/10 px-4 py-2.5 text-sm font-medium text-violet-100 transition-all duration-200 hover:border-violet-300/45 hover:bg-violet-500/20 hover:text-white hover:shadow-[0_0_28px_rgba(139,92,246,0.35)]"
+                  >
+                    Chusmear Tumo
+                    <ExternalLink size={14} className="opacity-80" />
+                  </a>
+                ) : null}
               </div>
             </article>
           ))}

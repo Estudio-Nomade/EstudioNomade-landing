@@ -47,13 +47,13 @@ export function Footer() {
                 window.scrollTo({ top: 0, behavior: "smooth" })
               }}
             >
-              <span className="logo-frame relative h-10 w-10 overflow-hidden rounded-xl">
+              <span className="logo-frame relative h-10 w-10">
                 <Image
-                  src="/logo.png"
+                  src="/logo-clear.png"
                   alt="Estudio Nómade"
                   width={40}
                   height={40}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain"
                 />
               </span>
               <span className="font-display text-sm font-semibold tracking-wider text-white/85">
@@ -64,6 +64,14 @@ export function Footer() {
               {SITE.tagline}. Tumo, a medida y webs — con los colores del
               estudio y sin saturar de info.
             </p>
+            <a
+              href={CONTACT.tumo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-fit text-sm text-violet-300/70 underline-offset-4 transition-colors hover:text-violet-200 hover:underline"
+            >
+              tumo.com.ar
+            </a>
           </div>
 
           <div className="flex flex-col gap-3">

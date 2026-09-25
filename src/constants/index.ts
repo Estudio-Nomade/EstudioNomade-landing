@@ -2,7 +2,6 @@ export const NAV_LINKS = [
   { label: "Problemas", href: "#problemas" },
   { label: "Cómo trabajamos", href: "#proceso" },
   { label: "Proyectos", href: "#proyectos" },
-  { label: "Mantenimiento", href: "#mantenimiento" },
   { label: "Contacto", href: "#cta" },
 ] as const
 
@@ -48,7 +47,7 @@ export const SERVICES = [
     icon: "Layers",
   },
   {
-    title: "Software a medida",
+    title: "Herramientas a medida",
     description:
       "Cuando el negocio no entra en un módulo: apps, paneles, automatizaciones y flujos propios. Lo armamos para tu operación.",
     gradient: "from-indigo-500/20 to-violet-600/20",
@@ -73,6 +72,7 @@ export const PROJECTS = [
     name: "Tumo",
     category: "Producto · Sistema de módulos",
     featured: true,
+    url: "https://www.tumo.com.ar",
     description:
       "Nuestra plataforma multi-tenant: el negocio elige módulos (turnos, pedidos, catálogo, fidelización…) y opera con su marca. Es lo que vendemos como sistema reutilizable — no una app suelta por cliente.",
     tech: ["Next.js", "PostgreSQL", "Supabase", "TypeScript"],
@@ -217,62 +217,19 @@ export const PROCESS = [
   },
 ] as const
 
-/** Valores de referencia (Propuesta mantenimiento web — Agosto 2026). Modalidad a demanda, sin abono mensual. */
-export const MAINTENANCE = {
-  currency: "USD",
-  rangeLabel: "USD 30 – 70",
-  modeNote:
-    "Mantenimiento a demanda: solo se cobra cuando pedís un trabajo. Sin abono mensual obligatorio. Cada pedido se cotiza antes de arrancar.",
-  excludes: "No incluye SEO avanzado ni desarrollo técnico personalizado a gran escala.",
-  plans: [
-    {
-      id: "simple",
-      name: "Cambios simples",
-      price: 30,
-      priceLabel: "USD 30",
-      tagline: "Ajustes puntuales",
-      description:
-        "Modificación de textos, reemplazo de imágenes, actualización de datos (horarios, precios, etc.) y corrección de enlaces.",
-      icon: "FileText",
-      highlighted: false,
-    },
-    {
-      id: "medio",
-      name: "Cambios medios",
-      price: 45,
-      priceLabel: "USD 45",
-      tagline: "El más pedido",
-      description:
-        "Carga de nuevas secciones, ajustes de diseño, configuración básica de plugins (formularios, seguridad o backups) y optimización básica de contenido.",
-      icon: "Layers",
-      highlighted: true,
-    },
-    {
-      id: "complejo",
-      name: "Cambios complejos",
-      price: 70,
-      priceLabel: "USD 70",
-      tagline: "Funcionalidad nueva",
-      description:
-        "Desarrollo de nuevas funcionalidades, integraciones externas, rediseño de secciones completas y problemas técnicos avanzados.",
-      icon: "Wrench",
-      highlighted: false,
-    },
-  ],
-} as const
-
 export const CONTACT = {
   /** E.164 sin +. Completar número real EN si difiere. */
   whatsapp: "5492266515776",
   email: "estudionomade2025@gmail.com",
   github: "https://github.com/Estudio-Nomade",
   linkedin: "#",
+  tumo: "https://www.tumo.com.ar",
 } as const
 
 export const SITE = {
   name: "Estudio Nómade",
-  tagline: "Software claro para negocios que ya operan",
+  tagline: "Orden para negocios que ya operan",
   description:
-    "Estudio de software en Tandil. Vendemos Tumo (sistema de módulos) y hacemos a medida: apps, webs y automatización. Menos ruido, más operación.",
+    "Estudio en Tandil. Vendemos Tumo (sistema de módulos) y armamos a medida: apps, webs y automatización. Menos ruido, más operación.",
   url: "https://estudionomade.com",
 }

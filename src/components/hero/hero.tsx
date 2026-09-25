@@ -1,7 +1,12 @@
 "use client"
 
 import { useRef } from "react"
-import { motion } from "framer-motion"
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+} from "framer-motion"
 import { ChevronDown, ArrowRight } from "lucide-react"
 import Image from "next/image"
 import { CONTACT, SITE } from "@/constants"
@@ -34,6 +39,39 @@ const sparkles = [
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const reduceMotion = useReducedMotion()
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  })
+
+  const logoY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reduceMotion ? [0, 0] : [0, -140]
+  )
+  const logoX = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reduceMotion ? [0, 0] : [0, 48]
+  )
+  const logoRotate = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reduceMotion ? [0, 0] : [0, 14]
+  )
+  const logoScale = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reduceMotion ? [1, 1] : [1, 0.82]
+  )
+  const logoOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.55, 1],
+    reduceMotion ? [1, 1, 1] : [1, 0.75, 0.2]
+  )
+  const hintOpacity = useTransform(scrollYProgress, [0, 0.18], [1, 0])
 
   const handleScroll = (href: string) => {
     const el = document.querySelector(href)
@@ -79,7 +117,7 @@ export function Hero() {
             <motion.div variants={fadeUp} className="flex items-center gap-3">
               <span className="inline-flex items-center gap-2 rounded-full border border-violet-400/25 bg-violet-500/10 px-3 py-1.5 text-[11px] font-semibold tracking-[0.18em] text-violet-200/90 uppercase">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-300 shadow-[0_0_8px_rgba(196,181,253,0.9)]" />
-                Estudio de software · Tandil
+                Estudio · Tandil
               </span>
             </motion.div>
 
@@ -87,20 +125,20 @@ export function Hero() {
               variants={fadeUp}
               className="font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl"
             >
-              Software que ordena el negocio.
+              Tu negocio, en orden.
               <br />
-              <span className="text-shine">Sin tanto ruido de golpe.</span>
+              <span className="text-shine">Sin tanto lío de golpe.</span>
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
               className="max-w-xl text-base leading-relaxed text-white/45 sm:text-lg"
             >
-              Somos {SITE.name}. Vendemos{" "}
+              Somos {SITE.name}. Con{" "}
               <strong className="font-semibold text-violet-100/90">Tumo</strong>{" "}
-              — un sistema de módulos listo para operar — y también armamos a
-              medida cuando hace falta: apps, webs y automatización. El reloj
-              arranca cuando nos pasás el contenido.
+              armás turnos, pedidos, catálogo y clientes en un solo lugar — y
+              también armamos a medida cuando hace falta: apps, webs y
+              automatización. El reloj arranca cuando nos pasás el contenido.
             </motion.p>
 
             <motion.div
@@ -147,41 +185,67 @@ export function Hero() {
             </motion.p>
           </motion.div>
 
-          {/* Lockup del concepto: logo negro + destellos */}
+          {/* Logo flotante sin fondo — se mueve con el scroll */}
           <motion.div
             initial={{ opacity: 0, scale: 0.86, rotate: -4, filter: "blur(12px)" }}
             animate={{ opacity: 1, scale: 1, rotate: 0, filter: "blur(0px)" }}
             transition={{ duration: 1.1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className="relative mx-auto flex w-full max-w-[320px] items-center justify-center lg:max-w-none"
+            style={{
+              y: logoY,
+              x: logoX,
+              rotate: logoRotate,
+              scale: logoScale,
+              opacity: logoOpacity,
+            }}
           >
-            <div className="absolute inset-0 -m-8 rounded-full bg-violet-600/20 blur-[70px] animate-pulse-glow" />
+            <div className="pointer-events-none absolute inset-0 -m-10 rounded-full bg-violet-600/15 blur-[80px] animate-pulse-glow" />
             <motion.div
-              className="logo-frame animate-logo-breathe relative aspect-square w-full max-w-[280px] overflow-hidden rounded-[2rem] sm:max-w-[320px]"
-              whileHover={{ scale: 1.03, rotate: 1 }}
+              className="relative aspect-square w-full max-w-[280px] sm:max-w-[320px]"
+              whileHover={reduceMotion ? undefined : { scale: 1.04, rotate: 2 }}
               transition={{ type: "spring", stiffness: 220, damping: 18 }}
             >
               <Image
-                src="/logo.png"
+                src="/logo-clear.png"
                 alt="Logo Estudio Nómade"
                 fill
                 sizes="320px"
-                className="object-cover"
+                className="object-contain drop-shadow-[0_0_40px_rgba(167,139,250,0.45)]"
                 priority
               />
-              {/* destellos encima del logo */}
               <span
                 className="sparkle-mark"
-                style={{ top: "14%", left: "18%", width: 14, height: 14, animationDelay: "0.2s" }}
+                style={{
+                  top: "14%",
+                  left: "18%",
+                  width: 14,
+                  height: 14,
+                  animationDelay: "0.2s",
+                }}
                 aria-hidden
               />
               <span
                 className="sparkle-mark"
-                style={{ top: "22%", right: "16%", left: "auto", width: 18, height: 18, animationDelay: "1s" }}
+                style={{
+                  top: "22%",
+                  right: "16%",
+                  left: "auto",
+                  width: 18,
+                  height: 18,
+                  animationDelay: "1s",
+                }}
                 aria-hidden
               />
               <span
                 className="sparkle-mark"
-                style={{ bottom: "20%", left: "28%", top: "auto", width: 12, height: 12, animationDelay: "1.8s" }}
+                style={{
+                  bottom: "20%",
+                  left: "28%",
+                  top: "auto",
+                  width: 12,
+                  height: 12,
+                  animationDelay: "1.8s",
+                }}
                 aria-hidden
               />
             </motion.div>
@@ -200,6 +264,7 @@ export function Hero() {
 
       <motion.div
         className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
+        style={{ opacity: hintOpacity }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.35, duration: 0.6 }}
@@ -208,7 +273,11 @@ export function Hero() {
           Scroll
         </span>
         <motion.div
-          animate={{ y: [0, 8, 0], opacity: [0.35, 0.8, 0.35] }}
+          animate={
+            reduceMotion
+              ? undefined
+              : { y: [0, 8, 0], opacity: [0.35, 0.8, 0.35] }
+          }
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="text-violet-200/50"
         >
