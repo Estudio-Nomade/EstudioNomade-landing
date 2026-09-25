@@ -21,15 +21,18 @@ export function CTA() {
       className="relative flex min-h-[70vh] items-center justify-center overflow-hidden py-24 md:py-32"
     >
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 animate-pulse-glow rounded-full bg-primary/10 blur-[180px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background/80" />
+        <div className="absolute top-1/2 left-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 animate-pulse-glow rounded-full bg-violet-500/15 blur-[180px]" />
+        <div className="absolute top-[20%] left-[15%] h-[220px] w-[220px] animate-pulse-glow rounded-full bg-fuchsia-500/10 blur-[100px]" />
+        <span className="sparkle-mark" style={{ top: "22%", left: "18%", width: 14, height: 14 }} aria-hidden />
+        <span className="sparkle-mark" style={{ top: "30%", right: "20%", left: "auto", width: 18, height: 18, animationDelay: "0.8s" }} aria-hidden />
+        <span className="sparkle-mark" style={{ bottom: "28%", left: "30%", top: "auto", width: 12, height: 12, animationDelay: "1.4s" }} aria-hidden />
       </div>
 
       <div className="section-container relative z-10 w-full">
         <SectionReveal>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display mb-5 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              <span className="text-gradient">¿Querés ordenar tu operación?</span>
+              <span className="text-shine">¿Querés ordenar tu operación?</span>
             </h2>
             <p className="mb-10 text-lg leading-relaxed text-[var(--color-text-secondary)] md:text-xl">
               Contanos si te interesa Tumo, un desarrollo a medida o una web

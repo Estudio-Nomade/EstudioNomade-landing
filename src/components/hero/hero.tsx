@@ -3,24 +3,34 @@
 import { useRef } from "react"
 import { motion } from "framer-motion"
 import { ChevronDown, ArrowRight } from "lucide-react"
+import Image from "next/image"
 import { CONTACT, SITE } from "@/constants"
-import { ParticleBackground } from "@/components/effects/particle-background"
 
 const stagger = {
   animate: {
-    transition: { staggerChildren: 0.12 },
+    transition: { staggerChildren: 0.14, delayChildren: 0.15 },
   },
 }
 
 const fadeUp = {
-  initial: { opacity: 0, y: 30, filter: "blur(6px)" },
+  initial: { opacity: 0, y: 36, filter: "blur(10px)", scale: 0.98 },
   animate: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    scale: 1,
+    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] as const },
   },
 }
+
+const sparkles = [
+  { top: "12%", left: "8%", delay: "0s", size: 10 },
+  { top: "22%", left: "78%", delay: "0.6s", size: 14 },
+  { top: "58%", left: "88%", delay: "1.1s", size: 9 },
+  { top: "70%", left: "14%", delay: "1.7s", size: 12 },
+  { top: "38%", left: "52%", delay: "0.3s", size: 8 },
+  { top: "18%", left: "42%", delay: "2.1s", size: 11 },
+]
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -37,45 +47,60 @@ export function Hero() {
       ref={containerRef}
       className="relative flex min-h-screen items-center overflow-hidden"
     >
-      <ParticleBackground />
+      {/* Nebulas del concepto */}
+      <div className="pointer-events-none absolute top-[-25%] left-[-12%] h-[640px] w-[640px] rounded-full bg-violet-600/[0.12] blur-[130px] animate-pulse-glow" />
+      <div className="pointer-events-none absolute right-[-8%] bottom-[-18%] h-[520px] w-[520px] rounded-full bg-fuchsia-600/[0.07] blur-[130px] animate-pulse-glow" />
+      <div className="pointer-events-none absolute top-[30%] left-[40%] h-[280px] w-[280px] rounded-full bg-indigo-400/[0.05] blur-[90px]" />
 
-      <div className="pointer-events-none absolute top-[-30%] left-[-10%] h-[600px] w-[600px] rounded-full bg-violet-500/[0.06] blur-[120px]" />
-      <div className="pointer-events-none absolute right-[-5%] bottom-[-20%] h-[500px] w-[500px] rounded-full bg-purple-600/[0.04] blur-[120px]" />
+      {/* Destellos CSS fijos del concepto */}
+      {sparkles.map((s, i) => (
+        <span
+          key={i}
+          className="sparkle-mark"
+          style={{
+            top: s.top,
+            left: s.left,
+            width: s.size,
+            height: s.size,
+            animationDelay: s.delay,
+          }}
+          aria-hidden
+        />
+      ))}
 
-      {/* pt extra: navbar fija h-16 / sm h-[4.25rem] — el título no queda debajo de la barra */}
       <div className="section-container w-full pt-[7.5rem] pb-16 md:pt-36 md:pb-20">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
           <motion.div
             className="flex flex-col gap-7"
             variants={stagger}
             initial="initial"
             animate="animate"
           >
-            <motion.p
-              variants={fadeUp}
-              className="text-xs font-semibold uppercase tracking-[0.2em] text-violet-300/70"
-            >
-              Estudio de software · Tandil
-            </motion.p>
+            <motion.div variants={fadeUp} className="flex items-center gap-3">
+              <span className="inline-flex items-center gap-2 rounded-full border border-violet-400/25 bg-violet-500/10 px-3 py-1.5 text-[11px] font-semibold tracking-[0.18em] text-violet-200/90 uppercase">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-300 shadow-[0_0_8px_rgba(196,181,253,0.9)]" />
+                Estudio de software · Tandil
+              </span>
+            </motion.div>
 
             <motion.h1
               variants={fadeUp}
-              className="font-display text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl"
+              className="font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl"
             >
               Software que ordena el negocio.
               <br />
-              <span className="text-gradient">Sin tanto ruido de golpe.</span>
+              <span className="text-shine">Sin tanto ruido de golpe.</span>
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="max-w-xl text-base leading-relaxed text-white/40 sm:text-lg"
+              className="max-w-xl text-base leading-relaxed text-white/45 sm:text-lg"
             >
               Somos {SITE.name}. Vendemos{" "}
-              <strong className="font-semibold text-white/70">Tumo</strong> — un
-              sistema de módulos listo para operar — y también armamos a medida
-              cuando hace falta: apps, webs y automatización. El reloj arranca
-              cuando nos pasás el contenido.
+              <strong className="font-semibold text-violet-100/90">Tumo</strong>{" "}
+              — un sistema de módulos listo para operar — y también armamos a
+              medida cuando hace falta: apps, webs y automatización. El reloj
+              arranca cuando nos pasás el contenido.
             </motion.p>
 
             <motion.div
@@ -85,42 +110,89 @@ export function Hero() {
               <motion.button
                 type="button"
                 onClick={() => window.open(`https://wa.me/${wa}`, "_blank")}
-                className="relative rounded-full bg-gradient-to-r from-violet-500 to-purple-600 px-6 py-3.5 text-sm font-medium text-white shadow-[0_0_30px_rgba(139,92,246,0.2)] transition-all duration-300 hover:from-violet-400 hover:to-purple-500 hover:shadow-[0_0_40px_rgba(139,92,246,0.35)]"
-                whileHover={{ scale: 1.03 }}
+                className="relative overflow-hidden rounded-full bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_0_36px_rgba(139,92,246,0.35)] transition-all duration-300 hover:shadow-[0_0_50px_rgba(167,139,250,0.5)]"
+                whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}
               >
-                Quiero cotizar
+                <span className="relative z-10">Quiero cotizar</span>
+                <span className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100" />
               </motion.button>
 
               <motion.button
                 type="button"
                 onClick={() => handleScroll("#proyectos")}
-                className="group rounded-full border border-white/[0.08] px-6 py-3.5 text-sm font-medium text-white/60 transition-all duration-300 hover:border-violet-400/30 hover:text-white/90"
-                whileHover={{ scale: 1.02 }}
+                className="group rounded-full border border-violet-300/20 bg-white/[0.03] px-6 py-3.5 text-sm font-medium text-white/70 backdrop-blur-sm transition-all duration-300 hover:border-violet-300/40 hover:bg-violet-500/10 hover:text-white"
+                whileHover={{ scale: 1.03, y: -1 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <span className="flex items-center justify-center gap-2">
                   Ver proyectos
                   <ArrowRight
                     size={16}
-                    className="transition-transform duration-300 group-hover:translate-x-0.5"
+                    className="transition-transform duration-300 group-hover:translate-x-1"
                   />
                 </span>
               </motion.button>
             </motion.div>
 
-            <motion.p
-              variants={fadeUp}
-              className="text-sm text-white/25"
-            >
+            <motion.p variants={fadeUp} className="text-sm text-white/30">
               ¿Buscabas solo una web? También.{" "}
               <button
                 type="button"
                 onClick={() => handleScroll("#servicios")}
-                className="text-violet-300/70 underline-offset-4 hover:text-violet-200 hover:underline"
+                className="text-violet-300/80 underline-offset-4 transition-colors hover:text-violet-200 hover:underline"
               >
                 Ver qué hacemos
               </button>
+            </motion.p>
+          </motion.div>
+
+          {/* Lockup del concepto: logo negro + destellos */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.86, rotate: -4, filter: "blur(12px)" }}
+            animate={{ opacity: 1, scale: 1, rotate: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1.1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="relative mx-auto flex w-full max-w-[320px] items-center justify-center lg:max-w-none"
+          >
+            <div className="absolute inset-0 -m-8 rounded-full bg-violet-600/20 blur-[70px] animate-pulse-glow" />
+            <motion.div
+              className="logo-frame animate-logo-breathe relative aspect-square w-full max-w-[280px] overflow-hidden rounded-[2rem] sm:max-w-[320px]"
+              whileHover={{ scale: 1.03, rotate: 1 }}
+              transition={{ type: "spring", stiffness: 220, damping: 18 }}
+            >
+              <Image
+                src="/logo.png"
+                alt="Logo Estudio Nómade"
+                fill
+                sizes="320px"
+                className="object-cover"
+                priority
+              />
+              {/* destellos encima del logo */}
+              <span
+                className="sparkle-mark"
+                style={{ top: "14%", left: "18%", width: 14, height: 14, animationDelay: "0.2s" }}
+                aria-hidden
+              />
+              <span
+                className="sparkle-mark"
+                style={{ top: "22%", right: "16%", left: "auto", width: 18, height: 18, animationDelay: "1s" }}
+                aria-hidden
+              />
+              <span
+                className="sparkle-mark"
+                style={{ bottom: "20%", left: "28%", top: "auto", width: 12, height: 12, animationDelay: "1.8s" }}
+                aria-hidden
+              />
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.1, duration: 0.6 }}
+              className="absolute -bottom-10 left-1/2 w-max -translate-x-1/2 text-center text-[11px] font-medium tracking-[0.28em] text-violet-200/50 uppercase"
+            >
+              concepto estudio nómade
             </motion.p>
           </motion.div>
         </div>
@@ -130,17 +202,17 @@ export function Hero() {
         className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
+        transition={{ delay: 1.35, duration: 0.6 }}
       >
-        <span className="text-[10px] font-medium tracking-[0.3em] text-white/15 uppercase">
+        <span className="text-[10px] font-medium tracking-[0.3em] text-white/25 uppercase">
           Scroll
         </span>
         <motion.div
-          animate={{ y: [0, 6, 0] }}
+          animate={{ y: [0, 8, 0], opacity: [0.35, 0.8, 0.35] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="text-white/15"
+          className="text-violet-200/50"
         >
-          <ChevronDown size={16} />
+          <ChevronDown size={18} />
         </motion.div>
       </motion.div>
     </section>

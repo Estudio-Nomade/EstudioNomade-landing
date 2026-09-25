@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Inter, Space_Grotesk } from "next/font/google"
 import "./globals.css"
 import { SITE } from "@/constants"
+import { StarfieldBackground } from "@/components/effects/starfield-background"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -70,8 +71,9 @@ export default function RootLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} dark h-full`}
       suppressHydrationWarning
     >
-      <body className="min-h-full bg-[#050508] text-[#f5f5f5] antialiased">
-        {children}
+      <body className="relative min-h-full bg-[#030308] text-[#f5f5f5] antialiased">
+        <StarfieldBackground />
+        <div className="relative z-10">{children}</div>
       </body>
     </html>
   )
