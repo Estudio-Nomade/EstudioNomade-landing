@@ -45,8 +45,8 @@ export function Services() {
               <span className="text-gradient">Tres caminos claros</span>
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
-              No tiramos diez servicios de golpe. Elegís producto modular,
-              custom o web — y avanzamos.
+              No tiramos diez servicios de golpe. Sistemas, a medida o web —
+              elegís el camino y avanzamos.
             </p>
           </div>
         </SectionReveal>
@@ -58,24 +58,17 @@ export function Services() {
           viewport={{ once: true, margin: "-50px" }}
           className="grid grid-cols-1 gap-5 md:grid-cols-3"
         >
-          {SERVICES.map((service, i) => {
+          {SERVICES.map((service) => {
             const IconComponent = iconMap[service.icon]
             return (
               <motion.div
                 key={service.title}
                 variants={item}
                 className={cn(
-                  "glass glass-hover group rounded-2xl p-7 transition-transform duration-300 hover:-translate-y-1",
-                  i === 0 && "md:ring-1 md:ring-violet-400/25"
+                  "glass glass-hover group rounded-2xl p-7 transition-transform duration-300 hover:-translate-y-1"
                 )}
               >
-                {i === 0 ? (
-                  <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-violet-300/80">
-                    Producto principal
-                  </p>
-                ) : (
-                  <div className="mb-4 h-3" />
-                )}
+                <div className="mb-4 h-3" />
                 <div className="relative mb-5 inline-flex">
                   <div className="absolute inset-0 rounded-full bg-primary/20 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative flex h-12 w-12 items-center justify-center rounded-full border border-primary/20 bg-primary/10">

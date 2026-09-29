@@ -40,16 +40,16 @@ export const PROBLEMS = [
 /** Qué hacemos — 3 vías, no 6 cards densas. */
 export const SERVICES = [
   {
-    title: "Tumo — sistema de módulos",
+    title: "Sistemas y plataformas",
     description:
-      "Producto principal a la venta: turnos, pedidos, catálogo, clientes y más. Activás lo que necesitás; no armamos todo de cero cada vez.",
+      "Productos digitales con paneles, roles y flujos reales: turnos, pedidos, catálogo, clientes u operación interna. Pensados para crecer sin rehacer todo cada vez.",
     gradient: "from-violet-500/20 to-purple-600/20",
     icon: "Layers",
   },
   {
-    title: "Herramientas a medida",
+    title: "Apps y herramientas a medida",
     description:
-      "Cuando el negocio no entra en un módulo: apps, paneles, automatizaciones y flujos propios. Lo armamos para tu operación.",
+      "Cuando el caso no entra en un molde: apps mobile, paneles, automatizaciones y flujos propios. Lo armamos para tu operación.",
     gradient: "from-indigo-500/20 to-violet-600/20",
     icon: "Code2",
   },
@@ -63,18 +63,18 @@ export const SERVICES = [
 ] as const
 
 /**
- * Proyectos EN.
- * Tumo primero (producto vendible). Resto = productos propios + trabajos a medida.
+ * Proyectos del estudio.
+ * Incluye productos propios (p.ej. Tumo) y trabajos a medida.
  */
 export const PROJECTS = [
   {
     id: "tumo",
     name: "Tumo",
-    category: "Producto · Sistema de módulos",
+    category: "Producto propio · Sistema de módulos",
     featured: true,
     url: "https://www.tumo.com.ar",
     description:
-      "Nuestra plataforma multi-tenant: el negocio elige módulos (turnos, pedidos, catálogo, fidelización…) y opera con su marca. Es lo que vendemos como sistema reutilizable — no una app suelta por cliente.",
+      "Plataforma multi-tenant del estudio: cada negocio activa módulos (turnos, pedidos, catálogo, fidelización…) y opera con su marca. Un sistema reutilizable, no una app suelta por cliente.",
     tech: ["Next.js", "PostgreSQL", "Supabase", "TypeScript"],
     features: ["Módulos activables", "Multi-negocio", "Admin + público", "Billing por módulo"],
   },
@@ -164,7 +164,7 @@ export const PROJECTS = [
     category: "A medida · Gastronomía",
     featured: false,
     description:
-      "Operación gastronómica digital: carta, pedidos y panel alineados al local (familia de productos tipo Tumo / food).",
+      "Operación gastronómica digital: carta, pedidos y panel alineados al local.",
     tech: ["Next.js", "Postgres"],
     features: ["Carta", "Pedidos", "Admin"],
   },
@@ -191,7 +191,7 @@ export const PROCESS = [
     step: "01",
     title: "Hablamos",
     description:
-      "Entendemos el negocio, el dolor y si alcanza un módulo de Tumo, un a medida o una web clara.",
+      "Entendemos el negocio, el dolor y qué conviene: un sistema, algo a medida o una web clara.",
     duration: "1 charla",
   },
   {
@@ -223,13 +223,12 @@ export const CONTACT = {
   email: "estudionomade2025@gmail.com",
   github: "https://github.com/Estudio-Nomade",
   linkedin: "#",
-  tumo: "https://www.tumo.com.ar",
 } as const
 
 export const SITE = {
   name: "Estudio Nómade",
-  tagline: "Orden para negocios que ya operan",
+  tagline: "Diseño y código en movimiento",
   description:
-    "Estudio en Tandil. Vendemos Tumo (sistema de módulos) y armamos a medida: apps, webs y automatización. Menos ruido, más operación.",
+    "Estudio de productos digitales en Tandil. Apps, webs, sistemas y automatización a medida — con claridad y foco en que se usen de verdad.",
   url: "https://estudionomade.com",
 }

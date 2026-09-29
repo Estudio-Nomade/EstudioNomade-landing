@@ -61,17 +61,9 @@ export function Footer() {
               </span>
             </motion.a>
             <p className="max-w-xs text-sm leading-relaxed text-white/35">
-              {SITE.tagline}. Tumo, a medida y webs — con los colores del
-              estudio y sin saturar de info.
+              {SITE.tagline}. Productos digitales a medida — con los colores
+              del estudio y sin saturar de info.
             </p>
-            <a
-              href={CONTACT.tumo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-fit text-sm text-violet-300/70 underline-offset-4 transition-colors hover:text-violet-200 hover:underline"
-            >
-              tumo.com.ar
-            </a>
           </div>
 
           <div className="flex flex-col gap-3">

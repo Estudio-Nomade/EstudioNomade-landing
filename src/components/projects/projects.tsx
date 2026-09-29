@@ -56,12 +56,12 @@ export default function Projects() {
             <span className="text-gradient">Lo que construimos</span>
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
-            Primero el producto que vendemos. Después el resto del estudio:
-            productos propios y trabajos a medida.
+            Productos propios del estudio y trabajos a medida para clientes.
+            Cada uno con su marca y su operación.
           </p>
         </motion.div>
 
-        {/* Featured: Tumo */}
+        {/* Featured (p.ej. Tumo como proyecto del estudio) */}
         <div className="mb-10 space-y-6">
           {featured.map((project) => (
             <article
@@ -109,7 +109,7 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     className="mt-6 inline-flex items-center gap-2 rounded-full border border-violet-300/25 bg-violet-500/10 px-4 py-2.5 text-sm font-medium text-violet-100 transition-all duration-200 hover:border-violet-300/45 hover:bg-violet-500/20 hover:text-white hover:shadow-[0_0_28px_rgba(139,92,246,0.35)]"
                   >
-                    Chusmear Tumo
+                    Ver proyecto
                     <ExternalLink size={14} className="opacity-80" />
                   </a>
                 ) : null}
