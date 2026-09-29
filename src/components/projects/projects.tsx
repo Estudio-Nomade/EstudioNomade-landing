@@ -92,16 +92,6 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {project.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-md border border-violet-500/15 bg-violet-500/[0.08] px-2 py-0.5 text-xs text-violet-200/70"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
                 {"url" in project && project.url ? (
                   <a
                     href={project.url}

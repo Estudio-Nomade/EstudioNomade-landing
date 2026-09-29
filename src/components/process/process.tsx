@@ -93,7 +93,7 @@ export function Process() {
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
               Hablamos, nos pasás lo necesario y nos ocupamos nosotros. Sin
-              laberintos de siete fases para un sitio o un módulo.
+              laberintos de siete fases para un sitio o una herramienta.
             </p>
           </div>
         </SectionReveal>
