@@ -32,11 +32,11 @@ export function CTA() {
         <SectionReveal>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display mb-5 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              <span className="text-shine">¿Querés ordenar tu operación?</span>
+              <span className="text-shine">¿Tenés un proyecto en mente?</span>
             </h2>
             <p className="mb-10 text-lg leading-relaxed text-[var(--color-text-secondary)] md:text-xl">
-              Contanos si te interesa Tumo, un desarrollo a medida o una web
-              clara. Te respondemos con el siguiente paso — sin laberinto.
+              Contanos qué necesitás: una app, un sistema, una web o algo a
+              medida. Te respondemos con el siguiente paso — sin laberinto.
             </p>
 
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">

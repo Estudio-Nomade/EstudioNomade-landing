@@ -103,20 +103,19 @@ export function Hero() {
               variants={fadeUp}
               className="font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl"
             >
-              Tu negocio, en orden.
+              Diseño y código
               <br />
-              <span className="text-shine">Sin tanto lío de golpe.</span>
+              <span className="text-shine">en movimiento.</span>
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
               className="max-w-xl text-base leading-relaxed text-white/45 sm:text-lg"
             >
-              Somos {SITE.name}. Con{" "}
-              <strong className="font-semibold text-violet-100/90">Tumo</strong>{" "}
-              armás turnos, pedidos, catálogo y clientes en un solo lugar — y
-              también armamos a medida cuando hace falta: apps, webs y
-              automatización. El reloj arranca cuando nos pasás el contenido.
+              Somos {SITE.name}, estudio en Tandil. Armamos productos digitales
+              que se usan de verdad: apps, webs, sistemas y automatización — a
+              medida, con poco ruido y foco en tu operación. El reloj arranca
+              cuando nos pasás el contenido.
             </motion.p>
 
             <motion.div
