@@ -61,8 +61,8 @@ export function Footer() {
               </span>
             </motion.a>
             <p className="max-w-xs text-sm leading-relaxed text-white/35">
-              {SITE.tagline}. Productos digitales a medida — con los colores
-              del estudio y sin saturar de info.
+              {SITE.tagline}. Estudio en Tandil: apps, webs y sistemas a
+              medida para negocios reales.
             </p>
           </div>
 
