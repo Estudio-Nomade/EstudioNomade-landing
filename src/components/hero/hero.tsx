@@ -112,10 +112,9 @@ export function Hero() {
               variants={fadeUp}
               className="max-w-xl text-base leading-relaxed text-white/45 sm:text-lg"
             >
-              Somos {SITE.name}, estudio en Tandil. Armamos productos digitales
-              que se usan de verdad: apps, webs, sistemas y automatización — a
-              medida, con poco ruido y foco en tu operación. El reloj arranca
-              cuando nos pasás el contenido.
+              Somos {SITE.name}, estudio en Tandil. Armamos apps, webs y
+              sistemas a medida — claros, con poco ruido y pensados para el día
+              a día del negocio. El reloj arranca cuando nos pasás el contenido.
             </motion.p>
 
             <motion.div

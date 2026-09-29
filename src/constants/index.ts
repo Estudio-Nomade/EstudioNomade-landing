@@ -5,7 +5,7 @@ export const NAV_LINKS = [
   { label: "Contacto", href: "#cta" },
 ] as const
 
-/** Síntomas / dolores — una idea por bloque (estilo Maguiceri: claro, poco de golpe). */
+/** Síntomas / dolores — una idea por bloque, lenguaje llano. */
 export const PROBLEMS = [
   {
     id: "01",
@@ -31,32 +31,32 @@ export const PROBLEMS = [
   {
     id: "04",
     tag: "SE PIERDE",
-    title: "La publicidad manda tráfico… a un lugar que no convierte",
+    title: "La publicidad manda gente… a un lugar que no cierra",
     description:
-      "Instagram o una web genérica no cierran. El que compara elige a quien le muestra claro el producto y el siguiente paso.",
+      "Instagram o una web genérica no alcanzan. El que compara elige a quien le muestra claro el producto y el siguiente paso.",
   },
 ] as const
 
-/** Qué hacemos — 3 vías, no 6 cards densas. */
+/** Qué hacemos — 3 vías, sin jerga de producto. */
 export const SERVICES = [
   {
-    title: "Sistemas y plataformas",
+    title: "Sistemas para el día a día",
     description:
-      "Productos digitales con paneles, roles y flujos reales: turnos, pedidos, catálogo, clientes u operación interna. Pensados para crecer sin rehacer todo cada vez.",
+      "Herramientas para turnos, pedidos, catálogo, clientes o el trabajo interno del equipo. Todo ordenado, con tu marca, listo para usar.",
     gradient: "from-violet-500/20 to-purple-600/20",
     icon: "Layers",
   },
   {
     title: "Apps y herramientas a medida",
     description:
-      "Cuando el caso no entra en un molde: apps mobile, paneles, automatizaciones y flujos propios. Lo armamos para tu operación.",
+      "Cuando lo que necesitás no entra en un molde: app del celular, paneles propios y procesos que se arman alrededor de cómo laburás vos.",
     gradient: "from-indigo-500/20 to-violet-600/20",
     icon: "Code2",
   },
   {
     title: "Webs y presencia digital",
     description:
-      "Sitios claros que explican qué hacés y cómo te contactan. Sin ruido, pensados para celular y para cerrar la conversación.",
+      "Sitios claros que explican qué hacés y cómo te contactan. Sin ruido, pensados para el celular y para que la charla avance.",
     gradient: "from-cyan-500/20 to-blue-600/20",
     icon: "Globe",
   },
@@ -64,39 +64,45 @@ export const SERVICES = [
 
 /**
  * Proyectos del estudio.
- * Incluye productos propios (p.ej. Tumo) y trabajos a medida.
+ * Copy en criollo: sin multi-tenant, stack, billing, PWA, etc.
+ * (tech queda vacío / no se muestra en UI)
  */
 export const PROJECTS = [
   {
     id: "tumo",
     name: "Tumo",
-    category: "Producto propio · Sistema de módulos",
+    category: "Producto propio · Negocios",
     featured: true,
     url: "https://www.tumo.com.ar",
     description:
-      "Plataforma multi-tenant del estudio: cada negocio activa módulos (turnos, pedidos, catálogo, fidelización…) y opera con su marca. Un sistema reutilizable, no una app suelta por cliente.",
-    tech: ["Next.js", "PostgreSQL", "Supabase", "TypeScript"],
-    features: ["Módulos activables", "Multi-negocio", "Admin + público", "Billing por módulo"],
+      "Sistema del estudio para que un local arme turnos, pedidos, catálogo y clientes con su propia marca. Varios comercios pueden usarlo sin mezclarse entre sí.",
+    tech: [] as string[],
+    features: [
+      "Turnos y pedidos",
+      "Catálogo y clientes",
+      "Panel del dueño",
+      "Cada local con su marca",
+    ],
   },
   {
     id: "tubi",
     name: "Tubi",
-    category: "Producto · Movilidad",
+    category: "Producto · Viajes",
     featured: false,
     description:
-      "Viajes compartidos Tandil ↔ CABA y corredores cercanos. Producto propio del estudio: matching, reservas y ops de ruta.",
-    tech: ["Next.js", "Supabase", "TypeScript"],
-    features: ["Rutas", "Reservas", "Ops internas"],
+      "Viajes compartidos Tandil ↔ CABA y rutas cercanas. La gente reserva lugar y el equipo organiza las salidas.",
+    tech: [] as string[],
+    features: ["Rutas", "Reservas", "Organización de salidas"],
   },
   {
     id: "lifty",
     name: "Lifty",
-    category: "Producto · Movilidad urbana",
+    category: "Producto · Movilidad",
     featured: false,
     description:
-      "Suite de movilidad: app conductor/pasajero, admin y módulos de tránsito municipal. Matching, docs, pagos y paneles de operación.",
-    tech: ["Expo", "React Native", "Railway", "Supabase"],
-    features: ["App mobile", "Admin PWA", "Tránsito", "Push"],
+      "App para conductores y pasajeros, más el panel de la empresa y herramientas de tránsito municipal. Docs, pagos y el día a día de la flota.",
+    tech: [] as string[],
+    features: ["App celular", "Panel de la empresa", "Tránsito", "Avisos"],
   },
   {
     id: "soleph",
@@ -104,9 +110,9 @@ export const PROJECTS = [
     category: "A medida · Fotografía",
     featured: false,
     description:
-      "Portfolio + tienda de fotos de evento: vitrina con marca de agua, packs, carrito y admin de subida. Hecho a la medida del estudio fotográfico.",
-    tech: ["Astro", "Supabase", "Vercel"],
-    features: ["Álbumes", "Vitrina WM", "Carrito", "Admin"],
+      "Portfolio y tienda de fotos de evento: se ven con marca de agua, se arman packs y se compra online. Hecho a la medida del estudio fotográfico.",
+    tech: [] as string[],
+    features: ["Álbumes", "Marca de agua", "Carrito", "Subida de fotos"],
   },
   {
     id: "juanitacocina",
@@ -114,19 +120,19 @@ export const PROJECTS = [
     category: "A medida · Pastelería",
     featured: false,
     description:
-      "Web de marca + tienda de encargos + admin de productos, horarios y cursos. El pedido llega por WhatsApp con el detalle completo.",
-    tech: ["Next.js", "Postgres", "Supabase Storage"],
-    features: ["Tienda", "Admin", "Cursos", "WhatsApp"],
+      "Web de marca, tienda de encargos y panel para productos, horarios y cursos. El pedido llega por WhatsApp con todo el detalle.",
+    tech: [] as string[],
+    features: ["Tienda", "Panel", "Cursos", "WhatsApp"],
   },
   {
     id: "makeka",
     name: "La Makeka",
-    category: "A medida · Agro",
+    category: "A medida · Campo",
     featured: false,
     description:
-      "Gestión ganadera / operación de campo en web app. Datos del día a día sin depender solo de planillas sueltas.",
-    tech: ["Next.js", "Supabase"],
-    features: ["Inventario", "Ops", "Cloud"],
+      "Gestión del campo en la web: datos del día a día sin depender solo de planillas sueltas.",
+    tech: [] as string[],
+    features: ["Inventario", "Día a día", "Desde cualquier lado"],
   },
   {
     id: "sierras",
@@ -134,9 +140,9 @@ export const PROJECTS = [
     category: "A medida · Turismo",
     featured: false,
     description:
-      "Reservas y ops de un alojamiento: calendario, disponibilidad y flujo de consulta pensado para el dueño y el huésped.",
-    tech: ["Next.js", "Supabase", "PWA"],
-    features: ["Reservas", "Calendario", "Mobile"],
+      "Reservas de un alojamiento: calendario, disponibilidad y consultas pensadas para el dueño y el huésped.",
+    tech: [] as string[],
+    features: ["Reservas", "Calendario", "Celular"],
   },
   {
     id: "sol-labaroni",
@@ -144,8 +150,8 @@ export const PROJECTS = [
     category: "A medida · Salud / bienestar",
     featured: false,
     description:
-      "Presencia + turnos para masoterapia: la persona reserva o escribe sin fricción, con la marca del profesional.",
-    tech: ["Web", "Turnos"],
+      "Presencia online y turnos para masoterapia: la persona reserva o escribe fácil, con la marca del profesional.",
+    tech: [] as string[],
     features: ["Turnos", "WhatsApp", "Marca"],
   },
   {
@@ -154,9 +160,9 @@ export const PROJECTS = [
     category: "Producto · Inventario",
     featured: false,
     description:
-      "Inventario con claim y flujo de trabajo para el equipo. Operación interna, no vitrina de marketing.",
-    tech: ["Next.js", "Linear"],
-    features: ["Inventario", "Claim", "Ops"],
+      "Inventario del equipo: se anotan cosas, se las asignan y siguen el trabajo interno. No es una vitrina de venta.",
+    tech: [] as string[],
+    features: ["Inventario", "Asignación", "Equipo"],
   },
   {
     id: "carri",
@@ -164,12 +170,13 @@ export const PROJECTS = [
     category: "A medida · Gastronomía",
     featured: false,
     description:
-      "Operación gastronómica digital: carta, pedidos y panel alineados al local.",
-    tech: ["Next.js", "Postgres"],
-    features: ["Carta", "Pedidos", "Admin"],
+      "Carta, pedidos y panel del local, alineados a cómo trabaja el food truck o el comercio.",
+    tech: [] as string[],
+    features: ["Carta", "Pedidos", "Panel del local"],
   },
 ] as const
 
+/** Stack interno (sección Tech no está en home; se deja por si se reusa). */
 export const TECH_STACK = [
   { name: "React", category: "Frontend" },
   { name: "Next.js", category: "Frontend" },
@@ -185,7 +192,7 @@ export const TECH_STACK = [
   { name: "Vercel", category: "Deploy" },
 ] as const
 
-/** Proceso corto: el reloj arranca cuando pasa el contenido (como Maguiceri). */
+/** Proceso corto — sin “build”, “módulo”, “producción”. */
 export const PROCESS = [
   {
     step: "01",
@@ -203,16 +210,16 @@ export const PROCESS = [
   },
   {
     step: "03",
-    title: "Diseño + build",
+    title: "Diseño y armado",
     description:
-      "Armamos la experiencia y el sistema. Iteramos poco y claro: preferimos algo usable pronto a un deck eterno.",
+      "Armamos la experiencia y la herramienta. Preferimos algo usable pronto a un montón de charlas sin entrega.",
     duration: "Nosotros",
   },
   {
     step: "04",
     title: "Online",
     description:
-      "Queda en producción, con tu dominio cuando corresponda. Si mañana querés seguir con otra persona, el producto es tuyo.",
+      "Queda publicado, con tu dominio cuando corresponda. Si mañana querés seguir con otra persona, el producto es tuyo.",
     duration: "Entrega",
   },
 ] as const
@@ -229,6 +236,6 @@ export const SITE = {
   name: "Estudio Nómade",
   tagline: "Diseño y código en movimiento",
   description:
-    "Estudio de productos digitales en Tandil. Apps, webs, sistemas y automatización a medida — con claridad y foco en que se usen de verdad.",
+    "Estudio en Tandil. Armamos apps, webs y sistemas a medida — claros, útiles y pensados para usarse de verdad.",
   url: "https://estudionomade.com",
 }
