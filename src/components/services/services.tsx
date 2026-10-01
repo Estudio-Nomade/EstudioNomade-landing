@@ -1,7 +1,16 @@
 "use client"
 
 import { motion, type Variants } from "framer-motion"
-import { Layers, Code2, Globe, type LucideIcon } from "lucide-react"
+import {
+  Layers,
+  Code2,
+  Globe,
+  Palette,
+  Megaphone,
+  Sparkles,
+  Compass,
+  type LucideIcon,
+} from "lucide-react"
 import { cn } from "@/lib/utils"
 import { SERVICES } from "@/constants"
 import { SectionReveal } from "@/components/effects/section-reveal"
@@ -10,13 +19,17 @@ const iconMap: Record<string, LucideIcon> = {
   Layers,
   Code2,
   Globe,
+  Palette,
+  Megaphone,
+  Sparkles,
+  Compass,
 }
 
 const container: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.15 },
+    transition: { staggerChildren: 0.08, delayChildren: 0.12 },
   },
 }
 
@@ -42,11 +55,12 @@ export function Services() {
               Qué hacemos
             </p>
             <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-              <span className="text-gradient">Tres caminos claros</span>
+              <span className="text-gradient">Producto, marca y marketing</span>
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
-              No tiramos diez servicios de golpe. Sistemas, a medida o web —
-              elegís el camino y avanzamos.
+              Sistemas, apps y webs — y también identidad, publicidad y orden
+              de marketing. Se puede armar de a uno o en combo, según lo que
+              necesite el negocio.
             </p>
           </div>
         </SectionReveal>
@@ -56,7 +70,7 @@ export function Services() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 gap-5 md:grid-cols-3"
+          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
         >
           {SERVICES.map((service) => {
             const IconComponent = iconMap[service.icon]
@@ -87,6 +101,14 @@ export function Services() {
             )
           })}
         </motion.div>
+
+        <SectionReveal>
+          <p className="mt-8 max-w-2xl text-sm leading-relaxed text-white/35 sm:text-base md:mt-10">
+            Cada propuesta se adapta a lo que hace falta: a veces alcanza con
+            una pieza; otras conviene marca + web, ads o un sistema completo.
+            Lo vemos juntos y armamos el camino.
+          </p>
+        </SectionReveal>
       </div>
     </section>
   )
