@@ -302,6 +302,6 @@ export const SITE = {
   name: "Estudio Nómade",
   tagline: "Diseño y código en movimiento",
   description:
-    "Estudio Nómade, de Tandil, Buenos Aires. Apps, webs y sistemas a medida, identidad de marca, publicidad en Instagram y Facebook, y orden de marketing — claros, útiles y pensados para usarse de verdad, desde cualquier lado.",
+    "Estudio Nómade, de Tandil, Buenos Aires. Soluciones digitales: apps, webs y sistemas a medida, identidad de marca, publicidad en Instagram y Facebook, y orden de marketing — claras, útiles y pensadas para usarse de verdad, desde cualquier lado.",
   url: "https://estudionomade.com",
 }
