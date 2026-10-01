@@ -4,18 +4,17 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import { NAV_LINKS, SITE, CONTACT } from "@/constants"
 import { MessageCircle, Mail, ExternalLink } from "lucide-react"
-
-const waDigits = CONTACT.whatsapp.replace(/\D/g, "")
+import { buildMailtoUrl, buildWhatsAppUrl } from "@/lib/whatsapp"
 
 const contactItems = [
   {
     label: "WhatsApp",
-    href: `https://wa.me/${waDigits}`,
+    href: buildWhatsAppUrl(),
     icon: MessageCircle,
   },
   {
     label: CONTACT.email,
-    href: `mailto:${CONTACT.email}`,
+    href: buildMailtoUrl(),
     icon: Mail,
   },
   {

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import Image from "next/image"
-import { NAV_LINKS, CONTACT } from "@/constants"
+import { NAV_LINKS } from "@/constants"
 import { cn } from "@/lib/utils"
 import { NAV_MENU_EVENT } from "@/components/effects/companion-mascot"
 
@@ -146,12 +146,7 @@ export function Navbar() {
           <div className="flex shrink-0 items-center gap-2">
             <button
               type="button"
-              onClick={() =>
-                window.open(
-                  `https://wa.me/${CONTACT.whatsapp.replace(/\D/g, "")}`,
-                  "_blank"
-                )
-              }
+              onClick={() => handleNavClick("#cta")}
               className="hidden items-center gap-2 rounded-full border border-violet-400/20 bg-violet-500/10 px-4 py-2 text-sm font-medium text-violet-100/90 transition-all duration-200 hover:border-violet-300/40 hover:bg-violet-500/20 hover:text-white hover:shadow-[0_0_24px_rgba(139,92,246,0.35)] md:inline-flex"
             >
               Hablemos
@@ -198,12 +193,7 @@ export function Navbar() {
                 <li className="pt-1">
                   <button
                     type="button"
-                    onClick={() =>
-                      window.open(
-                        `https://wa.me/${CONTACT.whatsapp.replace(/\D/g, "")}`,
-                        "_blank"
-                      )
-                    }
+                    onClick={() => handleNavClick("#cta")}
                     className="w-full rounded-full bg-gradient-to-r from-violet-500 to-purple-600 px-4 py-3.5 text-center text-sm font-semibold text-white shadow-[0_0_30px_rgba(139,92,246,0.35)]"
                   >
                     Hablemos
