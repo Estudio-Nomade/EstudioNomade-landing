@@ -60,8 +60,8 @@ export function Footer() {
               </span>
             </motion.a>
             <p className="max-w-xs text-sm leading-relaxed text-white/35">
-              {SITE.tagline}. Estudio en Tandil: apps, webs, sistemas,
-              marca y marketing para negocios reales.
+              {SITE.tagline}. De Tandil, Buenos Aires — apps, webs,
+              sistemas, marca y marketing pensados para moverse con vos.
             </p>
           </div>
 

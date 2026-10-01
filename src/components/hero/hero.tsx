@@ -97,7 +97,7 @@ export function Hero() {
             >
               <span className="inline-flex items-center gap-2 rounded-full border border-violet-400/25 bg-violet-500/10 px-3 py-1.5 text-[11px] font-semibold tracking-[0.18em] text-violet-200/90 uppercase">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-300 shadow-[0_0_8px_rgba(196,181,253,0.9)]" />
-                Estudio · Tandil
+                Tandil · Buenos Aires
               </span>
             </motion.div>
 
@@ -114,10 +114,12 @@ export function Hero() {
               variants={fadeUp}
               className="max-w-xl text-base leading-relaxed text-white/45 sm:text-lg"
             >
-              Somos {SITE.name}, estudio en Tandil. Armamos apps, webs y
-              sistemas a medida — y también marca, publicidad y marketing.
-              Claros, con poco ruido y pensados para el día a día del negocio.
-              El reloj arranca cuando nos pasás el contenido.
+              Somos {SITE.name}, de Tandil, Buenos Aires. El nombre
+              viene de eso: laburar y armar proyectos que se mueven con nosotros
+              — desde cualquier lado. Apps, webs y sistemas a medida, más marca,
+              publicidad y marketing. Claros, con poco ruido y pensados para el
+              día a día del negocio. El reloj arranca cuando nos pasás el
+              contenido.
             </motion.p>
 
             <motion.div
