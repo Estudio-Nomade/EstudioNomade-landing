@@ -55,12 +55,13 @@ export function Services() {
               Qué hacemos
             </p>
             <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-              <span className="text-gradient">Producto, marca y marketing</span>
+              <span className="text-gradient">
+                Soluciones digitales, marca y marketing
+              </span>
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
-              Sistemas, apps y webs — y también identidad, publicidad y orden
-              de marketing. Se puede armar de a uno o en combo, según lo que
-              necesite el negocio.
+              Herramientas y webs a medida, identidad, publicidad y orden de
+              marketing. De a uno o en combo, según lo que necesite el negocio.
             </p>
           </div>
         </SectionReveal>

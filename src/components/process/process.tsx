@@ -92,8 +92,9 @@ export function Process() {
               </span>
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
-              Hablamos, nos pasás lo necesario y nos ocupamos nosotros. Sin
-              laberintos de siete fases para un sitio o una herramienta.
+              Hablamos, nos pasás el material y nos ocupamos nosotros. Sin
+              laberintos de siete fases para una web, una marca o una
+              solución digital.
             </p>
           </div>
         </SectionReveal>
@@ -122,7 +123,7 @@ export function Process() {
         </div>
 
         <p className="mt-10 max-w-xl text-sm text-white/30">
-          El dominio y el producto quedan a tu nombre cuando aplica. Si mañana
+          El dominio y el trabajo quedan a tu nombre cuando aplica. Si mañana
           querés seguir con otra persona, te lo llevás — nadie te lo retiene.
         </p>
       </div>

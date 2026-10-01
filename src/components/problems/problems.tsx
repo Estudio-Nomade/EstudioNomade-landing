@@ -31,15 +31,16 @@ export function Problems() {
         <SectionReveal>
           <div className="mb-8 max-w-2xl md:mb-10">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-violet-300/70">
-              Por qué te buscan
+              Dónde se traba
             </p>
             <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-              Estás perdiendo clientes{" "}
-              <span className="text-gradient">antes de que te escriban</span>.
+              La marca y lo digital{" "}
+              <span className="text-gradient">no acompañan al negocio</span>.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
-              No siempre los ves. Cada síntoma es alguien que se fue sin que te
-              enteres — o tiempo tuyo que se va en lo mismo.
+              No siempre se nota de golpe. Son señales de que hace falta
+              ordenar presencia, captación o las herramientas con las que
+              trabajás.
             </p>
           </div>
         </SectionReveal>
