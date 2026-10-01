@@ -60,9 +60,9 @@ export function CompanionMascot() {
   /** Tamaño parked (hero) vs companion (cursor) */
   const sizesFor = (w: number) => {
     if (w < 640) return { park: 88, companion: 64 }
-    if (w < 1024) return { park: 120, companion: 72 }
-    // desktop: grande al lado del H1
-    return { park: 280, companion: 96 }
+    if (w < 1024) return { park: 140, companion: 88 }
+    // desktop: grande al lado del H1 + companion legible en web
+    return { park: 360, companion: 144 }
   }
 
   const parkPos = (w: number, h: number) => {
@@ -202,7 +202,7 @@ export function CompanionMascot() {
           src="/logo-clear.png"
           alt=""
           fill
-          sizes="(min-width: 1024px) 280px, 120px"
+          sizes="(min-width: 1024px) 360px, 140px"
           className="object-contain drop-shadow-[0_0_28px_rgba(167,139,250,0.55)]"
           priority
         />

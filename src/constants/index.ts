@@ -1,5 +1,6 @@
 export const NAV_LINKS = [
   { label: "Problemas", href: "#problemas" },
+  { label: "Qué hacemos", href: "#servicios" },
   { label: "Cómo trabajamos", href: "#proceso" },
   { label: "Proyectos", href: "#proyectos" },
   { label: "Contacto", href: "#cta" },
@@ -37,7 +38,7 @@ export const PROBLEMS = [
   },
 ] as const
 
-/** Qué hacemos — 3 vías, sin jerga de producto. */
+/** Qué hacemos — producto + marca + marketing, sin jerga. */
 export const SERVICES = [
   {
     title: "Sistemas para el día a día",
@@ -59,6 +60,34 @@ export const SERVICES = [
       "Sitios claros que explican qué hacés y cómo te contactan. Sin ruido, pensados para el celular y para que la charla avance.",
     gradient: "from-cyan-500/20 to-blue-600/20",
     icon: "Globe",
+  },
+  {
+    title: "Identidad de marca",
+    description:
+      "Logo, colores, tipografías y lineamientos para que el negocio se vea prolijo y reconocible en todos lados.",
+    gradient: "from-fuchsia-500/20 to-violet-600/20",
+    icon: "Palette",
+  },
+  {
+    title: "Publicidad en Instagram y Facebook",
+    description:
+      "Armamos, publicamos y afinamos campañas en Meta Ads para llegar a gente nueva y no tirar plata a ciegas.",
+    gradient: "from-pink-500/20 to-rose-600/20",
+    icon: "Megaphone",
+  },
+  {
+    title: "Marca + web juntas",
+    description:
+      "Primero la identidad visual del negocio y después una landing o web institucional alineada a esa marca, de punta a punta.",
+    gradient: "from-sky-500/20 to-indigo-600/20",
+    icon: "Sparkles",
+  },
+  {
+    title: "Consultoría de marketing",
+    description:
+      "Ordenamos lo que ya hacés, vemos qué anda y qué no, y definimos cómo captar mejor leads y clientes nuevos.",
+    gradient: "from-amber-500/20 to-orange-600/20",
+    icon: "Compass",
   },
 ] as const
 
@@ -198,7 +227,7 @@ export const PROCESS = [
     step: "01",
     title: "Hablamos",
     description:
-      "Entendemos el negocio, el dolor y qué conviene: un sistema, algo a medida o una web clara.",
+      "Entendemos el negocio, el dolor y qué conviene: sistema, app, web, marca, ads o un combo a medida.",
     duration: "1 charla",
   },
   {
@@ -236,6 +265,6 @@ export const SITE = {
   name: "Estudio Nómade",
   tagline: "Diseño y código en movimiento",
   description:
-    "Estudio en Tandil. Armamos apps, webs y sistemas a medida — claros, útiles y pensados para usarse de verdad.",
+    "Estudio en Tandil. Armamos apps, webs y sistemas a medida, más identidad de marca, publicidad en Instagram y Facebook, y orden de marketing — claros, útiles y pensados para usarse de verdad.",
   url: "https://estudionomade.com",
 }

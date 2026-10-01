@@ -113,8 +113,9 @@ export function Hero() {
               className="max-w-xl text-base leading-relaxed text-white/45 sm:text-lg"
             >
               Somos {SITE.name}, estudio en Tandil. Armamos apps, webs y
-              sistemas a medida — claros, con poco ruido y pensados para el día
-              a día del negocio. El reloj arranca cuando nos pasás el contenido.
+              sistemas a medida — y también marca, publicidad y marketing.
+              Claros, con poco ruido y pensados para el día a día del negocio.
+              El reloj arranca cuando nos pasás el contenido.
             </motion.p>
 
             <motion.div
@@ -150,7 +151,7 @@ export function Hero() {
             </motion.div>
 
             <motion.p variants={fadeUp} className="text-sm text-white/30">
-              ¿Buscabas solo una web? También.{" "}
+              ¿Buscabas web, marca o ads? También.{" "}
               <button
                 type="button"
                 onClick={() => handleScroll("#servicios")}

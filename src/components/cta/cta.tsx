@@ -35,8 +35,8 @@ export function CTA() {
               <span className="text-shine">¿Tenés un proyecto en mente?</span>
             </h2>
             <p className="mb-10 text-lg leading-relaxed text-[var(--color-text-secondary)] md:text-xl">
-              Contanos qué necesitás: una app, un sistema, una web o algo a
-              medida. Te respondemos con el siguiente paso — sin laberinto.
+              Contanos qué necesitás: app, sistema, web, marca, ads o un combo.
+              Te respondemos con el siguiente paso — sin laberinto.
             </p>
 
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
