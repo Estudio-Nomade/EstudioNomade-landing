@@ -8,7 +8,7 @@ import {
   useReducedMotion,
 } from "framer-motion"
 import { ChevronDown, ArrowRight } from "lucide-react"
-import { CONTACT, SITE } from "@/constants"
+import { SITE } from "@/constants"
 
 const stagger = {
   animate: {
@@ -49,10 +49,12 @@ export function Hero() {
 
   const handleScroll = (href: string) => {
     const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: "smooth" })
+    if (!el) return
+    const header = document.getElementById("en-site-header")
+    const offset = header?.getBoundingClientRect().height ?? 56
+    const top = el.getBoundingClientRect().top + window.scrollY - offset - 8
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" })
   }
-
-  const wa = CONTACT.whatsapp.replace(/\D/g, "")
 
   return (
     <section
@@ -124,7 +126,7 @@ export function Hero() {
             >
               <motion.button
                 type="button"
-                onClick={() => window.open(`https://wa.me/${wa}`, "_blank")}
+                onClick={() => handleScroll("#cta")}
                 className="relative overflow-hidden rounded-full bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_0_36px_rgba(139,92,246,0.35)] transition-all duration-300 hover:shadow-[0_0_50px_rgba(167,139,250,0.5)]"
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}

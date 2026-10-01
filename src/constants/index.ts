@@ -283,6 +283,21 @@ export const CONTACT = {
   linkedin: "#",
 } as const
 
+/**
+ * Chips del CTA / mensaje prearmado de WhatsApp.
+ * Texto corto y criollo — va literal al chat.
+ */
+export const CONTACT_INTERESTS = [
+  "Ordenar el negocio (turnos, pedidos, sistema)",
+  "App o herramienta a medida",
+  "Web o landing",
+  "Identidad de marca",
+  "Publicidad en Instagram y Facebook",
+  "Marca + web juntas",
+  "Consultoría de marketing",
+  "Todavía no sé — quiero charlar",
+] as const
+
 export const SITE = {
   name: "Estudio Nómade",
   tagline: "Diseño y código en movimiento",
