@@ -20,7 +20,7 @@ export function buildContactMessage(interest?: string | null): string {
   }
   return [
     "Hola! Me interesa cómo trabajan 👋",
-    "Quiero que me ayuden a ordenar o automatizar algo del negocio.",
+    "Quiero que me ayuden con una solución digital o a ordenar la presencia del negocio.",
     "¿Me cuentan el siguiente paso?",
   ].join("\n")
 }

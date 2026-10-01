@@ -6,58 +6,58 @@ export const NAV_LINKS = [
   { label: "Contacto", href: "#cta" },
 ] as const
 
-/** Síntomas / dolores — una idea por bloque, lenguaje llano. */
+/** Dolores del negocio — tono estudio (marca/web/mkt/herramientas), no producto turnos. */
 export const PROBLEMS = [
   {
     id: "01",
-    tag: "SE PIERDE",
-    title: "Te escriben “hola, info” y desaparecen",
+    tag: "MARCA",
+    title: "Se ve distinto en cada lado",
     description:
-      "Llegan sin entender qué ofrecés, cuánto sale ni cómo es el proceso. Preguntan lo básico y no vuelven.",
+      "Logo viejo, colores que no cierran, stories e historia que no coinciden. Quien te conoce de oído no te reconoce online.",
   },
   {
     id: "02",
-    tag: "TU TIEMPO",
-    title: "Contestás las mismas preguntas todos los días",
+    tag: "PRESENCIA",
+    title: "La web o el perfil no explican qué hacés",
     description:
-      "Precio, horarios, turnos, pedidos, “¿cómo se empieza?”. Ese tiempo debería estar en el negocio, no en el chat.",
+      "Entran, miran un rato y se van sin saber el siguiente paso. Falta claridad: oferta, pruebas y cómo contactarte.",
   },
   {
     id: "03",
-    tag: "OPERACIÓN",
-    title: "Todo vive en planillas, WhatsApp y la cabeza de alguien",
+    tag: "TIEMPO",
+    title: "Todo el día a día digital lo armás a mano",
     description:
-      "Cuando crece la demanda, se rompe el orden: turnos dobles, pedidos perdidos, clientes que no vuelven.",
+      "Posts, consultas, planillas y “después lo ordeno”. Crece el negocio y se te come el tiempo en lo operativo.",
   },
   {
     id: "04",
-    tag: "SE PIERDE",
-    title: "La publicidad manda gente… a un lugar que no cierra",
+    tag: "CAPTAR",
+    title: "Invertís en ads o en la red… y no cierra",
     description:
-      "Instagram o una web genérica no alcanzan. El que compara elige a quien le muestra claro el producto y el siguiente paso.",
+      "Llega gente, pero la marca, la web o el mensaje no acompañan. El que compara elige a quien se ve prolijo y claro.",
   },
 ] as const
 
 /** Qué hacemos — producto + marca + marketing, sin jerga. */
 export const SERVICES = [
   {
-    title: "Sistemas para el día a día",
+    title: "Sistemas y herramientas a medida",
     description:
-      "Herramientas para turnos, pedidos, catálogo, clientes o el trabajo interno del equipo. Todo ordenado, con tu marca, listo para usar.",
+      "Cuando el día a día pide algo propio: paneles, flujos del equipo o piezas digitales armadas alrededor de cómo trabajás vos — con tu marca.",
     gradient: "from-violet-500/20 to-purple-600/20",
     icon: "Layers",
   },
   {
-    title: "Apps y herramientas a medida",
+    title: "Apps y productos digitales",
     description:
-      "Cuando lo que necesitás no entra en un molde: app del celular, paneles propios y procesos que se arman alrededor de cómo laburás vos.",
+      "Si lo que necesitás no entra en un molde: app del celular, paneles y experiencias pensadas de cero para tu caso.",
     gradient: "from-indigo-500/20 to-violet-600/20",
     icon: "Code2",
   },
   {
     title: "Webs y presencia digital",
     description:
-      "Sitios claros que explican qué hacés y cómo te contactan. Sin ruido, pensados para el celular y para que la charla avance.",
+      "Sitios y landings claros que explican qué hacés y cómo te contactan. Sin ruido, pensados para el celular y para que la charla avance.",
     gradient: "from-cyan-500/20 to-blue-600/20",
     icon: "Globe",
   },
@@ -243,34 +243,34 @@ export const TECH_STACK = [
   { name: "Vercel", category: "Deploy" },
 ] as const
 
-/** Proceso corto — sin “build”, “módulo”, “producción”. */
+/** Proceso corto — estudio completo, sin jerga de producto turnos. */
 export const PROCESS = [
   {
     step: "01",
     title: "Hablamos",
     description:
-      "Entendemos el negocio, el dolor y qué conviene: sistema, app, web, marca, ads o un combo a medida.",
+      "Entendemos el negocio, el objetivo y qué conviene: web, marca, ads, una herramienta digital o un combo.",
     duration: "1 charla",
   },
   {
     step: "02",
-    title: "Pasás el contenido",
+    title: "Pasás el material",
     description:
-      "Textos, fotos, precios, horarios, logo. Ahí arranca el reloj de verdad: con eso ya nos ponemos a trabajar.",
+      "Textos, fotos, logo, referencias de marca. Con eso arranca el reloj de verdad y nos ponemos a trabajar.",
     duration: "Vos",
   },
   {
     step: "03",
     title: "Diseño y armado",
     description:
-      "Armamos la experiencia y la herramienta. Preferimos algo usable pronto a un montón de charlas sin entrega.",
+      "Armamos la solución: visual, web o herramienta. Preferimos algo usable pronto a un montón de charlas sin entrega.",
     duration: "Nosotros",
   },
   {
     step: "04",
     title: "Online",
     description:
-      "Queda publicado, con tu dominio cuando corresponda. Si mañana querés seguir con otra persona, el producto es tuyo.",
+      "Queda publicado o entregado, con tu dominio cuando corresponda. Si mañana querés seguir con otra persona, el trabajo es tuyo.",
     duration: "Entrega",
   },
 ] as const
@@ -288,8 +288,8 @@ export const CONTACT = {
  * Texto corto y criollo — va literal al chat.
  */
 export const CONTACT_INTERESTS = [
-  "Ordenar el negocio (turnos, pedidos, sistema)",
-  "App o herramienta a medida",
+  "Solución digital / herramienta a medida",
+  "App o producto digital",
   "Web o landing",
   "Identidad de marca",
   "Publicidad en Instagram y Facebook",
