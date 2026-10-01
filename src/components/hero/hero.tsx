@@ -114,10 +114,10 @@ export function Hero() {
               variants={fadeUp}
               className="max-w-xl text-base leading-relaxed text-white/45 sm:text-lg"
             >
-              Somos {SITE.name}, de Tandil, Buenos Aires. El nombre
-              viene de eso: laburar y armar proyectos que se mueven con nosotros
-              — desde cualquier lado. Apps, webs y sistemas a medida, más marca,
-              publicidad y marketing. Claros, con poco ruido y pensados para el
+              Somos {SITE.name}. El nombre va de la mano con lo que
+              hacemos: soluciones digitales que se mueven con vos — desde
+              cualquier lado. Apps, webs y sistemas a medida, más marca,
+              publicidad y marketing. Claras, con poco ruido y pensadas para el
               día a día del negocio. El reloj arranca cuando nos pasás el
               contenido.
             </motion.p>

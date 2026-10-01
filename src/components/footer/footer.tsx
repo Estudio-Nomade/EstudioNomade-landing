@@ -60,8 +60,8 @@ export function Footer() {
               </span>
             </motion.a>
             <p className="max-w-xs text-sm leading-relaxed text-white/35">
-              {SITE.tagline}. De Tandil, Buenos Aires — apps, webs,
-              sistemas, marca y marketing pensados para moverse con vos.
+              {SITE.tagline}. De Tandil, Buenos Aires — soluciones
+              digitales, marca y marketing pensados para moverse con vos.
             </p>
           </div>
 
