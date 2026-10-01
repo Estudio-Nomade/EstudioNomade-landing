@@ -154,6 +154,28 @@ export const PROJECTS = [
     features: ["Tienda", "Panel", "Cursos", "WhatsApp"],
   },
   {
+    id: "anastasia",
+    name: "Anastasia",
+    category: "A medida · Tienda online",
+    featured: false,
+    url: "https://www.anastasiatiendaerotica.com",
+    description:
+      "E-commerce de un local de Tandil: catálogo, carrito, envíos y pagos online, más el panel para cargar productos y seguir pedidos.",
+    tech: [] as string[],
+    features: ["Catálogo", "Carrito", "Envíos", "Panel"],
+  },
+  {
+    id: "la-percha",
+    name: "La Percha Showroom",
+    category: "A medida · Indumentaria",
+    featured: false,
+    url: "https://www.laperchashowroom.com.ar",
+    description:
+      "Showroom online de ropa: catálogo, registro de clientas, compras y panel del local para ferias, stock y el día a día de la marca.",
+    tech: [] as string[],
+    features: ["Catálogo", "Registro", "Compras", "Panel"],
+  },
+  {
     id: "makeka",
     name: "La Makeka",
     category: "A medida · Campo",

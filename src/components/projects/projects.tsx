@@ -143,6 +143,17 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
+              {"url" in project && project.url ? (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex w-fit items-center gap-1.5 text-xs font-medium text-violet-300/80 transition-colors hover:text-violet-200"
+                >
+                  Ver proyecto
+                  <ExternalLink size={12} className="opacity-80" />
+                </a>
+              ) : null}
               <span className="absolute top-5 right-5 font-display text-xs tabular-nums text-violet-400/40">
                 {String(index + 2).padStart(2, "0")}
               </span>
