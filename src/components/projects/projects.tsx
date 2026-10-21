@@ -26,6 +26,12 @@ const cardVariants = {
   },
 }
 
+function projectUrl(project: (typeof PROJECTS)[number]): string | undefined {
+  return "url" in project && typeof project.url === "string"
+    ? project.url
+    : undefined
+}
+
 export default function Projects() {
   const sectionRef = useRef<HTMLElement>(null)
   const { ref: titleRef, isInView: titleInView } = useInView(0.2)
@@ -61,9 +67,11 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        {/* Featured (p.ej. Tumo como proyecto del estudio) */}
+        {/* Featured — capacidad del estudio (sistemas para locales) */}
         <div className="mb-10 space-y-6">
-          {featured.map((project) => (
+          {featured.map((project) => {
+            const url = projectUrl(project)
+            return (
             <article
               key={project.id}
               className="glass relative overflow-hidden rounded-2xl border border-violet-400/20 p-7 md:p-10"
@@ -92,9 +100,9 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
-                {"url" in project && project.url ? (
+                {url ? (
                   <a
-                    href={project.url}
+                    href={url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-6 inline-flex items-center gap-2 rounded-full border border-violet-300/25 bg-violet-500/10 px-4 py-2.5 text-sm font-medium text-violet-100 transition-all duration-200 hover:border-violet-300/45 hover:bg-violet-500/20 hover:text-white hover:shadow-[0_0_28px_rgba(139,92,246,0.35)]"
@@ -105,7 +113,8 @@ export default function Projects() {
                 ) : null}
               </div>
             </article>
-          ))}
+            )
+          })}
         </div>
 
         {/* Grid resto */}
@@ -116,7 +125,9 @@ export default function Projects() {
           viewport={{ once: true, margin: "-60px" }}
           className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {rest.map((project, index) => (
+          {rest.map((project, index) => {
+            const url = projectUrl(project)
+            return (
             <motion.article
               key={project.id}
               variants={cardVariants}
@@ -143,9 +154,9 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
-              {"url" in project && project.url ? (
+              {url ? (
                 <a
-                  href={project.url}
+                  href={url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 inline-flex w-fit items-center gap-1.5 text-xs font-medium text-violet-300/80 transition-colors hover:text-violet-200"
@@ -158,7 +169,8 @@ export default function Projects() {
                 {String(index + 2).padStart(2, "0")}
               </span>
             </motion.article>
-          ))}
+            )
+          })}
         </motion.div>
 
         <p className="mt-10 text-sm text-white/30">

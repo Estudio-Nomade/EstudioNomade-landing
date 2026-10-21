@@ -98,13 +98,12 @@ export const SERVICES = [
  */
 export const PROJECTS = [
   {
-    id: "tumo",
-    name: "Tumo",
-    category: "Producto propio · Negocios",
+    id: "sistemas-locales",
+    name: "Sistemas para locales",
+    category: "A medida · Locales / comercios",
     featured: true,
-    url: "https://www.tumo.com.ar",
     description:
-      "Sistema del estudio para que un local arme turnos, pedidos, catálogo y clientes con su propia marca. Varios comercios pueden usarlo sin mezclarse entre sí.",
+      "Armamos para el local del cliente un sistema con turnos, pedidos, catálogo y clientes, panel del dueño y la marca del negocio — hecho por Estudio Nómade, a medida de cómo opera el comercio.",
     tech: [] as string[],
     features: [
       "Turnos y pedidos",
