@@ -137,6 +137,7 @@ export const PROJECTS = [
     name: "Soleph",
     category: "A medida · Fotografía",
     featured: false,
+    url: "https://soleyaquintafotografia.com",
     description:
       "Portfolio y tienda de fotos de evento: se ven con marca de agua, se arman packs y se compra online. Hecho a la medida del estudio fotográfico.",
     tech: [] as string[],
@@ -173,6 +174,16 @@ export const PROJECTS = [
       "Showroom online de ropa: catálogo, registro de clientas, compras y panel del local para ferias, stock y el día a día de la marca.",
     tech: [] as string[],
     features: ["Catálogo", "Registro", "Compras", "Panel"],
+  },
+  {
+    id: "activate",
+    name: "Activate Moda Deportiva",
+    category: "A medida · Indumentaria",
+    featured: false,
+    description:
+      "Tienda online de ropa deportiva: catálogo con talles, carrito, envíos y pagos, más el panel para productos y pedidos. Hecha a la medida de la marca.",
+    tech: [] as string[],
+    features: ["Catálogo", "Carrito", "Pagos", "Panel"],
   },
   {
     id: "makeka",
