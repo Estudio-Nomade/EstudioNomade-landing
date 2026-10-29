@@ -64,9 +64,13 @@ export function StarfieldBackground() {
     const seed = () => {
       stars.length = 0
       const area = w * h
-      const count = Math.min(160, Math.max(70, Math.floor(area / 14000)))
+      const mobile = w < 768
+      // Menos estrellas en mobile = menos main-thread
+      const count = mobile
+        ? Math.min(70, Math.max(36, Math.floor(area / 22000)))
+        : Math.min(120, Math.max(60, Math.floor(area / 16000)))
       for (let i = 0; i < count; i++) {
-        const isSpark = Math.random() < 0.12
+        const isSpark = Math.random() < (mobile ? 0.06 : 0.1)
         stars.push({
           x: Math.random() * w,
           y: Math.random() * h,
@@ -127,6 +131,10 @@ export function StarfieldBackground() {
     }
 
     const animate = () => {
+      if (document.hidden) {
+        raf = 0
+        return
+      }
       t += 0.016
       ctx.clearRect(0, 0, w, h)
 
@@ -299,9 +307,16 @@ export function StarfieldBackground() {
     resize()
     animate()
 
+    const onVisibility = () => {
+      if (!document.hidden && !raf) {
+        raf = requestAnimationFrame(animate)
+      }
+    }
+
     window.addEventListener("resize", resize)
     window.addEventListener("mousemove", onMove, { passive: true })
     window.addEventListener("mouseleave", onLeave)
+    document.addEventListener("visibilitychange", onVisibility)
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
     const onMq = () => {
       reduced = mq.matches
@@ -313,6 +328,7 @@ export function StarfieldBackground() {
       window.removeEventListener("resize", resize)
       window.removeEventListener("mousemove", onMove)
       window.removeEventListener("mouseleave", onLeave)
+      document.removeEventListener("visibilitychange", onVisibility)
       mq.removeEventListener?.("change", onMq)
     }
   }, [])

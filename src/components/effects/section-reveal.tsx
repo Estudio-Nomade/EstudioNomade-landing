@@ -21,13 +21,14 @@ export function SectionReveal({
 }: SectionRevealProps) {
   const { ref, isInView } = useInView(0.12)
 
+  // Sin filter/blur: evita animaciones non-composited (PageSpeed)
   const hidden = dramatic
-    ? { opacity: 0, y: 40, scale: 0.97, filter: "blur(12px)" }
-    : { opacity: 0, y: 20, filter: "blur(8px)" }
+    ? { opacity: 0, y: 28, scale: 0.985 }
+    : { opacity: 0, y: 16 }
 
   const shown = dramatic
-    ? { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }
-    : { opacity: 1, y: 0, filter: "blur(0px)" }
+    ? { opacity: 1, y: 0, scale: 1 }
+    : { opacity: 1, y: 0 }
 
   return (
     <motion.div
@@ -35,7 +36,7 @@ export function SectionReveal({
       initial={hidden}
       animate={isInView ? shown : hidden}
       transition={{
-        duration: dramatic ? 0.95 : 0.75,
+        duration: dramatic ? 0.55 : 0.4,
         delay,
         ease: [0.22, 1, 0.36, 1],
       }}

@@ -3,10 +3,9 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
-import Image from "next/image"
 import { NAV_LINKS } from "@/constants"
 import { cn } from "@/lib/utils"
-import { NAV_MENU_EVENT } from "@/components/effects/companion-mascot"
+import { NAV_MENU_EVENT } from "@/lib/nav-events"
 
 function scrollToHash(href: string) {
   if (!href || href === "#") {
@@ -111,13 +110,15 @@ export function Navbar() {
             }}
           >
             <span className="logo-frame animate-logo-breathe relative h-9 w-9 shrink-0 sm:h-10 sm:w-10">
-              <Image
-                src="/logo-clear.png"
-                alt="Estudio Nómade"
+              {/* img estático chico: evita pipeline next/image (ahorro PSI) */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo-nav.png"
+                alt=""
                 width={40}
                 height={40}
                 className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110"
-                priority
+                decoding="async"
               />
               <span
                 className="pointer-events-none absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-violet-300/90 shadow-[0_0_10px_rgba(196,181,253,0.9)]"
@@ -135,7 +136,7 @@ export function Navbar() {
                 <button
                   type="button"
                   onClick={() => handleNavClick(link.href)}
-                  className="rounded-lg px-2.5 py-2 text-[13px] font-medium tracking-wide text-white/45 transition-all duration-200 hover:bg-violet-500/10 hover:text-white/90"
+                  className="rounded-lg px-2.5 py-2 text-[13px] font-medium tracking-wide text-white/70 transition-all duration-200 hover:bg-violet-500/10 hover:text-white"
                 >
                   {link.label}
                 </button>

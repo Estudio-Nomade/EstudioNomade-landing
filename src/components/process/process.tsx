@@ -83,7 +83,7 @@ export function Process() {
       <div className="section-container relative z-10" ref={sectionRef}>
         <SectionReveal>
           <div className="mb-8 max-w-2xl md:mb-10">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-violet-300/70">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-violet-200/80">
               Cómo trabajamos
             </p>
             <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
@@ -122,7 +122,7 @@ export function Process() {
           </div>
         </div>
 
-        <p className="mt-10 max-w-xl text-sm text-white/30">
+        <p className="mt-10 max-w-xl text-sm text-[var(--color-text-tertiary)]">
           El dominio y el trabajo quedan a tu nombre cuando aplica. Si mañana
           querés seguir con otra persona, te lo llevás — nadie te lo retiene.
         </p>

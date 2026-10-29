@@ -51,7 +51,7 @@ export function Services() {
       <div className="section-container relative z-10">
         <SectionReveal>
           <div className="mb-8 max-w-2xl md:mb-10">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-violet-300/70">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-violet-200/80">
               Qué hacemos
             </p>
             <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
@@ -104,7 +104,7 @@ export function Services() {
         </motion.div>
 
         <SectionReveal>
-          <p className="mt-8 max-w-2xl text-sm leading-relaxed text-white/35 sm:text-base md:mt-10">
+          <p className="mt-8 max-w-2xl text-sm leading-relaxed text-[var(--color-text-secondary)] sm:text-base md:mt-10">
             Cada propuesta se adapta a lo que hace falta: a veces alcanza con
             una pieza; otras conviene marca + web, ads o un sistema completo.
             Lo vemos juntos y armamos el camino.

@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image from "next/image"
 import { NAV_LINKS, SITE, CONTACT } from "@/constants"
 import { MessageCircle, Mail, ExternalLink } from "lucide-react"
 import { buildMailtoUrl, buildWhatsAppUrl } from "@/lib/whatsapp"
@@ -47,36 +46,40 @@ export function Footer() {
               }}
             >
               <span className="logo-frame relative h-10 w-10">
-                <Image
-                  src="/logo-clear.png"
-                  alt="Estudio Nómade"
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/logo-nav.png"
+                  alt=""
                   width={40}
                   height={40}
                   className="h-full w-full object-contain"
+                  decoding="async"
+                  loading="lazy"
                 />
               </span>
-              <span className="font-display text-sm font-semibold tracking-wider text-white/85">
+              <span className="font-display text-sm font-semibold tracking-wider text-white/90">
                 ESTUDIO NÓMADE
               </span>
             </motion.a>
-            <p className="max-w-xs text-sm leading-relaxed text-white/35">
+            <p className="max-w-xs text-sm leading-relaxed text-[var(--color-text-secondary)]">
               {SITE.tagline}. De Tandil, Buenos Aires — soluciones
               digitales, marca y marketing pensados para moverse con vos.
             </p>
           </div>
 
           <div className="flex flex-col gap-3">
-            <h4 className="mb-2 text-xs font-semibold tracking-[0.2em] text-white/25 uppercase">
+            {/* h3 (no h4): evita saltar niveles tras h2/h3 de secciones */}
+            <p className="mb-2 text-xs font-semibold tracking-[0.2em] text-[var(--color-text-tertiary)] uppercase">
               Navegación
-            </h4>
-            <nav>
+            </p>
+            <nav aria-label="Navegación del pie">
               <ul className="flex flex-col gap-2">
                 {NAV_LINKS.map((link) => (
                   <li key={link.href}>
                     <button
                       type="button"
                       onClick={() => handleNavClick(link.href)}
-                      className="text-sm text-white/40 transition-colors duration-300 hover:text-violet-200"
+                      className="text-sm text-[var(--color-text-secondary)] transition-colors duration-300 hover:text-violet-200"
                     >
                       {link.label}
                     </button>
@@ -87,9 +90,9 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col gap-3">
-            <h4 className="mb-2 text-xs font-semibold tracking-[0.2em] text-white/25 uppercase">
+            <p className="mb-2 text-xs font-semibold tracking-[0.2em] text-[var(--color-text-tertiary)] uppercase">
               Contacto
-            </h4>
+            </p>
             <div className="flex flex-col gap-2.5">
               {contactItems.map((item) => (
                 <motion.a
@@ -97,12 +100,12 @@ export function Footer() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-2.5 text-sm text-white/40 transition-colors duration-300 hover:text-violet-200"
+                  className="group flex items-center gap-2.5 text-sm text-[var(--color-text-secondary)] transition-colors duration-300 hover:text-violet-200"
                   whileHover={{ x: 4 }}
                 >
                   <item.icon
                     size={14}
-                    className="text-white/25 transition-colors duration-300 group-hover:text-violet-300"
+                    className="text-[var(--color-text-tertiary)] transition-colors duration-300 group-hover:text-violet-300"
                   />
                   <span>{item.label}</span>
                 </motion.a>
@@ -112,10 +115,10 @@ export function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-violet-400/10 pt-8 sm:flex-row">
-          <p className="text-xs text-white/20">
+          <p className="text-xs text-[var(--color-text-tertiary)]">
             &copy; 2026 {SITE.name}. Todos los derechos reservados.
           </p>
-          <p className="text-xs text-white/15">{SITE.tagline}</p>
+          <p className="text-xs text-[var(--color-text-tertiary)]">{SITE.tagline}</p>
         </div>
       </div>
     </footer>
