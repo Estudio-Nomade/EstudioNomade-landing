@@ -55,7 +55,7 @@ export default function Projects() {
           transition={{ duration: 0.55, ease: [0.25, 0.1, 0, 1] }}
           className="mb-8 max-w-2xl md:mb-10"
         >
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-violet-300/70">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-violet-200/80">
             Proyectos
           </p>
           <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
@@ -87,14 +87,14 @@ export default function Projects() {
                 <h3 className="font-display text-3xl font-bold text-white sm:text-4xl">
                   {project.name}
                 </h3>
-                <p className="mt-4 text-base leading-relaxed text-white/45 sm:text-lg">
+                <p className="mt-4 text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
                   {project.description}
                 </p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {project.features.map((f) => (
                     <span
                       key={f}
-                      className="rounded-md border border-white/[0.06] bg-white/[0.03] px-2.5 py-1 text-xs text-white/50"
+                      className="rounded-md border border-white/[0.08] bg-white/[0.04] px-2.5 py-1 text-xs text-[var(--color-text-secondary)]"
                     >
                       {f}
                     </span>
@@ -134,21 +134,21 @@ export default function Projects() {
               className="glass group relative flex flex-col rounded-2xl p-6 transition-colors duration-300 hover:border-white/[0.1]"
             >
               <div className="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full border border-white/[0.06] bg-white/[0.03] px-2.5 py-1">
-                <span className="text-[10px] font-medium tracking-wide text-white/40">
+                <span className="text-[10px] font-medium tracking-wide text-[var(--color-text-tertiary)]">
                   {project.category}
                 </span>
               </div>
               <h3 className="font-display text-xl font-bold text-white/90 group-hover:text-white">
                 {project.name}
               </h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-white/40">
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-[var(--color-text-secondary)]">
                 {project.description}
               </p>
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {project.features.slice(0, 4).map((f) => (
                   <span
                     key={f}
-                    className="rounded-md border border-white/[0.05] bg-white/[0.02] px-2 py-0.5 text-[11px] text-white/35"
+                    className="rounded-md border border-white/[0.08] bg-white/[0.03] px-2 py-0.5 text-[11px] text-[var(--color-text-tertiary)]"
                   >
                     {f}
                   </span>
@@ -159,13 +159,13 @@ export default function Projects() {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex w-fit items-center gap-1.5 text-xs font-medium text-violet-300/80 transition-colors hover:text-violet-200"
+                  className="mt-4 inline-flex w-fit items-center gap-1.5 text-xs font-medium text-violet-200 transition-colors hover:text-violet-100"
                 >
                   Ver proyecto
                   <ExternalLink size={12} className="opacity-80" />
                 </a>
               ) : null}
-              <span className="absolute top-5 right-5 font-display text-xs tabular-nums text-violet-400/40">
+              <span className="absolute top-5 right-5 font-display text-xs tabular-nums text-violet-300/60">
                 {String(index + 2).padStart(2, "0")}
               </span>
             </motion.article>
@@ -173,7 +173,7 @@ export default function Projects() {
           })}
         </motion.div>
 
-        <p className="mt-10 text-sm text-white/30">
+        <p className="mt-10 text-sm text-[var(--color-text-tertiary)]">
           ¿Tu rubro no está en la lista? También hacemos a medida para otros
           locales y equipos — contanos el caso.
         </p>

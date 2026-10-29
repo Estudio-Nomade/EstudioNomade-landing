@@ -9,9 +9,9 @@ import {
   useTransform,
   useReducedMotion,
 } from "framer-motion"
-import Image from "next/image"
+import { NAV_MENU_EVENT } from "@/lib/nav-events"
 
-export const NAV_MENU_EVENT = "en-nav-menu"
+export { NAV_MENU_EVENT }
 
 const DETACH_SCROLL_PX = 90
 
@@ -23,7 +23,6 @@ const DETACH_SCROLL_PX = 90
  */
 export function CompanionMascot() {
   const reduceMotion = useReducedMotion()
-  const [ready, setReady] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [detached, setDetached] = useState(false)
   const [vw, setVw] = useState(1280)
@@ -104,9 +103,10 @@ export function CompanionMascot() {
       }
     }
     measure()
-    setReady(true)
     window.addEventListener("resize", measure, { passive: true })
     return () => window.removeEventListener("resize", measure)
+    // parkPos/sizesFor son funciones puras estables en el módulo de este componente
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rawX, rawY, rawSize])
 
   useEffect(() => {
@@ -143,6 +143,7 @@ export function CompanionMascot() {
       }
     })
     return () => unsub()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scrollY, rawX, rawY, rawSize])
 
   useEffect(() => {
@@ -175,8 +176,6 @@ export function CompanionMascot() {
     }
   }, [menuOpen, detached, rawX, rawY])
 
-  if (!ready) return null
-
   return (
     <motion.div
       className="pointer-events-none fixed z-[90]"
@@ -198,13 +197,15 @@ export function CompanionMascot() {
     >
       <div className="relative h-full w-full">
         <div className="pointer-events-none absolute inset-0 -m-[18%] rounded-full bg-violet-500/20 blur-[32px]" />
-        <Image
-          src="/logo-clear.png"
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/logo-mark-opt.png"
           alt=""
-          fill
-          sizes="(min-width: 1024px) 360px, 140px"
-          className="object-contain drop-shadow-[0_0_28px_rgba(167,139,250,0.55)]"
-          priority
+          width={360}
+          height={360}
+          className="h-full w-full object-contain drop-shadow-[0_0_28px_rgba(167,139,250,0.55)]"
+          decoding="async"
+          loading="lazy"
         />
         <span
           className="sparkle-mark"

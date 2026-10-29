@@ -12,18 +12,17 @@ import { SITE } from "@/constants"
 
 const stagger = {
   animate: {
-    transition: { staggerChildren: 0.14, delayChildren: 0.15 },
+    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
   },
 }
 
+/** Solo transform/opacity — sin blur (LCP + non-composited) */
 const fadeUp = {
-  initial: { opacity: 0, y: 36, filter: "blur(10px)", scale: 0.98 },
+  initial: { opacity: 0, y: 18 },
   animate: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    scale: 1,
-    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const },
   },
 }
 
@@ -85,86 +84,89 @@ export function Hero() {
       <div className="section-container w-full pt-8 pb-10 sm:pt-12 sm:pb-12 md:pt-14 md:pb-14">
         {/* Espacio a la derecha en desktop para la mascota parked grande */}
         <div className="mx-auto grid max-w-5xl items-center gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-6">
-          <motion.div
-            className="relative z-[1] flex flex-col gap-5 sm:gap-6"
-            variants={stagger}
-            initial="initial"
-            animate="animate"
-          >
+          {/*
+            LCP = párrafo del hero. Contenido crítico SIN opacity:0 inicial
+            para que el paint no espere a Framer Motion.
+          */}
+          <div className="relative z-[1] flex flex-col gap-5 sm:gap-6">
             <motion.div
-              variants={fadeUp}
-              className="flex items-center gap-3"
+              variants={stagger}
+              initial={reduceMotion ? false : "initial"}
+              animate="animate"
+              className="contents"
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-violet-400/25 bg-violet-500/10 px-3 py-1.5 text-[11px] font-semibold tracking-[0.18em] text-violet-200/90 uppercase">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-300 shadow-[0_0_8px_rgba(196,181,253,0.9)]" />
-                Tandil · Buenos Aires
-              </span>
-            </motion.div>
-
-            <motion.h1
-              variants={fadeUp}
-              className="font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl"
-            >
-              Diseño y código
-              <br />
-              <span className="text-shine">en movimiento.</span>
-            </motion.h1>
-
-            <motion.p
-              variants={fadeUp}
-              className="max-w-xl text-base leading-relaxed text-white/45 sm:text-lg"
-            >
-              Somos {SITE.name}. El nombre va de la mano con lo que
-              hacemos: soluciones digitales que se mueven con vos — desde
-              cualquier lado. Apps, webs y sistemas a medida, más marca,
-              publicidad y marketing. Claras, con poco ruido y pensadas para el
-              día a día del negocio. El reloj arranca cuando nos pasás el
-              contenido.
-            </motion.p>
-
-            <motion.div
-              variants={fadeUp}
-              className="flex flex-col gap-3 sm:flex-row sm:gap-4"
-            >
-              <motion.button
-                type="button"
-                onClick={() => handleScroll("#cta")}
-                className="relative overflow-hidden rounded-full bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_0_36px_rgba(139,92,246,0.35)] transition-all duration-300 hover:shadow-[0_0_50px_rgba(167,139,250,0.5)]"
-                whileHover={{ scale: 1.04, y: -2 }}
-                whileTap={{ scale: 0.97 }}
+              <motion.div
+                variants={fadeUp}
+                className="flex items-center gap-3"
               >
-                <span className="relative z-10">Quiero cotizar</span>
-                <span className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100" />
-              </motion.button>
-
-              <motion.button
-                type="button"
-                onClick={() => handleScroll("#proyectos")}
-                className="group rounded-full border border-violet-300/20 bg-white/[0.03] px-6 py-3.5 text-sm font-medium text-white/70 backdrop-blur-sm transition-all duration-300 hover:border-violet-300/40 hover:bg-violet-500/10 hover:text-white"
-                whileHover={{ scale: 1.03, y: -1 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className="flex items-center justify-center gap-2">
-                  Ver proyectos
-                  <ArrowRight
-                    size={16}
-                    className="transition-transform duration-300 group-hover:translate-x-1"
-                  />
+                <span className="inline-flex items-center gap-2 rounded-full border border-violet-400/25 bg-violet-500/10 px-3 py-1.5 text-[11px] font-semibold tracking-[0.18em] text-violet-100 uppercase">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-300 shadow-[0_0_8px_rgba(196,181,253,0.9)]" />
+                  Tandil · Buenos Aires
                 </span>
-              </motion.button>
-            </motion.div>
+              </motion.div>
 
-            <motion.p variants={fadeUp} className="text-sm text-white/30">
-              ¿Buscabas web, marca o ads? También.{" "}
-              <button
-                type="button"
-                onClick={() => handleScroll("#servicios")}
-                className="text-violet-300/80 underline-offset-4 transition-colors hover:text-violet-200 hover:underline"
+              <h1 className="font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
+                Diseño y código
+                <br />
+                <span className="text-shine">en movimiento.</span>
+              </h1>
+
+              <p className="max-w-xl text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
+                Somos {SITE.name}. El nombre va de la mano con lo que
+                hacemos: soluciones digitales que se mueven con vos — desde
+                cualquier lado. Apps, webs y sistemas a medida, más marca,
+                publicidad y marketing. Claras, con poco ruido y pensadas para el
+                día a día del negocio. El reloj arranca cuando nos pasás el
+                contenido.
+              </p>
+
+              <motion.div
+                variants={fadeUp}
+                className="flex flex-col gap-3 sm:flex-row sm:gap-4"
               >
-                Ver qué hacemos
-              </button>
-            </motion.p>
-          </motion.div>
+                <motion.button
+                  type="button"
+                  onClick={() => handleScroll("#cta")}
+                  className="relative overflow-hidden rounded-full bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_0_36px_rgba(139,92,246,0.35)] transition-all duration-300 hover:shadow-[0_0_50px_rgba(167,139,250,0.5)]"
+                  whileHover={{ scale: 1.04, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  <span className="relative z-10">Quiero cotizar</span>
+                  <span className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100" />
+                </motion.button>
+
+                <motion.button
+                  type="button"
+                  onClick={() => handleScroll("#proyectos")}
+                  className="group rounded-full border border-violet-300/20 bg-white/[0.03] px-6 py-3.5 text-sm font-medium text-white/80 backdrop-blur-sm transition-all duration-300 hover:border-violet-300/40 hover:bg-violet-500/10 hover:text-white"
+                  whileHover={{ scale: 1.03, y: -1 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span className="flex items-center justify-center gap-2">
+                    Ver proyectos
+                    <ArrowRight
+                      size={16}
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    />
+                  </span>
+                </motion.button>
+              </motion.div>
+
+              <motion.p
+                variants={fadeUp}
+                className="text-sm text-[var(--color-text-tertiary)]"
+              >
+                ¿Buscabas web, marca o ads? También.{" "}
+                <button
+                  type="button"
+                  onClick={() => handleScroll("#servicios")}
+                  className="text-violet-200 underline-offset-4 transition-colors hover:text-violet-100 hover:underline"
+                >
+                  Ver qué hacemos
+                </button>
+              </motion.p>
+            </motion.div>
+          </div>
 
           {/* Columna vacía desktop: hueco visual para mascota grande parked */}
           <div
@@ -179,21 +181,21 @@ export function Hero() {
         style={{ opacity: hintOpacity }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.35, duration: 0.6 }}
+        transition={{ delay: 0.8, duration: 0.45 }}
       >
-        <span className="text-[10px] font-medium tracking-[0.3em] text-white/25 uppercase">
+        <span className="text-[10px] font-medium tracking-[0.3em] text-[var(--color-text-tertiary)] uppercase">
           Scroll
         </span>
         <motion.div
           animate={
             reduceMotion
               ? undefined
-              : { y: [0, 8, 0], opacity: [0.35, 0.8, 0.35] }
+              : { y: [0, 8, 0], opacity: [0.45, 0.9, 0.45] }
           }
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="text-violet-200/50"
+          className="text-violet-200/70"
         >
-          <ChevronDown size={18} />
+          <ChevronDown size={18} aria-hidden />
         </motion.div>
       </motion.div>
     </section>

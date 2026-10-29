@@ -71,7 +71,7 @@ export function CTA() {
             </p>
 
             <div className="mb-8">
-              <p className="mb-3 text-xs font-semibold tracking-[0.16em] text-violet-300/60 uppercase">
+              <p className="mb-3 text-xs font-semibold tracking-[0.16em] text-violet-200/80 uppercase">
                 ¿Sobre qué?
               </p>
               <div
@@ -94,7 +94,7 @@ export function CTA() {
                         "min-h-11 max-w-full sm:max-w-[20rem]",
                         selected
                           ? "border-violet-300/50 bg-violet-500/25 text-white shadow-[0_0_24px_rgba(139,92,246,0.25)]"
-                          : "border-white/[0.08] bg-white/[0.03] text-white/55 hover:border-violet-400/30 hover:bg-violet-500/10 hover:text-white/85"
+                          : "border-white/[0.1] bg-white/[0.04] text-[var(--color-text-secondary)] hover:border-violet-400/30 hover:bg-violet-500/10 hover:text-white"
                       )}
                     >
                       {label}
@@ -102,7 +102,7 @@ export function CTA() {
                   )
                 })}
               </div>
-              <p className="mt-3 text-xs text-white/30">
+              <p className="mt-3 text-xs text-[var(--color-text-tertiary)]">
                 {interest
                   ? "Listo: el mensaje va a nombrar eso."
                   : "Sin elegir también podés escribir: va un saludo genérico."}

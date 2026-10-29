@@ -11,8 +11,9 @@
   --color-border: rgba(255, 255, 255, 0.06);
   --color-border-hover: rgba(255, 255, 255, 0.1);
   --color-text-primary: #f5f5f5;
-  --color-text-secondary: rgba(255, 255, 255, 0.45);
-  --color-text-tertiary: rgba(255, 255, 255, 0.25);
+  /* ≥4.5:1 sobre #030308 (AA) — no bajar de ~0.65 */
+  --color-text-secondary: rgba(255, 255, 255, 0.72);
+  --color-text-tertiary: rgba(255, 255, 255, 0.58);
   --font-sans: var(--font-inter);
   --font-display: var(--font-space-grotesk);
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;

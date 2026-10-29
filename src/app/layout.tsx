@@ -2,19 +2,23 @@ import type { Metadata } from "next"
 import { Inter, Space_Grotesk } from "next/font/google"
 import "./globals.css"
 import { SITE } from "@/constants"
-import { StarfieldBackground } from "@/components/effects/starfield-background"
+import { StarfieldLazy } from "@/components/effects/starfield-lazy"
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
 })
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
   display: "swap",
+  preload: true,
 })
+
+const siteUrl = "https://estudionomade.com.ar"
 
 export const metadata: Metadata = {
   title: {
@@ -42,10 +46,14 @@ export const metadata: Metadata = {
   authors: [{ name: "Estudio Nómade" }],
   creator: "Estudio Nómade",
   publisher: "Estudio Nómade",
-  metadataBase: new URL("https://estudionomade.com"),
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "es_AR",
+    url: siteUrl,
     siteName: SITE.name,
     title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
@@ -79,7 +87,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="relative min-h-full bg-[#030308] text-[#f5f5f5] antialiased">
-        <StarfieldBackground />
+        <StarfieldLazy />
         <div className="relative z-10">{children}</div>
       </body>
     </html>

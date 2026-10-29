@@ -30,7 +30,7 @@ export function Problems() {
       <div className="section-container relative z-10">
         <SectionReveal>
           <div className="mb-8 max-w-2xl md:mb-10">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-violet-300/70">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-violet-200/80">
               Dónde se traba
             </p>
             <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
@@ -59,10 +59,10 @@ export function Problems() {
               className="glass glass-hover rounded-2xl p-6 md:p-7"
             >
               <div className="mb-4 flex items-center gap-3">
-                <span className="font-display text-2xl font-bold text-violet-300/40 tabular-nums">
+                <span className="font-display text-2xl font-bold text-violet-200/70 tabular-nums">
                   {p.id}
                 </span>
-                <span className="rounded-full border border-violet-400/20 bg-violet-500/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-violet-200/80">
+                <span className="rounded-full border border-violet-400/25 bg-violet-500/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-violet-100">
                   {p.tag}
                 </span>
               </div>
