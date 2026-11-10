@@ -144,16 +144,6 @@ export const PROJECTS = [
     features: ["Álbumes", "Marca de agua", "Carrito", "Subida de fotos"],
   },
   {
-    id: "juanitacocina",
-    name: "Juanitacocina",
-    category: "A medida · Pastelería",
-    featured: false,
-    description:
-      "Web de marca, tienda de encargos y panel para productos, horarios y cursos. El pedido llega por WhatsApp con todo el detalle.",
-    tech: [] as string[],
-    features: ["Tienda", "Panel", "Cursos", "WhatsApp"],
-  },
-  {
     id: "anastasia",
     name: "Anastasia",
     category: "A medida · Tienda online",
@@ -200,6 +190,7 @@ export const PROJECTS = [
     name: "Depto. de las Sierras",
     category: "A medida · Turismo",
     featured: false,
+    url: "https://departamentodelassierras.vercel.app",
     description:
       "Reservas de un alojamiento: calendario, disponibilidad y consultas pensadas para el dueño y el huésped.",
     tech: [] as string[],
