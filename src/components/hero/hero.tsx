@@ -9,6 +9,7 @@ import {
 } from "framer-motion"
 import { ChevronDown, ArrowRight } from "lucide-react"
 import { SITE } from "@/constants"
+import { WhatsAppCta } from "@/components/cta/whatsapp-cta"
 
 const stagger = {
   animate: {
@@ -60,12 +61,10 @@ export function Hero() {
       ref={containerRef}
       className="relative flex min-h-[min(100svh,820px)] items-center overflow-hidden md:min-h-[min(100svh,900px)]"
     >
-      {/* Nebulas del concepto */}
       <div className="pointer-events-none absolute top-[-25%] left-[-12%] h-[640px] w-[640px] rounded-full bg-violet-600/[0.12] blur-[130px] animate-pulse-glow" />
       <div className="pointer-events-none absolute right-[-8%] bottom-[-18%] h-[520px] w-[520px] rounded-full bg-fuchsia-600/[0.07] blur-[130px] animate-pulse-glow" />
       <div className="pointer-events-none absolute top-[30%] left-[40%] h-[280px] w-[280px] rounded-full bg-indigo-400/[0.05] blur-[90px]" />
 
-      {/* Destellos CSS fijos del concepto */}
       {sparkles.map((s, i) => (
         <span
           key={i}
@@ -82,7 +81,6 @@ export function Hero() {
       ))}
 
       <div className="section-container w-full pt-8 pb-10 sm:pt-12 sm:pb-12 md:pt-14 md:pb-14">
-        {/* Espacio a la derecha en desktop para la mascota parked grande */}
         <div className="mx-auto grid max-w-5xl items-center gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-6">
           {/*
             LCP = párrafo del hero. Contenido crítico SIN opacity:0 inicial
@@ -95,45 +93,27 @@ export function Hero() {
               animate="animate"
               className="contents"
             >
-              <motion.div
-                variants={fadeUp}
-                className="flex items-center gap-3"
-              >
-                <span className="inline-flex items-center gap-2 rounded-full border border-violet-400/25 bg-violet-500/10 px-3 py-1.5 text-[11px] font-semibold tracking-[0.18em] text-violet-100 uppercase">
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-300 shadow-[0_0_8px_rgba(196,181,253,0.9)]" />
-                  Tandil · Buenos Aires
-                </span>
-              </motion.div>
-
               <h1 className="font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
                 Diseño y código
                 <br />
                 <span className="text-shine">en movimiento.</span>
               </h1>
 
-              <p className="max-w-xl text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
-                Somos {SITE.name}. El nombre va de la mano con lo que
-                hacemos: soluciones digitales que se mueven con vos — desde
-                cualquier lado. Apps, webs y sistemas a medida, más marca,
-                publicidad y marketing. Claras, con poco ruido y pensadas para el
-                día a día del negocio. El reloj arranca cuando nos pasás el
-                contenido.
+              <p className="max-w-xl text-base font-medium leading-relaxed text-white/90 sm:text-lg md:text-xl">
+                {SITE.valueLine}
+              </p>
+
+              <p className="max-w-xl text-sm leading-relaxed text-[var(--color-text-secondary)] sm:text-base">
+                Somos {SITE.name}: marca, web y soluciones digitales con
+                atención humana. Arrancamos por una conversación — después
+                vemos qué necesita tu negocio.
               </p>
 
               <motion.div
                 variants={fadeUp}
-                className="flex flex-col gap-3 sm:flex-row sm:gap-4"
+                className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
               >
-                <motion.button
-                  type="button"
-                  onClick={() => handleScroll("#cta")}
-                  className="relative overflow-hidden rounded-full bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_0_36px_rgba(139,92,246,0.35)] transition-all duration-300 hover:shadow-[0_0_50px_rgba(167,139,250,0.5)]"
-                  whileHover={{ scale: 1.04, y: -2 }}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <span className="relative z-10">Quiero cotizar</span>
-                  <span className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100" />
-                </motion.button>
+                <WhatsAppCta />
 
                 <motion.button
                   type="button"
@@ -154,21 +134,13 @@ export function Hero() {
 
               <motion.p
                 variants={fadeUp}
-                className="text-sm text-[var(--color-text-tertiary)]"
+                className="text-xs text-[var(--color-text-tertiary)] sm:text-sm"
               >
-                ¿Buscabas web, marca o ads? También.{" "}
-                <button
-                  type="button"
-                  onClick={() => handleScroll("#servicios")}
-                  className="text-violet-200 underline-offset-4 transition-colors hover:text-violet-100 hover:underline"
-                >
-                  Ver qué hacemos
-                </button>
+                {SITE.originLabel}
               </motion.p>
             </motion.div>
           </div>
 
-          {/* Columna vacía desktop: hueco visual para mascota grande parked */}
           <div
             className="pointer-events-none hidden min-h-[180px] lg:block"
             aria-hidden

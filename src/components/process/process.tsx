@@ -1,130 +1,74 @@
 "use client"
 
-import { useRef } from "react"
-import { motion, useScroll } from "framer-motion"
+import { motion, type Variants } from "framer-motion"
 import { PROCESS } from "@/constants"
-import { useInView } from "@/hooks"
 import { SectionReveal } from "@/components/effects/section-reveal"
 
-function ProcessStep({
-  step,
-  title,
-  description,
-  duration,
-  index,
-}: {
-  step: string
-  title: string
-  description: string
-  duration: string
-  index: number
-}) {
-  const { ref, isInView } = useInView(0.2)
+const container: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.08 },
+  },
+}
 
-  return (
-    <div ref={ref} className="relative flex gap-6 pb-8 last:pb-0 md:gap-10 md:pb-10">
-      <div className="relative flex flex-col items-center">
-        <motion.div
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={
-            isInView ? { scale: 1, opacity: 1 } : { scale: 0.5, opacity: 0 }
-          }
-          transition={{
-            duration: 0.5,
-            ease: [0.25, 0.46, 0.45, 0.94],
-            delay: 0.12 * index,
-          }}
-          className="flex h-12 w-12 flex-shrink-0 items-center justify-center md:h-14 md:w-14"
-        >
-          <span className="font-display text-gradient text-3xl font-bold md:text-4xl">
-            {step}
-          </span>
-        </motion.div>
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0, x: -16 }}
-        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -16 }}
-        transition={{
-          duration: 0.5,
-          ease: [0.25, 0.46, 0.45, 0.94],
-          delay: 0.15 * index,
-        }}
-        className="min-w-0 flex-1"
-      >
-        <div className="glass rounded-2xl p-6 md:p-7">
-          <div className="mb-2 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-            <h3 className="font-display text-xl font-semibold text-[var(--color-text-primary)] md:text-2xl">
-              {title}
-            </h3>
-            <span className="rounded-full bg-[rgba(255,255,255,0.03)] px-3 py-1 text-xs font-medium text-[var(--color-text-tertiary)]">
-              {duration}
-            </span>
-          </div>
-          <p className="leading-relaxed text-[var(--color-text-secondary)]">
-            {description}
-          </p>
-        </div>
-      </motion.div>
-    </div>
-  )
+const item: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as const },
+  },
 }
 
 export function Process() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start 100px", "end 100px"],
-  })
-
   return (
     <section id="proceso" className="relative overflow-hidden py-12 md:py-16">
-      <div className="section-container relative z-10" ref={sectionRef}>
+      <div className="section-container relative z-10">
         <SectionReveal>
           <div className="mb-8 max-w-2xl md:mb-10">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-violet-200/80">
               Cómo trabajamos
             </p>
             <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-              <span className="text-gradient">
-                El reloj arranca cuando pasás el contenido.
-              </span>
+              <span className="text-gradient">Simple, en tres pasos</span>
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
-              Hablamos, nos pasás el material y nos ocupamos nosotros. Sin
-              laberintos de siete fases para una web, una marca o una
-              solución digital.
+              Sin laberintos. Primero entendemos tu negocio; después armamos la
+              solución y la dejamos lista para usar.
             </p>
           </div>
         </SectionReveal>
 
-        <div className="relative">
-          <motion.div
-            className="absolute top-0 bottom-0 left-[23px] w-px md:left-[27px]"
-            style={{
-              background: "linear-gradient(to bottom, #8b5cf6, #7c3aed, #6d28d9)",
-              scaleY: scrollYProgress,
-              transformOrigin: "top",
-            }}
-          />
-          <div
-            className="absolute top-0 bottom-0 left-[23px] w-px opacity-15 md:left-[27px]"
-            style={{
-              background: "linear-gradient(to bottom, #8b5cf6, #7c3aed, #6d28d9)",
-            }}
-          />
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          className="grid gap-4 md:grid-cols-3"
+        >
+          {PROCESS.map((step) => (
+            <motion.article
+              key={step.step}
+              variants={item}
+              className="glass relative overflow-hidden rounded-2xl border border-violet-400/15 p-6 md:p-7"
+            >
+              <span className="font-display text-4xl font-bold text-violet-300/40 tabular-nums">
+                {step.step}
+              </span>
+              <h3 className="font-display mt-4 text-xl font-semibold text-[var(--color-text-primary)]">
+                {step.title}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-[var(--color-text-secondary)] md:text-base">
+                {step.description}
+              </p>
+            </motion.article>
+          ))}
+        </motion.div>
 
-          <div className="pl-16 md:pl-20">
-            {PROCESS.map((item, index) => (
-              <ProcessStep key={item.step} {...item} index={index} />
-            ))}
-          </div>
-        </div>
-
-        <p className="mt-10 max-w-xl text-sm text-[var(--color-text-tertiary)]">
+        <p className="mt-8 max-w-xl text-sm text-[var(--color-text-tertiary)]">
           El dominio y el trabajo quedan a tu nombre cuando aplica. Si mañana
-          querés seguir con otra persona, te lo llevás — nadie te lo retiene.
+          querés seguir con otra persona, te lo llevás.
         </p>
       </div>
     </section>

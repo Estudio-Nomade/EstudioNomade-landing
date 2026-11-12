@@ -31,16 +31,14 @@ export function Problems() {
         <SectionReveal>
           <div className="mb-8 max-w-2xl md:mb-10">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-violet-200/80">
-              Dónde se traba
+              ¿Te suena?
             </p>
             <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-              La marca y lo digital{" "}
-              <span className="text-gradient">no acompañan al negocio</span>.
+              Situaciones que{" "}
+              <span className="text-gradient">frenan al negocio</span>
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
-              No siempre se nota de golpe. Son señales de que hace falta
-              ordenar presencia, captación o las herramientas con las que
-              trabajás.
+              Si alguna de estas te representa, podemos ayudarte a ordenarla.
             </p>
           </div>
         </SectionReveal>

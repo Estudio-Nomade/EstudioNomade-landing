@@ -6,10 +6,19 @@ import { Menu, X } from "lucide-react"
 import { NAV_LINKS } from "@/constants"
 import { cn } from "@/lib/utils"
 import { NAV_MENU_EVENT } from "@/lib/nav-events"
+import { buildWhatsAppUrl } from "@/lib/whatsapp"
 
 function scrollToHash(href: string) {
   if (!href || href === "#") {
+    if (window.location.pathname !== "/") {
+      window.location.assign("/")
+      return
+    }
     window.scrollTo({ top: 0, behavior: "smooth" })
+    return
+  }
+  if (window.location.pathname !== "/") {
+    window.location.assign(`/${href}`)
     return
   }
   const el = document.querySelector(href)
@@ -145,13 +154,14 @@ export function Navbar() {
           </ul>
 
           <div className="flex shrink-0 items-center gap-2">
-            <button
-              type="button"
-              onClick={() => handleNavClick("#cta")}
+            <a
+              href={buildWhatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden items-center gap-2 rounded-full border border-violet-400/20 bg-violet-500/10 px-4 py-2 text-sm font-medium text-violet-100/90 transition-all duration-200 hover:border-violet-300/40 hover:bg-violet-500/20 hover:text-white hover:shadow-[0_0_24px_rgba(139,92,246,0.35)] md:inline-flex"
             >
               Hablemos
-            </button>
+            </a>
 
             <button
               type="button"
@@ -192,13 +202,18 @@ export function Navbar() {
                   </motion.li>
                 ))}
                 <li className="pt-1">
-                  <button
-                    type="button"
-                    onClick={() => handleNavClick("#cta")}
-                    className="w-full rounded-full bg-gradient-to-r from-violet-500 to-purple-600 px-4 py-3.5 text-center text-sm font-semibold text-white shadow-[0_0_30px_rgba(139,92,246,0.35)]"
+                  <a
+                    href={buildWhatsAppUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => {
+                      unlockBodyScroll()
+                      setIsOpen(false)
+                    }}
+                    className="block w-full rounded-full bg-gradient-to-r from-violet-500 to-purple-600 px-4 py-3.5 text-center text-sm font-semibold text-white shadow-[0_0_30px_rgba(139,92,246,0.35)]"
                   >
-                    Hablemos
-                  </button>
+                    Hablemos de tu proyecto
+                  </a>
                 </li>
               </ul>
             </motion.div>
