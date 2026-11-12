@@ -130,7 +130,7 @@ export const PROJECTS = [
   },
   {
     id: "soleph",
-    name: "Soleph",
+    name: "Sole Fotografia",
     category: "A medida · Fotografía",
     featured: false,
     accent: "fuchsia",
@@ -168,7 +168,7 @@ export const PROJECTS = [
     category: "A medida · Indumentaria",
     featured: false,
     accent: "pink",
-    logo: "/projects/la-percha.jpg",
+    logo: "/projects/la-percha.png",
     url: "https://www.laperchashowroom.com.ar",
     situation:
       "Llevar el showroom de ropa a la web con clientas, stock y ferias bajo control.",
@@ -251,7 +251,7 @@ export const TESTIMONIALS = [
     quote:
       "Pasamos de mandar fotos por WhatsApp a una tienda ordenada, con packs y la marca del estudio. Los clientes entienden y compran sin dar vueltas.",
     name: "Sole Yaquinta",
-    business: "Soleph · Fotografía",
+    business: "Sole Fotografia",
     work: "Portfolio + tienda online",
   },
   {
