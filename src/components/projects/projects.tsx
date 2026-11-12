@@ -330,11 +330,7 @@ function ProjectSlide({
               Ver en vivo
               <ExternalLink size={14} className="opacity-80" />
             </a>
-          ) : (
-            <p className="mt-6 text-xs text-[var(--color-text-tertiary)]">
-              Proyecto interno / sin demo pública.
-            </p>
-          )}
+          ) : null}
         </div>
       </div>
     </article>

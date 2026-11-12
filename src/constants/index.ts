@@ -168,7 +168,7 @@ export const PROJECTS = [
     category: "A medida · Indumentaria",
     featured: false,
     accent: "pink",
-    logo: "/projects/la-percha.svg",
+    logo: "/projects/la-percha.jpg",
     url: "https://www.laperchashowroom.com.ar",
     situation:
       "Llevar el showroom de ropa a la web con clientas, stock y ferias bajo control.",
