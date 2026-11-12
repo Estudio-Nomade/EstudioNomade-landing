@@ -1,4 +1,4 @@
-import { CONTACT } from "@/constants"
+import { CONTACT, WHATSAPP_DEFAULT_MESSAGE } from "@/constants"
 
 /** Dígitos E.164 sin + */
 export function whatsappDigits(phone: string = CONTACT.whatsapp): string {
@@ -6,23 +6,19 @@ export function whatsappDigits(phone: string = CONTACT.whatsapp): string {
 }
 
 /**
- * Mensaje base criollo. Si hay interés elegido, lo nombra;
- * si no, deja un pedido genérico de orden/automatizar.
+ * Mensaje de contacto.
+ * Por defecto: conversación abierta (sin obligar a elegir servicio).
+ * Si se pasa `interest`, se nombra el tema (landings de ads / contexto).
  */
 export function buildContactMessage(interest?: string | null): string {
   const topic = interest?.trim()
   if (topic) {
     return [
-      "Hola! Me interesa cómo trabajan 👋",
-      `Quiero que me ayuden con: ${topic}.`,
-      "¿Me cuentan el siguiente paso?",
+      WHATSAPP_DEFAULT_MESSAGE,
+      `Me interesa especialmente: ${topic}.`,
     ].join("\n")
   }
-  return [
-    "Hola! Me interesa cómo trabajan 👋",
-    "Quiero que me ayuden con una solución digital o a ordenar la presencia del negocio.",
-    "¿Me cuentan el siguiente paso?",
-  ].join("\n")
+  return WHATSAPP_DEFAULT_MESSAGE
 }
 
 export function buildWhatsAppUrl(interest?: string | null): string {

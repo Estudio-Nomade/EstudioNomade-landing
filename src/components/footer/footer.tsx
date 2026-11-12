@@ -25,6 +25,11 @@ const contactItems = [
 
 export function Footer() {
   const handleNavClick = (href: string) => {
+    if (typeof window === "undefined") return
+    if (window.location.pathname !== "/") {
+      window.location.assign(`/${href}`)
+      return
+    }
     const el = document.querySelector(href)
     if (el) el.scrollIntoView({ behavior: "smooth" })
   }
@@ -37,13 +42,9 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8">
           <div className="flex flex-col gap-4">
             <motion.a
-              href="#"
+              href="/"
               className="group flex w-fit items-center gap-2.5"
               whileHover={{ scale: 1.02 }}
-              onClick={(e) => {
-                e.preventDefault()
-                window.scrollTo({ top: 0, behavior: "smooth" })
-              }}
             >
               <span className="logo-frame relative h-10 w-10">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -62,13 +63,14 @@ export function Footer() {
               </span>
             </motion.a>
             <p className="max-w-xs text-sm leading-relaxed text-[var(--color-text-secondary)]">
-              {SITE.tagline}. De Tandil, Buenos Aires — soluciones
-              digitales, marca y marketing pensados para moverse con vos.
+              {SITE.valueLine}
+            </p>
+            <p className="max-w-xs text-xs text-[var(--color-text-tertiary)]">
+              {SITE.originLabel}
             </p>
           </div>
 
           <div className="flex flex-col gap-3">
-            {/* h3 (no h4): evita saltar niveles tras h2/h3 de secciones */}
             <p className="mb-2 text-xs font-semibold tracking-[0.2em] text-[var(--color-text-tertiary)] uppercase">
               Navegación
             </p>
